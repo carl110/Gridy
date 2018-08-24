@@ -23,42 +23,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3l-SD-yoV" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="77" y="365" width="30" height="35"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="Gridy-name-large-green" translatesAutoresizingMaskIntoConstraints="NO" id="UPq-SL-aSj">
+                                <rect key="frame" x="22.5" y="40" width="330" height="160"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-Or load your own-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NK0-op-hxI">
+                                <rect key="frame" x="119.5" y="324" width="136" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.69803921570000005" green="0.69019607839999997" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Et-59-ZnC" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
+                                <rect key="frame" x="239" y="418" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="TimeBurner" family="TimeBurner" pointSize="17"/>
-                                <state key="normal" title="Pick"/>
+                                <state key="normal" title="Camera" image="Gridy-camera"/>
                                 <connections>
-                                    <action selector="PickButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mQz-Rg-0hf"/>
+                                    <action selector="pickCamerPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8u2-vS-HPB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Et-59-ZnC" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="237" y="367" width="54" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Camera"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oc-uy-RIT" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="141" y="452" width="92" height="30"/>
+                                <rect key="frame" x="36" y="418" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Photo Library"/>
+                                <state key="normal" title="Photo Library" image="Gridy-library"/>
+                                <connections>
+                                    <action selector="pickPhotLibrary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tzn-KR-pb4"/>
+                                </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="Gridy-name-large-green" translatesAutoresizingMaskIntoConstraints="NO" id="UPq-SL-aSj">
-                                <rect key="frame" x="27" y="27" width="330" height="160"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Challange yourself with a photo puzzle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
-                                <rect key="frame" x="27" y="195" width="276" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challange yourself with a photo puzzle      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
+                                <rect key="frame" x="36" y="181" width="303" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3l-SD-yoV" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
+                                <rect key="frame" x="137" y="222" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimeBurner" family="TimeBurner" pointSize="17"/>
+                                <state key="normal" title="Pick" image="Gridy-name-small-grey"/>
+                                <connections>
+                                    <action selector="pickGridyPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="woc-aG-WnP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Jyc-lD-TZc"/>
+                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NoW-eY-36S"/>
+                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="161" id="dvH-Jq-LN6"/>
+                            <constraint firstItem="NK0-op-hxI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kHG-Gu-LtQ"/>
+                            <constraint firstItem="NK0-op-hxI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tuQ-A6-oWP"/>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vjt-J6-Oa1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="PickButton" destination="G3l-SD-yoV" id="4y0-RM-yx9"/>
+                        <outlet property="pickCameraForPhoto" destination="6Et-59-ZnC" id="PtS-As-50V"/>
+                        <outlet property="pickGridyPhoto" destination="G3l-SD-yoV" id="TsX-ep-ALS"/>
+                        <outlet property="pickPhotoLibrary" destination="8Oc-uy-RIT" id="WAe-Ot-Qde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -67,6 +87,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Gridy-camera" width="36" height="28"/>
+        <image name="Gridy-library" width="36" height="28"/>
         <image name="Gridy-name-large-green" width="330" height="160"/>
+        <image name="Gridy-name-small-grey" width="70" height="34"/>
     </resources>
 </document>

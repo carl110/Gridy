@@ -12,16 +12,26 @@ class ViewController: UIViewController {
     
     let button = GridyMainButton()
 
-    @IBOutlet weak var PickButton: UIButton!
+    @IBOutlet weak var pickGridyPhoto: GridyMainButton!
+    @IBOutlet weak var pickPhotoLibrary: GridyMainButton!
+    @IBOutlet weak var pickCameraForPhoto: GridyMainButton!
     
-    @IBAction func PickButton(_ sender: UIButton) {
-
-        
+    @IBAction func pickGridyPhoto(_ sender: GridyMainButton) {
     }
+    @IBAction func pickPhotLibrary(_ sender: GridyMainButton) {
+    }
+    @IBAction func pickCamerPhoto(_ sender: GridyMainButton) {
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        PickButton.setImage(UIImage(named:"Gridy-name-small-grey"), for: .normal)
+
+        pickCameraForPhoto.centerVertically()
+        pickPhotoLibrary.centerVertically()
+        pickGridyPhoto.centerVertically()
 
     }
 
