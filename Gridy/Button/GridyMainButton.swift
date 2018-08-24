@@ -13,6 +13,15 @@ class GridyMainButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        guard
+            let imageViewSize = self.imageView?.frame.size,
+            let titleLabelSize = self.titleLabel?.frame.size else {
+                return
+        }
+        let blackColour = UIColor( red: CGFloat(0/255.0), green: CGFloat(0/255.0), blue: CGFloat(0/255.0), alpha: CGFloat(1.0) )
+        
+        let totalHeight = imageViewSize.height + titleLabelSize.height
+        
         let colour = UIColor( red: CGFloat(243/255.0), green: CGFloat(233/255.0), blue: CGFloat(210/255.0), alpha: CGFloat(1.0) )
 
         let buttonFont = "Helvetica Neue"
@@ -35,6 +44,22 @@ class GridyMainButton: UIButton {
         self.titleLabel?.adjustsFontSizeToFitWidth = true
 
 
+        self.imageEdgeInsets = UIEdgeInsets(
+            top: -(totalHeight - imageViewSize.height + 10),
+            left: 0.0,
+            bottom: 0.0,
+            right: -titleLabelSize.width - 10
+        )
+        
+        self.titleEdgeInsets = UIEdgeInsets(
+            top: 0.0,
+            left: -imageViewSize.width,
+            bottom: -(totalHeight - titleLabelSize.height + 10),
+            right: 0.0
+        )
+        
+        
+        self.imageView?.tintColor = blackColour
 
     }
 }

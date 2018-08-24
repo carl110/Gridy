@@ -29,10 +29,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 //        PickButton.setImage(UIImage(named:"Gridy-name-small-grey"), for: .normal)
 
-        pickCameraForPhoto.centerVertically()
-        pickPhotoLibrary.centerVertically()
-        pickGridyPhoto.centerVertically()
-
     }
 
     override func didReceiveMemoryWarning() {
