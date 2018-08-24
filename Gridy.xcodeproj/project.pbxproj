@@ -13,6 +13,8 @@
 		894516BE21300D6A00E472B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 894516BD21300D6A00E472B2 /* Assets.xcassets */; };
 		894516C121300D6A00E472B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894516BF21300D6A00E472B2 /* LaunchScreen.storyboard */; };
 		894516C921300EA000E472B2 /* timeburnernormal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 894516C821300EA000E472B2 /* timeburnernormal.ttf */; };
+		894516D921301AC100E472B2 /* UIVew+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894516D821301AC100E472B2 /* UIVew+extensions.swift */; };
+		894516DC21301BD300E472B2 /* GridyMainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894516DB21301BD300E472B2 /* GridyMainButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		894516C021300D6A00E472B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		894516C221300D6A00E472B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		894516C821300EA000E472B2 /* timeburnernormal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = timeburnernormal.ttf; sourceTree = "<group>"; };
+		894516D821301AC100E472B2 /* UIVew+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVew+extensions.swift"; sourceTree = "<group>"; };
+		894516DB21301BD300E472B2 /* GridyMainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridyMainButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,73 @@
 		894516B521300D6600E472B2 /* Gridy */ = {
 			isa = PBXGroup;
 			children = (
+				894516DA21301BB900E472B2 /* Button */,
 				894516C821300EA000E472B2 /* timeburnernormal.ttf */,
 				894516B621300D6600E472B2 /* AppDelegate.swift */,
-				894516B821300D6600E472B2 /* ViewController.swift */,
-				894516BA21300D6600E472B2 /* Main.storyboard */,
+				894516D3213013C400E472B2 /* Extension */,
+				894516CE213011CB00E472B2 /* Model */,
+				894516CD213011C200E472B2 /* View */,
+				894516CA2130113700E472B2 /* View Model */,
 				894516BD21300D6A00E472B2 /* Assets.xcassets */,
 				894516BF21300D6A00E472B2 /* LaunchScreen.storyboard */,
 				894516C221300D6A00E472B2 /* Info.plist */,
 			);
 			path = Gridy;
+			sourceTree = "<group>";
+		};
+		894516CA2130113700E472B2 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		894516CD213011C200E472B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				894516D0213011F200E472B2 /* Factory */,
+				894516CF213011EE00E472B2 /* Flow Controller */,
+				894516B821300D6600E472B2 /* ViewController.swift */,
+				894516BA21300D6600E472B2 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		894516CE213011CB00E472B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		894516CF213011EE00E472B2 /* Flow Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Flow Controller";
+			sourceTree = "<group>";
+		};
+		894516D0213011F200E472B2 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		894516D3213013C400E472B2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				894516D821301AC100E472B2 /* UIVew+extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		894516DA21301BB900E472B2 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				894516DB21301BD300E472B2 /* GridyMainButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +201,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894516DC21301BD300E472B2 /* GridyMainButton.swift in Sources */,
 				894516B921300D6600E472B2 /* ViewController.swift in Sources */,
+				894516D921301AC100E472B2 /* UIVew+extensions.swift in Sources */,
 				894516B721300D6600E472B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
