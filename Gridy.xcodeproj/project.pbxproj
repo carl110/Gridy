@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89296B6E2133EBF400B6D1F3 /* Main Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89296B6D2133EBF400B6D1F3 /* Main Factory.swift */; };
+		89296B702133EC0300B6D1F3 /* Main Flow Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89296B6F2133EC0300B6D1F3 /* Main Flow Controller.swift */; };
 		894516B721300D6600E472B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894516B621300D6600E472B2 /* AppDelegate.swift */; };
 		894516B921300D6600E472B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894516B821300D6600E472B2 /* ViewController.swift */; };
 		894516BC21300D6600E472B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894516BA21300D6600E472B2 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89296B6D2133EBF400B6D1F3 /* Main Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main Factory.swift"; sourceTree = "<group>"; };
+		89296B6F2133EC0300B6D1F3 /* Main Flow Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main Flow Controller.swift"; sourceTree = "<group>"; };
 		894516B321300D6600E472B2 /* Gridy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gridy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		894516B621300D6600E472B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		894516B821300D6600E472B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +47,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89296B6C2133EB9E00B6D1F3 /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				894516CD213011C200E472B2 /* View */,
+				894516CA2130113700E472B2 /* View Model */,
+				894516CF213011EE00E472B2 /* Flow Controller */,
+				894516D0213011F200E472B2 /* Factory */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		89296B712133F22A00B6D1F3 /* Image Editor */ = {
+			isa = PBXGroup;
+			children = (
+				89296B782133F2D500B6D1F3 /* View */,
+				89296B772133F2C000B6D1F3 /* View Model */,
+			);
+			path = "Image Editor";
+			sourceTree = "<group>";
+		};
+		89296B722133F26200B6D1F3 /* Game Play */ = {
+			isa = PBXGroup;
+			children = (
+				89296B732133F27A00B6D1F3 /* View */,
+				89296B742133F28700B6D1F3 /* View Model */,
+			);
+			path = "Game Play";
+			sourceTree = "<group>";
+		};
+		89296B732133F27A00B6D1F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89296B742133F28700B6D1F3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		89296B772133F2C000B6D1F3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		89296B782133F2D500B6D1F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		894516AA21300D6600E472B2 = {
 			isa = PBXGroup;
 			children = (
@@ -62,13 +123,14 @@
 		894516B521300D6600E472B2 /* Gridy */ = {
 			isa = PBXGroup;
 			children = (
+				894516CE213011CB00E472B2 /* Model */,
+				89296B6C2133EB9E00B6D1F3 /* Main Screen */,
+				89296B712133F22A00B6D1F3 /* Image Editor */,
+				89296B722133F26200B6D1F3 /* Game Play */,
+				894516D3213013C400E472B2 /* Extension */,
 				894516DA21301BB900E472B2 /* Button */,
 				894516C821300EA000E472B2 /* timeburnernormal.ttf */,
 				894516B621300D6600E472B2 /* AppDelegate.swift */,
-				894516D3213013C400E472B2 /* Extension */,
-				894516CE213011CB00E472B2 /* Model */,
-				894516CD213011C200E472B2 /* View */,
-				894516CA2130113700E472B2 /* View Model */,
 				894516BD21300D6A00E472B2 /* Assets.xcassets */,
 				894516BF21300D6A00E472B2 /* LaunchScreen.storyboard */,
 				894516C221300D6A00E472B2 /* Info.plist */,
@@ -86,8 +148,6 @@
 		894516CD213011C200E472B2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				894516D0213011F200E472B2 /* Factory */,
-				894516CF213011EE00E472B2 /* Flow Controller */,
 				894516B821300D6600E472B2 /* ViewController.swift */,
 				894516BA21300D6600E472B2 /* Main.storyboard */,
 			);
@@ -104,6 +164,7 @@
 		894516CF213011EE00E472B2 /* Flow Controller */ = {
 			isa = PBXGroup;
 			children = (
+				89296B6F2133EC0300B6D1F3 /* Main Flow Controller.swift */,
 			);
 			path = "Flow Controller";
 			sourceTree = "<group>";
@@ -111,6 +172,7 @@
 		894516D0213011F200E472B2 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				89296B6D2133EBF400B6D1F3 /* Main Factory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -205,9 +267,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				894516DC21301BD300E472B2 /* GridyMainButton.swift in Sources */,
+				89296B702133EC0300B6D1F3 /* Main Flow Controller.swift in Sources */,
 				894516B921300D6600E472B2 /* ViewController.swift in Sources */,
 				894516D921301AC100E472B2 /* UIVew+extensions.swift in Sources */,
 				894516B721300D6600E472B2 /* AppDelegate.swift in Sources */,
+				89296B6E2133EBF400B6D1F3 /* Main Factory.swift in Sources */,
 				894516DE21303F6F00E472B2 /* UIButton+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
