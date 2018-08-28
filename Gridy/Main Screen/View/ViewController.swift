@@ -104,7 +104,6 @@ class ViewController: UIViewController {
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
-        //        present(imagePicker, animated: true, completion: nil)
     }
     
     func troubleAlert(message: String?){
@@ -115,6 +114,7 @@ class ViewController: UIViewController {
         
     }
 
+    
     
 
 }
