@@ -22,7 +22,7 @@ class MainFactory {
         let mainController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ViewController
         let mainFlowController = MainFlowController(navigationController: navigationController)
         
-        mainController.assignDependencies(mainFlowController: mainFlowController)
+//        mainController.assignDependencies(mainFlowController: mainFlowController)
         
         navigationController.setViewControllers([mainController], animated: false)
         window.rootViewController = navigationController
