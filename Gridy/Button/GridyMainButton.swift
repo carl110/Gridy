@@ -18,8 +18,6 @@ class GridyMainButton: UIButton {
             let titleLabelSize = self.titleLabel?.frame.size else {
                 return
         }
-        let blackColour = UIColor( red: CGFloat(0/255.0), green: CGFloat(0/255.0), blue: CGFloat(0/255.0), alpha: CGFloat(1.0) )
-        
         let totalHeight = imageViewSize.height + titleLabelSize.height
         
         let colour = UIColor( red: CGFloat(243/255.0), green: CGFloat(233/255.0), blue: CGFloat(210/255.0), alpha: CGFloat(1.0) )
@@ -57,9 +55,6 @@ class GridyMainButton: UIButton {
             bottom: -(totalHeight - titleLabelSize.height + 10),
             right: 0.0
         )
-        
-        
-        self.imageView?.tintColor = blackColour
 
     }
 }
