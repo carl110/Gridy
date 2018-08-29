@@ -27,22 +27,6 @@
                                 <color key="textColor" red="0.69803921570000005" green="0.69019607839999997" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Et-59-ZnC" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="239" y="418" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Camera" image="Gridy-camera"/>
-                                <connections>
-                                    <action selector="pickCamerPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8u2-vS-HPB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oc-uy-RIT" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="36" y="418" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Photo Library" image="Gridy-library"/>
-                                <connections>
-                                    <action selector="pickPhotLibrary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tzn-KR-pb4"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challange yourself with a photo puzzle      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
                                 <rect key="frame" x="36" y="181" width="303" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
@@ -55,6 +39,22 @@
                                 <state key="normal" title="Pick" image="Gridy-name-small-grey"/>
                                 <connections>
                                     <action selector="pickGridyPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="woc-aG-WnP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Et-59-ZnC" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
+                                <rect key="frame" x="239" y="417" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Camera" image="Gridy-camera"/>
+                                <connections>
+                                    <action selector="pickCamerPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8u2-vS-HPB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Oc-uy-RIT" customClass="GridyMainButton" customModule="Gridy" customModuleProvider="target">
+                                <rect key="frame" x="36" y="417" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Photo Library" image="Gridy-library"/>
+                                <connections>
+                                    <action selector="pickPhotLibrary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tzn-KR-pb4"/>
                                 </connections>
                             </button>
                         </subviews>

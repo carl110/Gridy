@@ -107,8 +107,8 @@ class ViewController: UIViewController {
     }
     
     func troubleAlert(message: String?){
-        let alertController = UIAlertController(title: "Oops", message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "Got it", style: .cancel)
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Okay", style: .cancel)
         alertController.addAction(OKAction)
         present(alertController, animated: true)
         
