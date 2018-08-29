@@ -43,16 +43,16 @@ class GridyMainButton: UIButton {
 
 
         self.imageEdgeInsets = UIEdgeInsets(
-            top: -(totalHeight - imageViewSize.height + 10),
+            top: -(totalHeight - imageViewSize.height),
             left: 0.0,
             bottom: 0.0,
-            right: -titleLabelSize.width - 10
+            right: -titleLabelSize.width
         )
         
         self.titleEdgeInsets = UIEdgeInsets(
             top: 0.0,
             left: -imageViewSize.width,
-            bottom: -(totalHeight - titleLabelSize.height + 10),
+            bottom: -(totalHeight - titleLabelSize.height),
             right: 0.0
         )
 
