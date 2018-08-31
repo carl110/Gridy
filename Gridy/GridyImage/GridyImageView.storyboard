@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cG7-p4-DeH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,6 +24,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="nextImage:" destination="b5M-XB-IzM" eventType="touchUpInside" id="VWc-eS-xYH"/>
+                                    <segue destination="AmC-VP-DXH" kind="show" id="H4u-Sy-RwP"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UXB-4Z-uUx">
@@ -40,6 +41,14 @@
                 <exit id="b5M-XB-IzM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="53.600000000000001" y="161.46926536731635"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="DPs-fA-Po4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="AmC-VP-DXH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxX-Na-PcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697" y="88"/>
         </scene>
     </scenes>
 </document>

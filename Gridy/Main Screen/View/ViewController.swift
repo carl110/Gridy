@@ -14,15 +14,25 @@ class ViewController: UIViewController {
     
     let viewModel = MainViewModel()
     
-
-    @IBOutlet weak var pickGridyPhoto: GridyMainButton!
-    @IBOutlet weak var pickPhotoLibrary: GridyMainButton!
-    @IBOutlet weak var pickCameraForPhoto: GridyMainButton!
+    @IBOutlet weak var gridyPick: GridyIconButton!
+    @IBOutlet weak var cameraSelect: GridyIconButton!
+    @IBOutlet weak var photoLibrarySelect: GridyIconButton!
     
+    @IBAction func gridyPick(_ sender: GridyIconButton) {
+        displayLibrary()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //        PickButton.setImage(UIImage(named:"Gridy-name-small-grey"), for: .normal)
+        gridyPick.griduLabelView.text = "Pick"
+        gridyPick.gridyImageView.image = UIImage(named: "Gridy-name-small-grey")
+        photoLibrarySelect.griduLabelView.text = "Photo Library"
+        photoLibrarySelect.gridyImageView.image = UIImage(named: "Gridy-library")
+        cameraSelect.griduLabelView.text = "Camera"
+        cameraSelect.gridyImageView.image = UIImage(named: "Gridy-camera")
+        gridyPick.mainButton(radius: 8)
+        
         
     }
     
@@ -31,16 +41,16 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func pickGridyPhoto(_ sender: GridyMainButton) {
-
-    }
-    @IBAction func pickPhotLibrary(_ sender: GridyMainButton) {
-        displayLibrary()
-    }
-    @IBAction func pickCamerPhoto(_ sender: GridyMainButton) {
-        displayCamera()
-    }
-    
+//    @IBAction func pickGridyPhoto(_ sender: GridyMainButton) {
+//
+//    }
+//    @IBAction func pickPhotLibrary(_ sender: GridyMainButton) {
+//        displayLibrary()
+//    }
+//    @IBAction func pickCamerPhoto(_ sender: GridyMainButton) {
+//        displayCamera()
+//    }
+//
     func displayCamera() {
         let sourceType = UIImagePickerControllerSourceType.camera
         
