@@ -13,14 +13,23 @@ import AVFoundation
 class ViewController: UIViewController {
     
     let viewModel = MainViewModel()
+    fileprivate var mainFlowController: MainFlowController!
     
     @IBOutlet weak var gridyPick: GridyIconButton!
     @IBOutlet weak var cameraSelect: GridyIconButton!
     @IBOutlet weak var photoLibrarySelect: GridyIconButton!
     
     @IBAction func gridyPick(_ sender: GridyIconButton) {
+    }
+    
+    @IBAction func cameraSelect(_ sender: GridyIconButton) {
+        displayCamera()
+    }
+    
+    @IBAction func photoLibrarySelect(_ sender: GridyIconButton) {
         displayLibrary()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -39,6 +48,10 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func assignDependancies(mainFlowController: MainFlowController) {
+        self.mainFlowController = mainFlowController
     }
     
 //    @IBAction func pickGridyPhoto(_ sender: GridyMainButton) {
