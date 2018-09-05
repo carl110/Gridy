@@ -17,7 +17,7 @@ class MainFlowController {
         self.navigationController = navigationController
     }
     
-    func showEditor(with photo: UIImage) {
+    func showImageEditor(with photo: UIImage) {
 
         ImageEditorFactory.PushIn(navigationController: navigationController, photo: photo)
     

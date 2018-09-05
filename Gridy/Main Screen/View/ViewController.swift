@@ -14,12 +14,17 @@ class ViewController: UIViewController {
     
     let viewModel = MainViewModel()
     fileprivate var mainFlowController: MainFlowController!
+    let localImages = [UIImage].init()
+
     
     @IBOutlet weak var gridyPick: GridyIconButton!
     @IBOutlet weak var cameraSelect: GridyIconButton!
     @IBOutlet weak var photoLibrarySelect: GridyIconButton!
     
     @IBAction func gridyPick(_ sender: GridyIconButton) {
+        
+        //mainFlowController.showImageEditor(with: UIImage(named: "Frog")!)
+
     }
     
     @IBAction func cameraSelect(_ sender: GridyIconButton) {
@@ -28,6 +33,7 @@ class ViewController: UIViewController {
     
     @IBAction func photoLibrarySelect(_ sender: GridyIconButton) {
         displayLibrary()
+        
     }
     
     override func viewDidLoad() {
@@ -119,7 +125,18 @@ class ViewController: UIViewController {
         else {
             troubleAlert(message: "Gridy is unable to access your PhortoLibrary at this time")
         }
-        
+
+    }
+    
+    func randomImage() -> UIImage? {
+        if localImages.count > 0 {
+                let randomIndex = Int(arc4random_uniform(UInt32(localImages.count)))
+                let newImage = localImages[randomIndex]
+                return newImage
+            }
+        else {
+            return nil
+        }
     }
     
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType){
@@ -128,6 +145,13 @@ class ViewController: UIViewController {
         imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
     }
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        picker.dismiss(animated: true, completion: nil)
+//        let newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+//        
+//    }
+    
     
     func troubleAlert(message: String?){
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)

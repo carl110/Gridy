@@ -16,10 +16,15 @@ class GridyIconButton: UIButton {
     
     @IBOutlet weak var griduLabelView: UILabel!
     
-     override func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
+        print ("awakefrom nib")
     }
     
+    override func layoutSubviews() {
+        print ("layoutSubviews")
+    }
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,8 +57,7 @@ class GridyIconButton: UIButton {
         
     }
     
-    
-    
+
     
     
 }
