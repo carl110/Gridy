@@ -20,7 +20,7 @@ class Grid: UIView {
     
     fileprivate func drawGrid() {
         path = UIBezierPath()
-        path.lineWidth = 0.5
+        path.lineWidth = 2
         
         for index in 0...Int(gridSize) {
             let start = CGPoint(x: 0, y: CGFloat(index) * gridWidth)

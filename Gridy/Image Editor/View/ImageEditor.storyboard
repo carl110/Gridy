@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c2X-7m-zaB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,24 +19,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVZ-Fc-cyN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVZ-Fc-cyN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-kG-JrL" customClass="Grid" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="37" y="183" width="300" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-kG-JrL" customClass="Grid" customModule="Gridy" customModuleProvider="target">
+                                <rect key="frame" x="30" y="170" width="315" height="315"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iEg-kG-JrL" secondAttribute="height" multiplier="1:1" id="kcu-o7-y2B"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="bottom" secondItem="II3-yw-grY" secondAttribute="bottom" id="0Ea-48-Ndk"/>
-                            <constraint firstItem="DVZ-Fc-cyN" firstAttribute="top" secondItem="MSg-W3-ItH" secondAttribute="top" id="HFf-Jh-AA5"/>
+                            <constraint firstItem="DVZ-Fc-cyN" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="-20" id="HFf-Jh-AA5"/>
+                            <constraint firstItem="II3-yw-grY" firstAttribute="trailing" secondItem="iEg-kG-JrL" secondAttribute="trailing" constant="30" id="Lcs-QD-Ilm"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="trailing" secondItem="II3-yw-grY" secondAttribute="trailing" id="NEb-13-Cjp"/>
+                            <constraint firstItem="iEg-kG-JrL" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="150" id="Ynl-Jj-OEC"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="xGr-ry-vt0"/>
+                            <constraint firstItem="iEg-kG-JrL" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="30" id="yKu-9D-JHJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="II3-yw-grY"/>
                     </view>
+                    <connections>
+                        <outlet property="gridView" destination="iEg-kG-JrL" id="nx3-ux-KQ4"/>
+                        <outlet property="imageView" destination="DVZ-Fc-cyN" id="vZ6-we-YNh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuu-HM-Y83" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

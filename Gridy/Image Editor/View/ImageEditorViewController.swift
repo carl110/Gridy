@@ -20,9 +20,17 @@ class ImageEditorViewController: UIViewController {
         self.imageEditorFlowController = imageEditorFlowController
         self.imageEditorViewModel = imageEditorViewModel
     }
+    
 
     @IBOutlet weak var imageView: UIImageView!
+
+    @IBOutlet weak var gridView: Grid!
+    
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
         imageView.image = image
+        imageView.blurView(style: .regular)
+
     }
 }
