@@ -41,6 +41,7 @@ class Grid: UIView {
     
     override func draw(_ rect: CGRect) {
         drawGrid()
+        UIColor.white.setStroke()
         path.stroke()
     }
 }

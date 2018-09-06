@@ -23,8 +23,9 @@ class ViewController: UIViewController {
     
     @IBAction func gridyPick(_ sender: GridyIconButton) {
         
-        //mainFlowController.showImageEditor(with: UIImage(named: "Frog")!)
-
+        if let image = UIImage(named: "Dobby") {
+            mainFlowController.showImageEditor(with: image)
+        }
     }
     
     @IBAction func cameraSelect(_ sender: GridyIconButton) {

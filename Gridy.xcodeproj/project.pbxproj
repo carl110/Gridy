@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8922E5C32141531200420A71 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8922E5C22141531200420A71 /* UIColor+extensions.swift */; };
 		89296B6E2133EBF400B6D1F3 /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89296B6D2133EBF400B6D1F3 /* MainFactory.swift */; };
 		89296B702133EC0300B6D1F3 /* MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89296B6F2133EC0300B6D1F3 /* MainFlowController.swift */; };
 		89296B7B2133F78300B6D1F3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89296B7A2133F78300B6D1F3 /* MainViewModel.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8922E5C22141531200420A71 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 		89296B6D2133EBF400B6D1F3 /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
 		89296B6F2133EC0300B6D1F3 /* MainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowController.swift; sourceTree = "<group>"; };
 		89296B7A2133F78300B6D1F3 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				894516D821301AC100E472B2 /* UIVew+extensions.swift */,
 				894516DD21303F6F00E472B2 /* UIButton+extension.swift */,
+				8922E5C22141531200420A71 /* UIColor+extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				894516D921301AC100E472B2 /* UIVew+extensions.swift in Sources */,
 				89DC6159213D403B00DB5937 /* GamePlayFactory.swift in Sources */,
 				89A41EF221357EBA00357DCC /* GridyImageViewController.swift in Sources */,
+				8922E5C32141531200420A71 /* UIColor+extensions.swift in Sources */,
 				894516B721300D6600E472B2 /* AppDelegate.swift in Sources */,
 				89296B6E2133EBF400B6D1F3 /* MainFactory.swift in Sources */,
 				894516DE21303F6F00E472B2 /* UIButton+extension.swift in Sources */,
