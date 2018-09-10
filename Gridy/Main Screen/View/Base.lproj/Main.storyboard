@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,54 +19,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="Gridy-name-large-green" translatesAutoresizingMaskIntoConstraints="NO" id="UPq-SL-aSj">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="Gridy-name-large-green" translatesAutoresizingMaskIntoConstraints="NO" id="UPq-SL-aSj">
                                 <rect key="frame" x="23" y="40" width="330" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UPq-SL-aSj" secondAttribute="height" multiplier="33:16" id="IXv-HW-cxi"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-Or load your own-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NK0-op-hxI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-Or load your own-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NK0-op-hxI">
                                 <rect key="frame" x="120" y="324" width="136" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NK0-op-hxI" secondAttribute="height" multiplier="136:19" id="nuS-qe-1N0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.69803921570000005" green="0.69019607839999997" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Challange yourself with a photo puzzle      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challange yourself with a photo puzzle      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
                                 <rect key="frame" x="36" y="181" width="303" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gFU-eJ-nVq" secondAttribute="height" multiplier="303:19" id="Xla-J7-PS1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4E-Bm-DcT" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4E-Bm-DcT" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
                                 <rect key="frame" x="127" y="210" width="120" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="y4E-Bm-DcT" secondAttribute="height" multiplier="60:49" id="LQZ-a3-uQO"/>
+                                </constraints>
                                 <connections>
                                     <action selector="gridyPick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Irp-ke-PFd"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVO-cd-sbD" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVO-cd-sbD" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
                                 <rect key="frame" x="36" y="378" width="120" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mVO-cd-sbD" secondAttribute="height" multiplier="6:5" id="CKd-Lf-haH"/>
+                                </constraints>
                                 <connections>
                                     <action selector="cameraSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7U8-d3-RMZ"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aas-0R-8uK" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aas-0R-8uK" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
                                 <rect key="frame" x="219" y="378" width="120" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aas-0R-8uK" secondAttribute="height" multiplier="6:5" id="2ho-MF-2aD"/>
+                                </constraints>
                                 <connections>
                                     <action selector="photoLibrarySelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XqT-AE-Ztk"/>
                                 </connections>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klm-Wc-wpd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klm-Wc-wpd">
                                 <rect key="frame" x="68" y="519" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="klm-Wc-wpd" firstAttribute="top" secondItem="aas-0R-8uK" secondAttribute="bottom" constant="41" id="013-QM-WYx"/>
+                            <constraint firstItem="aas-0R-8uK" firstAttribute="leading" secondItem="mVO-cd-sbD" secondAttribute="trailing" constant="63" id="5w9-Pt-7Fz"/>
+                            <constraint firstItem="mVO-cd-sbD" firstAttribute="top" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="35" id="8n7-Vj-SYZ"/>
+                            <constraint firstItem="mVO-cd-sbD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="Dmy-jG-29o"/>
+                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="161" id="FfQ-ca-WAo"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="127" id="G9B-Hi-deg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NK0-op-hxI" secondAttribute="trailing" constant="119" id="JeP-gg-wEb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gFU-eJ-nVq" secondAttribute="trailing" constant="36" id="Lqz-tM-Eq1"/>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="TQJ-ah-3cx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aas-0R-8uK" secondAttribute="trailing" constant="36" id="TRZ-H6-udo"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="top" secondItem="gFU-eJ-nVq" secondAttribute="bottom" constant="10" id="X2k-ma-Wt9"/>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Yed-fc-t6t"/>
+                            <constraint firstItem="NK0-op-hxI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="gQ8-FH-JHH"/>
+                            <constraint firstItem="aas-0R-8uK" firstAttribute="top" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="35" id="hWp-i4-t6D"/>
+                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="mhD-hl-OnL"/>
+                            <constraint firstItem="klm-Wc-wpd" firstAttribute="top" secondItem="mVO-cd-sbD" secondAttribute="bottom" constant="41" id="pJD-th-vfc"/>
+                            <constraint firstItem="NK0-op-hxI" firstAttribute="top" secondItem="y4E-Bm-DcT" secondAttribute="bottom" constant="16" id="rFJ-l8-hgo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y4E-Bm-DcT" secondAttribute="trailing" constant="128" id="slU-vc-Tum"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="top" secondItem="UPq-SL-aSj" secondAttribute="bottom" constant="10" id="vVr-Sr-JcZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UPq-SL-aSj" secondAttribute="trailing" constant="22" id="xpN-3X-S9F"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
