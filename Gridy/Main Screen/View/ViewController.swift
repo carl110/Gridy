@@ -14,18 +14,23 @@ class ViewController: UIViewController {
     
     let viewModel = MainViewModel()
     fileprivate var mainFlowController: MainFlowController!
-    let localImages = [UIImage].init()
+    //Array of local images
+    let localImages: [UIImage] = [UIImage(named: "Wands")!, UIImage(named: "Plant")!, UIImage(named: "Orangutan")!, UIImage(named: "Dobby")!, UIImage(named: "Frog")!]
+    var imagePickedByUser: UIImage!
 
     
+    @IBOutlet weak var testPhoto: UIImageView!
     @IBOutlet weak var gridyPick: GridyIconButton!
     @IBOutlet weak var cameraSelect: GridyIconButton!
     @IBOutlet weak var photoLibrarySelect: GridyIconButton!
     
     @IBAction func gridyPick(_ sender: GridyIconButton) {
         
-        if let image = UIImage(named: "Dobby") {
+        pickRandom()
+        if let image = imagePickedByUser {
             mainFlowController.showImageEditor(with: image)
         }
+//        testPhoto.image = imagePickedByUser
     }
     
     @IBAction func cameraSelect(_ sender: GridyIconButton) {
@@ -48,8 +53,9 @@ class ViewController: UIViewController {
         cameraSelect.griduLabelView.text = "Camera"
         cameraSelect.gridyImageView.image = UIImage(named: "Gridy-camera")
         gridyPick.mainButton(radius: 8)
-        
-        
+//        processPicked(image: UIImage(named: "Dobby"))
+
+        testPhoto.image = imagePickedByUser
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,16 +67,9 @@ class ViewController: UIViewController {
         self.mainFlowController = mainFlowController
     }
     
-//    @IBAction func pickGridyPhoto(_ sender: GridyMainButton) {
-//
-//    }
-//    @IBAction func pickPhotLibrary(_ sender: GridyMainButton) {
-//        displayLibrary()
-//    }
-//    @IBAction func pickCamerPhoto(_ sender: GridyMainButton) {
-//        displayCamera()
-//    }
-//
+    
+
+
     func displayCamera() {
         let sourceType = UIImagePickerControllerSourceType.camera
         
@@ -129,15 +128,17 @@ class ViewController: UIViewController {
 
     }
     
+    func pickRandom() {
+        //runrandomImage
+        processPicked(image: randomImage())
+    }
+    
     func randomImage() -> UIImage? {
-        if localImages.count > 0 {
-                let randomIndex = Int(arc4random_uniform(UInt32(localImages.count)))
-                let newImage = localImages[randomIndex]
-                return newImage
-            }
-        else {
-            return nil
-        }
+        //random number from count or local images
+        let randomIndex = Int(arc4random_uniform(UInt32(localImages.count)))
+        //gets random local image
+        let newImage = localImages[randomIndex]
+        return newImage
     }
     
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType){
@@ -147,11 +148,15 @@ class ViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        picker.dismiss(animated: true, completion: nil)
-//        let newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-//        
-//    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print ("imagePickerController")
+        
+        picker.dismiss(animated: true, completion: nil)
+        
+        let newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        processPicked(image: newImage)
+    }
     
     
     func troubleAlert(message: String?){
@@ -162,7 +167,12 @@ class ViewController: UIViewController {
         
     }
 
-    
+    func processPicked(image: UIImage?) {
+        if let photo = image {
+            imagePickedByUser = photo
+        }
+        
+    }
     
 
 }
