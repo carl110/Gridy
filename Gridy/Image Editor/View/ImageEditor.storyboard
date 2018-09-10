@@ -19,12 +19,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVZ-Fc-cyN">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVZ-Fc-cyN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="lgM-jx-ZZD" appends="YES" id="okK-CW-6ei"/>
+                                    <outletCollection property="gestureRecognizers" destination="sTn-bg-Knb" appends="YES" id="OHG-FL-46M"/>
+                                    <outletCollection property="gestureRecognizers" destination="sJu-Df-oTQ" appends="YES" id="KJi-SA-BZ3"/>
+                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-kG-JrL" customClass="Grid" customModule="Gridy" customModuleProvider="target">
                                 <rect key="frame" x="30" y="170" width="315" height="315"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iEg-kG-JrL" secondAttribute="height" multiplier="1:1" id="kcu-o7-y2B"/>
                                 </constraints>
@@ -48,6 +55,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuu-HM-Y83" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <rotationGestureRecognizer id="lgM-jx-ZZD">
+                    <connections>
+                        <action selector="handleRotateWithRecognizer:" destination="c2X-7m-zaB" id="1dQ-lj-mJ2"/>
+                        <outlet property="delegate" destination="c2X-7m-zaB" id="0To-qm-meV"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <pinchGestureRecognizer id="sTn-bg-Knb">
+                    <connections>
+                        <action selector="handlePinchWithRecognizer:" destination="c2X-7m-zaB" id="N7o-U3-9Sb"/>
+                        <outlet property="delegate" destination="c2X-7m-zaB" id="W8h-99-usB"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="sJu-Df-oTQ">
+                    <connections>
+                        <action selector="handlePanWithRecognizer:" destination="c2X-7m-zaB" id="Grp-Mc-4Og"/>
+                        <outlet property="delegate" destination="c2X-7m-zaB" id="BiX-CI-UeA"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-271.19999999999999" y="75.112443778110944"/>
         </scene>

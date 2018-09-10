@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 
-class ImageEditorViewController: UIViewController {
+class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate var imageEditorFlowController : ImageEditorFlowController!
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     
-    let image = UIImage(named: "Dobby")
+    var imageChosenByUser = UIImage(named: "Dobby")
+    
+//    let VC = ViewController()
     
     func assignDependancies(imageEditorFlowController: ImageEditorFlowController, imageEditorViewModel: ImageEditorViewModel){
         self.imageEditorFlowController = imageEditorFlowController
@@ -29,8 +31,40 @@ class ImageEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = image
-        imageView.blurView(style: .regular)
+        
+        
+        
+        imageView.image = imageChosenByUser
+//        imageView.blurView(style: .regular)
 
     }
+    
+    @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: self.view)
+        if let view = recognizer.view {
+            view.center = CGPoint(x:view.center.x + translation.x,
+                                  y:view.center.y + translation.y)
+        }
+        recognizer.setTranslation(CGPoint.zero, in: self.view)
+    }
+    @IBAction func handleRotate(recognizer : UIRotationGestureRecognizer) {
+        if let view = recognizer.view {
+            view.transform = view.transform.rotated(by: recognizer.rotation)
+            recognizer.rotation = 0
+        }
+        
+    }
+    
+    @IBAction func handlePinch(recognizer : UIPinchGestureRecognizer) {
+        if let view = recognizer.view {
+            view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
+            recognizer.scale = 1
+        }
+        
+    }
+    //Allows all gestures to be used at the same time - requires UIGestureRecognizerDelegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
 }

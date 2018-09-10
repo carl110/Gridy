@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     //Array of local images
     let localImages: [UIImage] = [UIImage(named: "Wands")!, UIImage(named: "Plant")!, UIImage(named: "Orangutan")!, UIImage(named: "Dobby")!, UIImage(named: "Frog")!]
     var imagePickedByUser: UIImage!
+    
+    let IEVC = ImageEditorViewController()
 
     
     @IBOutlet weak var testPhoto: UIImageView!
@@ -30,6 +32,7 @@ class ViewController: UIViewController {
         if let image = imagePickedByUser {
             mainFlowController.showImageEditor(with: image)
         }
+        IEVC.imageChosenByUser = imagePickedByUser
 //        testPhoto.image = imagePickedByUser
     }
     
