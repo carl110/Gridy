@@ -10,12 +10,13 @@ import UIKit
 import Photos
 import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let viewModel = MainViewModel()
     fileprivate var mainFlowController: MainFlowController!
     //Array of local images
     let localImages: [UIImage] = [UIImage(named: "Wands")!, UIImage(named: "Plant")!, UIImage(named: "Orangutan")!, UIImage(named: "Dobby")!, UIImage(named: "Frog")!]
+    //Declare empty UIImage for user selected image
     var imagePickedByUser: UIImage!
     
     let IEVC = ImageEditorViewController()
@@ -27,13 +28,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var photoLibrarySelect: GridyIconButton!
     
     @IBAction func gridyPick(_ sender: GridyIconButton) {
-        
+        //call pickRandom Func
         pickRandom()
-        if let image = imagePickedByUser {
-            mainFlowController.showImageEditor(with: image)
-        }
         IEVC.imageChosenByUser = imagePickedByUser
-//        testPhoto.image = imagePickedByUser
     }
     
     @IBAction func cameraSelect(_ sender: GridyIconButton) {
@@ -42,7 +39,7 @@ class ViewController: UIViewController {
     
     @IBAction func photoLibrarySelect(_ sender: GridyIconButton) {
         displayLibrary()
-        
+
     }
     
     override func viewDidLoad() {
@@ -121,6 +118,7 @@ class ViewController: UIViewController {
                 })
             case .authorized:
                 self.presentImagePicker(sourceType: sourceType)
+                print ("Photo Library authorized")
             case . denied, .restricted:
                 self.troubleAlert(message: noPermissionMessage)
             }
@@ -132,7 +130,7 @@ class ViewController: UIViewController {
     }
     
     func pickRandom() {
-        //runrandomImage
+        //run randomImage Func
         processPicked(image: randomImage())
     }
     
@@ -146,7 +144,7 @@ class ViewController: UIViewController {
     
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType){
         let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
     }
@@ -154,11 +152,25 @@ class ViewController: UIViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print ("imagePickerController")
         
-        picker.dismiss(animated: true, completion: nil)
+//
+//        picker.dismiss(animated: true, completion: nil)
+//
+//        let newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+//
+//        processPicked(image: newImage)
         
+                  picker.dismiss(animated: true, completion: nil)
+
         let newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            processPicked(image: newImage)
+
+    
+  
+            print ("Picture not used")
         
-        processPicked(image: newImage)
+        
+        
+
     }
     
     
@@ -172,11 +184,8 @@ class ViewController: UIViewController {
 
     func processPicked(image: UIImage?) {
         if let photo = image {
-            imagePickedByUser = photo
+            mainFlowController.showImageEditor(with: photo)
+            }
         }
-        
-    }
-    
-
 }
 
