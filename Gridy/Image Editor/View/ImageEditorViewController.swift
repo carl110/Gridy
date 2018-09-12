@@ -35,7 +35,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         
         
         imageView.image = imageChosenByUser
-//        imageView.blurView(style: .regular)
+        imageView.blurView(style: .regular)
 
     }
     

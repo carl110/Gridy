@@ -8,8 +8,30 @@
 
 import UIKit
 
-class GridView: UIView
-{
-
+class PartialTransparentView: UIView {
+    var rectsArray: [CGRect]?
+    
+    convenience init(rectsArray: [CGRect]) {
+        self.init()
+        
+        self.rectsArray = rectsArray
+        
+        backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        isOpaque = false
+    }
+    
+    override func draw(_ rect: CGRect) {
+        backgroundColor?.setFill()
+        UIRectFill(rect)
+        
+        guard let rectsArray = rectsArray else {
+            return
+        }
+        
+        for holeRect in rectsArray {
+            let holeRectIntersection = rect.intersection(holeRect)
+            UIColor.clear.setFill()
+            UIRectFill(holeRectIntersection)
+        }
+    }
 }
-
