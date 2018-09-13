@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,28 +25,34 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvK-DG-hLT">
                     <rect key="frame" x="0.0" y="0.0" width="120" height="100"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxK-Cu-XEO">
-                            <rect key="frame" x="8" y="73" width="104" height="19"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ie9-ba-z28">
-                            <rect key="frame" x="40" y="23" width="40" height="30"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="aXI-nH-r6L">
+                            <rect key="frame" x="5" y="20" width="110" height="75"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ie9-ba-z28">
+                                    <rect key="frame" x="0.0" y="0.0" width="110" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="7QN-c0-Xio"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxK-Cu-XEO">
+                                    <rect key="frame" x="0.0" y="40" width="110" height="35"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="NdY-hc-MWs"/>
+                                <constraint firstItem="Ie9-ba-z28" firstAttribute="top" secondItem="aXI-nH-r6L" secondAttribute="top" id="Edv-Ek-gvb"/>
+                                <constraint firstItem="nxK-Cu-XEO" firstAttribute="top" secondItem="Ie9-ba-z28" secondAttribute="bottom" id="cwF-4h-eoQ"/>
                             </constraints>
-                        </imageView>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="nxK-Cu-XEO" firstAttribute="trailing" secondItem="EvK-DG-hLT" secondAttribute="trailingMargin" id="9za-8i-0DP"/>
-                        <constraint firstItem="Ie9-ba-z28" firstAttribute="centerX" secondItem="EvK-DG-hLT" secondAttribute="centerX" id="gg7-fx-We9"/>
-                        <constraint firstAttribute="bottom" secondItem="nxK-Cu-XEO" secondAttribute="bottom" constant="8" id="hsI-nO-8TC"/>
-                        <constraint firstItem="nxK-Cu-XEO" firstAttribute="leading" secondItem="EvK-DG-hLT" secondAttribute="leadingMargin" id="l78-Av-pow"/>
-                        <constraint firstItem="Ie9-ba-z28" firstAttribute="leading" secondItem="EvK-DG-hLT" secondAttribute="leading" constant="40" id="lmB-Iz-FEZ"/>
-                        <constraint firstItem="nxK-Cu-XEO" firstAttribute="top" secondItem="Ie9-ba-z28" secondAttribute="bottom" constant="20" id="xB2-SU-aNg"/>
-                        <constraint firstAttribute="trailing" secondItem="Ie9-ba-z28" secondAttribute="trailing" constant="40" id="zSD-EB-VvS"/>
+                        <constraint firstItem="aXI-nH-r6L" firstAttribute="top" secondItem="EvK-DG-hLT" secondAttribute="top" constant="20" id="Sas-N4-Kjg"/>
+                        <constraint firstAttribute="bottom" secondItem="aXI-nH-r6L" secondAttribute="bottom" constant="5" id="Xed-2C-yvF"/>
+                        <constraint firstAttribute="trailing" secondItem="aXI-nH-r6L" secondAttribute="trailing" constant="5" id="sRQ-tU-Shb"/>
+                        <constraint firstItem="aXI-nH-r6L" firstAttribute="leading" secondItem="EvK-DG-hLT" secondAttribute="leading" constant="5" id="vAs-kb-tub"/>
                     </constraints>
                 </view>
             </subviews>
