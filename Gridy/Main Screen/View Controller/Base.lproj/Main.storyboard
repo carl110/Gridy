@@ -19,86 +19,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="Gridy-name-large-green" translatesAutoresizingMaskIntoConstraints="NO" id="UPq-SL-aSj">
-                                <rect key="frame" x="23" y="40" width="330" height="160"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="UPq-SL-aSj" secondAttribute="height" multiplier="33:16" id="IXv-HW-cxi"/>
-                                </constraints>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Gridy-name-large-green" translatesAutoresizingMaskIntoConstraints="NO" id="UPq-SL-aSj">
+                                <rect key="frame" x="25" y="40" width="325" height="160"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-Or load your own-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NK0-op-hxI">
-                                <rect key="frame" x="120" y="324" width="136" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="NK0-op-hxI" secondAttribute="height" multiplier="136:19" id="nuS-qe-1N0"/>
-                                </constraints>
+                                <rect key="frame" x="120" y="325" width="136" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.69803921570000005" green="0.69019607839999997" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challange yourself with a photo puzzle      " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
-                                <rect key="frame" x="36" y="181" width="303" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gFU-eJ-nVq" secondAttribute="height" multiplier="303:19" id="Xla-J7-PS1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4E-Bm-DcT" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="127" y="210" width="120" height="98"/>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="y4E-Bm-DcT" secondAttribute="height" multiplier="60:49" id="LQZ-a3-uQO"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="gridyPick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Irp-ke-PFd"/>
-                                </connections>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVO-cd-sbD" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="36" y="378" width="120" height="100"/>
+                                <rect key="frame" x="36" y="379" width="120" height="100"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="mVO-cd-sbD" secondAttribute="height" multiplier="6:5" id="CKd-Lf-haH"/>
+                                    <constraint firstAttribute="height" constant="100" id="2lq-ao-DOU"/>
+                                    <constraint firstAttribute="width" secondItem="mVO-cd-sbD" secondAttribute="height" multiplier="6:5" id="Bqh-Fz-4Kn"/>
+                                    <constraint firstAttribute="width" constant="120" id="Jrw-7k-7vf"/>
                                 </constraints>
                                 <connections>
                                     <action selector="cameraSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7U8-d3-RMZ"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aas-0R-8uK" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="219" y="378" width="120" height="100"/>
+                                <rect key="frame" x="219" y="379" width="120" height="100"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="aas-0R-8uK" secondAttribute="height" multiplier="6:5" id="2ho-MF-2aD"/>
+                                    <constraint firstAttribute="width" constant="120" id="NM2-S3-nd2"/>
+                                    <constraint firstAttribute="width" secondItem="aas-0R-8uK" secondAttribute="height" multiplier="6:5" id="Vcd-WP-SmW"/>
+                                    <constraint firstAttribute="height" constant="100" id="aO4-ve-V8T"/>
                                 </constraints>
                                 <connections>
                                     <action selector="photoLibrarySelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XqT-AE-Ztk"/>
                                 </connections>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klm-Wc-wpd">
-                                <rect key="frame" x="68" y="519" width="240" height="128"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challange yourself with a photo puzzle      " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
+                                <rect key="frame" x="25" y="180" width="290" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4E-Bm-DcT" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
+                                <rect key="frame" x="128" y="217" width="120" height="100"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="UXS-O0-WCj"/>
+                                    <constraint firstAttribute="height" constant="100" id="aIq-D3-TcB"/>
+                                    <constraint firstAttribute="width" secondItem="y4E-Bm-DcT" secondAttribute="height" multiplier="6:5" id="hi8-sP-fbu"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="gridyPick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Irp-ke-PFd"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="klm-Wc-wpd" firstAttribute="top" secondItem="aas-0R-8uK" secondAttribute="bottom" constant="41" id="013-QM-WYx"/>
-                            <constraint firstItem="aas-0R-8uK" firstAttribute="leading" secondItem="mVO-cd-sbD" secondAttribute="trailing" constant="63" id="5w9-Pt-7Fz"/>
-                            <constraint firstItem="mVO-cd-sbD" firstAttribute="top" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="35" id="8n7-Vj-SYZ"/>
-                            <constraint firstItem="mVO-cd-sbD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="Dmy-jG-29o"/>
-                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="161" id="FfQ-ca-WAo"/>
-                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="127" id="G9B-Hi-deg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NK0-op-hxI" secondAttribute="trailing" constant="119" id="JeP-gg-wEb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gFU-eJ-nVq" secondAttribute="trailing" constant="36" id="Lqz-tM-Eq1"/>
-                            <constraint firstItem="UPq-SL-aSj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="TQJ-ah-3cx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aas-0R-8uK" secondAttribute="trailing" constant="36" id="TRZ-H6-udo"/>
-                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="top" secondItem="gFU-eJ-nVq" secondAttribute="bottom" constant="10" id="X2k-ma-Wt9"/>
-                            <constraint firstItem="UPq-SL-aSj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Yed-fc-t6t"/>
-                            <constraint firstItem="NK0-op-hxI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="gQ8-FH-JHH"/>
-                            <constraint firstItem="aas-0R-8uK" firstAttribute="top" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="35" id="hWp-i4-t6D"/>
-                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="mhD-hl-OnL"/>
-                            <constraint firstItem="klm-Wc-wpd" firstAttribute="top" secondItem="mVO-cd-sbD" secondAttribute="bottom" constant="41" id="pJD-th-vfc"/>
-                            <constraint firstItem="NK0-op-hxI" firstAttribute="top" secondItem="y4E-Bm-DcT" secondAttribute="bottom" constant="16" id="rFJ-l8-hgo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y4E-Bm-DcT" secondAttribute="trailing" constant="128" id="slU-vc-Tum"/>
-                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="top" secondItem="UPq-SL-aSj" secondAttribute="bottom" constant="10" id="vVr-Sr-JcZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UPq-SL-aSj" secondAttribute="trailing" constant="22" id="xpN-3X-S9F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NK0-op-hxI" secondAttribute="trailing" constant="119" id="1Sf-Dy-JcM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aas-0R-8uK" secondAttribute="trailing" constant="36" id="DPW-mb-jpc"/>
+                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="160" id="NbB-Pg-TtI"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R56-W3-sfl"/>
+                            <constraint firstItem="mVO-cd-sbD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="Uwg-sp-pXB"/>
+                            <constraint firstItem="mVO-cd-sbD" firstAttribute="top" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="35" id="Vbi-L3-0mh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gFU-eJ-nVq" secondAttribute="trailing" constant="60" id="WiA-kb-0h3"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="top" secondItem="UPq-SL-aSj" secondAttribute="bottom" constant="17" id="ZGk-7x-bxP"/>
+                            <constraint firstItem="NK0-op-hxI" firstAttribute="top" secondItem="y4E-Bm-DcT" secondAttribute="bottom" constant="8" symbolic="YES" id="ZZh-HV-f1v"/>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="ZrP-kY-JQb"/>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="dRC-o9-3im"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UPq-SL-aSj" secondAttribute="trailing" constant="25" id="fVg-0v-RCx"/>
+                            <constraint firstItem="aas-0R-8uK" firstAttribute="top" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="35" id="g1H-cP-ZL7"/>
+                            <constraint firstItem="NK0-op-hxI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="k9B-jk-7WT"/>
+                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="y7X-J0-iLu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -106,7 +95,6 @@
                         <outlet property="cameraSelect" destination="mVO-cd-sbD" id="scC-kL-X6n"/>
                         <outlet property="gridyPick" destination="y4E-Bm-DcT" id="V4H-SK-88N"/>
                         <outlet property="photoLibrarySelect" destination="aas-0R-8uK" id="AAc-nG-Wip"/>
-                        <outlet property="testPhoto" destination="klm-Wc-wpd" id="Znk-nw-gTR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
