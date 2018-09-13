@@ -23,6 +23,13 @@ extension UIView {
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = self.bounds
         blurView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        addSubview(blurView)
+        
+
+   
+    }
+    
+    func holeInBlur() {
         //Add hole to blur view
         let scanLayer = CAShapeLayer()
         //Size of hole (need to find wa to autosize with the Grid
@@ -30,16 +37,14 @@ extension UIView {
         
         let outerPath = UIBezierPath(rect: scanRect)
         
-        let superlayerPath = UIBezierPath.init(rect: blurView.frame)
-//        outerPath.usesEvenOddFillRule = true
+        let superlayerPath = UIBezierPath.init(rect: self.frame)
+        //        outerPath.usesEvenOddFillRule = true
         outerPath.append(superlayerPath)
         scanLayer.path = outerPath.cgPath
         scanLayer.fillRule = kCAFillRuleEvenOdd
-//        scanLayer.fillColor = UIColor.black.cgColor
+        //        scanLayer.fillColor = UIColor.black.cgColor
         
-       addSubview(blurView)
-        blurView.layer.mask = scanLayer
-   
+        self.layer.mask = scanLayer
     }
 
 }
