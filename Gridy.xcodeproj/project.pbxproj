@@ -84,7 +84,7 @@
 		89296B6C2133EB9E00B6D1F3 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
-				894516CD213011C200E472B2 /* View */,
+				894516CD213011C200E472B2 /* View Controller */,
 				894516CA2130113700E472B2 /* View Model */,
 				894516CF213011EE00E472B2 /* Flow Controller */,
 				894516D0213011F200E472B2 /* Factory */,
@@ -97,7 +97,7 @@
 			children = (
 				89DC6148213D30BA00DB5937 /* Factory */,
 				89DC6147213D30B300DB5937 /* FlowController */,
-				89296B782133F2D500B6D1F3 /* View */,
+				89296B782133F2D500B6D1F3 /* View Controller */,
 				89296B772133F2C000B6D1F3 /* View Model */,
 			);
 			path = "Image Editor";
@@ -108,19 +108,19 @@
 			children = (
 				89DC6155213D3FBA00DB5937 /* FlowController */,
 				89DC6154213D3FB700DB5937 /* Factory */,
-				89296B732133F27A00B6D1F3 /* View */,
+				89296B732133F27A00B6D1F3 /* View Controller */,
 				89296B742133F28700B6D1F3 /* View Model */,
 			);
 			path = "Game Play";
 			sourceTree = "<group>";
 		};
-		89296B732133F27A00B6D1F3 /* View */ = {
+		89296B732133F27A00B6D1F3 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				89DC615A213D404C00DB5937 /* GamePlayViewController.swift */,
 				89DC615E213D407700DB5937 /* GamePlay.storyboard */,
 			);
-			path = View;
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		89296B742133F28700B6D1F3 /* View Model */ = {
@@ -139,13 +139,13 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
-		89296B782133F2D500B6D1F3 /* View */ = {
+		89296B782133F2D500B6D1F3 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				89DC6150213D313200DB5937 /* ImageEditor.storyboard */,
 				89DC6152213D371600DB5937 /* ImageEditorViewController.swift */,
 			);
-			path = View;
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		894516AA21300D6600E472B2 = {
@@ -191,13 +191,13 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
-		894516CD213011C200E472B2 /* View */ = {
+		894516CD213011C200E472B2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				894516B821300D6600E472B2 /* ViewController.swift */,
 				894516BA21300D6600E472B2 /* Main.storyboard */,
 			);
-			path = View;
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		894516CE213011CB00E472B2 /* Model */ = {

@@ -11,4 +11,9 @@ import UIKit
 
 class ImageEditorViewModel {
     
+    let photo: UIImage
+    init(photo: UIImage) {
+        self.photo = photo
+    }
+    
 }

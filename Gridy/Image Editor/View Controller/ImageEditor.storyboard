@@ -28,7 +28,10 @@
                                     <outletCollection property="gestureRecognizers" destination="sJu-Df-oTQ" appends="YES" id="KJi-SA-BZ3"/>
                                 </connections>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-kG-JrL" customClass="Grid" customModule="Gridy" customModuleProvider="target">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDE-fz-pYf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-kG-JrL" customClass="Grid" customModule="Gridy" customModuleProvider="target">
                                 <rect key="frame" x="30" y="170" width="315" height="315"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -43,13 +46,18 @@
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="-20" id="HFf-Jh-AA5"/>
                             <constraint firstItem="II3-yw-grY" firstAttribute="trailing" secondItem="iEg-kG-JrL" secondAttribute="trailing" constant="30" id="Lcs-QD-Ilm"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="trailing" secondItem="II3-yw-grY" secondAttribute="trailing" id="NEb-13-Cjp"/>
+                            <constraint firstItem="aDE-fz-pYf" firstAttribute="trailing" secondItem="II3-yw-grY" secondAttribute="trailing" id="Np5-oR-Fof"/>
                             <constraint firstItem="iEg-kG-JrL" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="150" id="Ynl-Jj-OEC"/>
+                            <constraint firstItem="aDE-fz-pYf" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="gPy-kS-n3T"/>
+                            <constraint firstItem="aDE-fz-pYf" firstAttribute="bottom" secondItem="II3-yw-grY" secondAttribute="bottom" id="uen-R8-Lcp"/>
+                            <constraint firstItem="aDE-fz-pYf" firstAttribute="top" secondItem="MSg-W3-ItH" secondAttribute="top" id="wrL-F2-stM"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="xGr-ry-vt0"/>
                             <constraint firstItem="iEg-kG-JrL" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="30" id="yKu-9D-JHJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="II3-yw-grY"/>
                     </view>
                     <connections>
+                        <outlet property="blurView" destination="aDE-fz-pYf" id="TFW-dC-zs3"/>
                         <outlet property="gridView" destination="iEg-kG-JrL" id="nx3-ux-KQ4"/>
                         <outlet property="imageView" destination="DVZ-Fc-cyN" id="vZ6-we-YNh"/>
                     </connections>

@@ -14,7 +14,6 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var imageEditorFlowController : ImageEditorFlowController!
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     
-    var imageChosenByUser = UIImage(named: "Dobby")
     
 //    let VC = ViewController()
     
@@ -23,7 +22,8 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         self.imageEditorViewModel = imageEditorViewModel
     }
     
-
+    @IBOutlet weak var blurView: UIView!
+    
     @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet weak var gridView: Grid!
@@ -34,8 +34,8 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         
         
         
-        imageView.image = imageChosenByUser
-        imageView.blurView(style: .regular)
+        imageView.image = imageEditorViewModel.photo
+        blurView.blurView(style: .regular)
 
     }
     

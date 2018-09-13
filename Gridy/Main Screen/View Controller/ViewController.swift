@@ -12,14 +12,12 @@ import AVFoundation
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    let viewModel = MainViewModel()
+    fileprivate let viewModel = MainViewModel()
     fileprivate var mainFlowController: MainFlowController!
     //Array of local images
     let localImages: [UIImage] = [UIImage(named: "Wands")!, UIImage(named: "Plant")!, UIImage(named: "Orangutan")!, UIImage(named: "Dobby")!, UIImage(named: "Frog")!]
-    //Declare empty UIImage for user selected image
-    var imagePickedByUser: UIImage!
-    
-    let IEVC = ImageEditorViewController()
+
+
 
     
     @IBOutlet weak var testPhoto: UIImageView!
@@ -30,7 +28,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBAction func gridyPick(_ sender: GridyIconButton) {
         //call pickRandom Func
         pickRandom()
-        IEVC.imageChosenByUser = imagePickedByUser
+
     }
     
     @IBAction func cameraSelect(_ sender: GridyIconButton) {
@@ -55,7 +53,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         gridyPick.mainButton(radius: 8)
 //        processPicked(image: UIImage(named: "Dobby"))
 
-        testPhoto.image = imagePickedByUser
     }
     
     override func didReceiveMemoryWarning() {
