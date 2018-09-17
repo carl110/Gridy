@@ -16,7 +16,7 @@ extension UIView {
         self.layer.masksToBounds = true
         
     }
-
+    
     
     func blurView(style: UIBlurEffectStyle) {
         let blurEffect = UIBlurEffect(style: style)
@@ -25,15 +25,19 @@ extension UIView {
         blurView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(blurView)
         
-
-   
+        
+        
     }
-    
-    func holeInBlur() {
+    func holeInBlur(xPosition: CGFloat, yPosition:CGFloat, width: CGFloat, height: CGFloat) {
+        
+        let xPosition = xPosition
+        let yPosition = yPosition
+        let width = width
+        let height = height
         //Add hole to blur view
         let scanLayer = CAShapeLayer()
         //Size of hole (need to find wa to autosize with the Grid
-        let scanRect = CGRect.init(x: 30, y: 170, width: 315, height: 315)
+        let scanRect = CGRect.init(x: xPosition, y: yPosition, width: width, height: height)
         
         let outerPath = UIBezierPath(rect: scanRect)
         
@@ -46,7 +50,27 @@ extension UIView {
         
         self.layer.mask = scanLayer
     }
-
+    
+    func croppedImage(frame: CGRect?) -> UIImage {
+        let scaleFactor = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, scaleFactor)
+        self.drawHierarchy(in: bounds, afterScreenUpdates: true)
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        if let frame = frame {
+            // UIImages are measured in points, but CGImages are measured in pixels
+            let scaledRect = frame.applying(CGAffineTransform(scaleX: scaleFactor, y: scaleFactor))
+            
+            if let imageRef = image.cgImage!.cropping(to: scaledRect) {
+                image = UIImage(cgImage: imageRef)
+            }
+        }
+        return image
+    }
+    
+    
 }
+
 
 

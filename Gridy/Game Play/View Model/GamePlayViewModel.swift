@@ -11,4 +11,9 @@ import UIKit
 
 class GamePlayViewModel {
     
+    let photo: UIImage
+    init(photo: UIImage) {
+        self.photo = photo
+    }
+    
 }

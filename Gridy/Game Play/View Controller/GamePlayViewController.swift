@@ -19,4 +19,10 @@ class GamePlayViewController: UIViewController {
         self.gamePlayViewModel = gamePlayViewModel
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userSelectedImage.image = gamePlayViewModel.photo
+    }
+    
+    @IBOutlet weak var userSelectedImage: UIImageView!
 }

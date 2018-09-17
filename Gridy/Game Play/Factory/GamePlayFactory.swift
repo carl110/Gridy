@@ -14,10 +14,19 @@ class GamePlayFactory {
         
         let gamePlay = UIStoryboard(name: "GamePlay", bundle: nil).instantiateInitialViewController() as! GamePlayViewController
         let gamePlayFlowController = GamePlayFlowController(navigationController: navigationController)
-        let gamePlayViewModel = GamePlayViewModel()
+        let gamePlayViewModel = GamePlayViewModel(photo : photo)
         gamePlay.assignDependancies(gamePlayFlowController: gamePlayFlowController, gamePlayViewModel: gamePlayViewModel)
         
         navigationController.pushViewController(gamePlay, animated: true)
         
     }
 }
+
+//static func PushIn(navigationController: UINavigationController, photo: UIImage) {
+//    
+//    let imageEditor = UIStoryboard(name: "ImageEditor", bundle: nil).instantiateInitialViewController() as! ImageEditorViewController
+//    let imageEditorFlowController = ImageEditorFlowController(navigationController: navigationController)
+//    let imageEditorViewModel = ImageEditorViewModel(photo: photo)
+//    imageEditor.assignDependancies(imageEditorFlowController: imageEditorFlowController, imageEditorViewModel: imageEditorViewModel)
+//    
+//    navigationController.pushViewController(imageEditor, animated: true)

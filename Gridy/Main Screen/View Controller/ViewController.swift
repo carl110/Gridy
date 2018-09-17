@@ -44,11 +44,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //        PickButton.setImage(UIImage(named:"Gridy-name-small-grey"), for: .normal)
-        gridyPick.griduLabelView.text = "Pick"
+        gridyPick.gridyLabelView.text = "Pick"
         gridyPick.gridyImageView.image = UIImage(named: "Gridy-name-small-grey")
-        photoLibrarySelect.griduLabelView.text = "Photo Library"
+        photoLibrarySelect.gridyLabelView.text = "Photo Library"
         photoLibrarySelect.gridyImageView.image = UIImage(named: "Gridy-library")
-        cameraSelect.griduLabelView.text = "Camera"
+        cameraSelect.gridyLabelView.text = "Camera"
         cameraSelect.gridyImageView.image = UIImage(named: "Gridy-camera")
         gridyPick.mainButton(radius: 8)
 //        processPicked(image: UIImage(named: "Dobby"))

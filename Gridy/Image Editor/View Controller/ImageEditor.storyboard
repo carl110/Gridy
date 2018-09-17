@@ -39,16 +39,29 @@
                                     <constraint firstAttribute="width" secondItem="iEg-kG-JrL" secondAttribute="height" multiplier="1:1" id="kcu-o7-y2B"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-V2-dqi">
+                                <rect key="frame" x="120" y="587" width="135" height="30"/>
+                                <color key="backgroundColor" red="0.54634041870000005" green="0.78009107200000005" blue="0.59787795899999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectImage:" destination="c2X-7m-zaB" eventType="touchUpInside" id="sef-Qv-Trh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="bottom" secondItem="II3-yw-grY" secondAttribute="bottom" id="0Ea-48-Ndk"/>
+                            <constraint firstItem="B1w-V2-dqi" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="120" id="1ku-Tf-YyI"/>
+                            <constraint firstItem="II3-yw-grY" firstAttribute="trailing" secondItem="B1w-V2-dqi" secondAttribute="trailing" constant="120" id="Gt1-oJ-9ob"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="-20" id="HFf-Jh-AA5"/>
                             <constraint firstItem="II3-yw-grY" firstAttribute="trailing" secondItem="iEg-kG-JrL" secondAttribute="trailing" constant="30" id="Lcs-QD-Ilm"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="trailing" secondItem="II3-yw-grY" secondAttribute="trailing" id="NEb-13-Cjp"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="trailing" secondItem="II3-yw-grY" secondAttribute="trailing" id="Np5-oR-Fof"/>
                             <constraint firstItem="iEg-kG-JrL" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="150" id="Ynl-Jj-OEC"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="gPy-kS-n3T"/>
+                            <constraint firstItem="II3-yw-grY" firstAttribute="bottom" secondItem="B1w-V2-dqi" secondAttribute="bottom" constant="50" id="nBH-HD-Rfr"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="bottom" secondItem="II3-yw-grY" secondAttribute="bottom" id="uen-R8-Lcp"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="top" secondItem="MSg-W3-ItH" secondAttribute="top" id="wrL-F2-stM"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="xGr-ry-vt0"/>
@@ -60,6 +73,7 @@
                         <outlet property="blurView" destination="aDE-fz-pYf" id="TFW-dC-zs3"/>
                         <outlet property="gridView" destination="iEg-kG-JrL" id="nx3-ux-KQ4"/>
                         <outlet property="imageView" destination="DVZ-Fc-cyN" id="vZ6-we-YNh"/>
+                        <outlet property="selectImage" destination="B1w-V2-dqi" id="1OO-Di-nSg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuu-HM-Y83" userLabel="First Responder" sceneMemberID="firstResponder"/>

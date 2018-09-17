@@ -14,8 +14,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var imageEditorFlowController : ImageEditorFlowController!
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     
-    
-//    let VC = ViewController()
+    var selectedImage: UIImage!
     
     func assignDependancies(imageEditorFlowController: ImageEditorFlowController, imageEditorViewModel: ImageEditorViewModel){
         self.imageEditorFlowController = imageEditorFlowController
@@ -25,18 +24,39 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var blurView: UIView!
     
     @IBOutlet weak var imageView: UIImageView!
-
+    
     @IBOutlet weak var gridView: Grid!
     
+    @IBOutlet weak var selectImage: UIButton!
     
+    @IBAction func selectImage(_ sender: UIButton) {
+        
+        
+        selectedImage = imageView.croppedImage(frame: CGRect(x: gridView.frame.origin.x, y: gridView.frame.origin.y, width: gridView.frame.width, height: gridView.frame.height))
+        
+        
+        if let image = selectedImage {
+            imageEditorFlowController.showGamePlay(with: image)
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         imageView.image = imageEditorViewModel.photo
         blurView.blurView(style: .regular)
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let gridViewXLocation = gridView.frame.origin.x
+        let gridViewYLocation = gridView.frame.origin.y
+        let gridViewWidth = gridView.frame.width
+        let gridViewHeight = gridView.bounds.height
+        blurView.holeInBlur(xPosition: gridViewXLocation, yPosition: gridViewYLocation, width: gridViewWidth, height: gridViewHeight)
+        print (gridViewHeight)
+        
     }
     
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
@@ -62,9 +82,22 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
     }
+    
+    //    @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
+    //
+    //        //        tap.numberOfTapsRequired = 2
+    //
+    //        if let view = recognizer.view {
+    //
+    //            view.transform = CGAffineTransform.identity
+    //
+    //
+    //        }
+    //    }
+    
     //Allows all gestures to be used at the same time - requires UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-
+    
 }

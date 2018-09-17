@@ -14,7 +14,7 @@ class GridyIconButton: UIButton {
     
     @IBOutlet weak var gridyImageView: UIImageView!
     
-    @IBOutlet weak var griduLabelView: UILabel!
+    @IBOutlet weak var gridyLabelView: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
