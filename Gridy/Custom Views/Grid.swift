@@ -13,32 +13,26 @@ class Grid: UIView {
     fileprivate var gridSize: CGFloat {
         return 5
     }
-    
     fileprivate var gridWidth: CGFloat {
         return bounds.width/CGFloat(gridSize)
     }
-    
     fileprivate func drawGrid() {
         path = UIBezierPath()
         path.lineWidth = 2
-        
         for index in 0...Int(gridSize) {
             let start = CGPoint(x: 0, y: CGFloat(index) * gridWidth)
             let end = CGPoint(x: bounds.width, y: CGFloat(index) * gridWidth)
             path.move(to: start)
             path.addLine(to: end)
         }
-        
         for index in 0...Int(gridSize) {
             let start = CGPoint(x: CGFloat(index) * gridWidth, y: 0 )
             let end = CGPoint(x: CGFloat(index) * gridWidth, y:bounds.height)
             path.move(to: start)
             path.addLine(to: end)
         }
-        
         path.close()
     }
-    
     override func draw(_ rect: CGRect) {
         drawGrid()
         UIColor.white.setStroke()

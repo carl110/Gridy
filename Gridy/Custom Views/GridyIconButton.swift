@@ -11,53 +11,24 @@ import UIKit
 class GridyIconButton: UIButton {
     
     @IBOutlet var contentView: UIView!
-    
     @IBOutlet weak var gridyImageView: UIImageView!
-    
     @IBOutlet weak var gridyLabelView: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        print ("awakefrom nib")
-    }
-    
-    override func layoutSubviews() {
-        print ("layoutSubviews")
-    }
 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         gridyButtonInit()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         gridyButtonInit()
     }
-    
-    
     private func gridyButtonInit() {
-        
-        let buttonWidth = 120
-        let buttonHeight = 100
-        
-        self.frame.size = CGSize(width: buttonWidth, height: buttonHeight)
         self.layer.cornerRadius = 8
-        
         Bundle.main.loadNibNamed("GridyIconButton", owner: self, options: nil)
         addSubview(contentView)
-        //        contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         contentView.layer.cornerRadius = 8
         contentView.layer.masksToBounds = true
         contentView.isUserInteractionEnabled = false
-       
-        
-        
     }
-    
-
-    
-    
 }
