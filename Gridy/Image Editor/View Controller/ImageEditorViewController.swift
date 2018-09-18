@@ -31,10 +31,9 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func selectImage(_ sender: UIButton) {
         
-        
-        selectedImage = imageView.croppedImage(frame: CGRect(x: gridView.frame.origin.x, y: gridView.frame.origin.y, width: gridView.frame.width, height: gridView.frame.height))
-        
-        
+        gridView.isHidden = true
+        selectedImage = self.view.snapshot(of: CGRect(x: gridView.frame.origin.x, y: gridView.frame.origin.y, width: gridView.frame.width, height: gridView.frame.height))
+
         if let image = selectedImage {
             imageEditorFlowController.showGamePlay(with: image)
         }
@@ -68,6 +67,12 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
             
         }
         recognizer.setTranslation(CGPoint.zero, in: self.view)
+        
+        //            CGFloat scale = 1.0 - (lastScale - pinchscale);
+        //            CGRect bounds = [(UIPinchGestureRecognizer*)sender view].bounds;
+        //            scale = MIN(scale, maximumHeight / CGRectGetHeight(bounds));
+        //            scale = MAX(scale, minimumHeight / CGRectGetHeight(bounds));
+
     }
     @IBAction func handleRotate(recognizer : UIRotationGestureRecognizer) {
         if let view = recognizer.view {

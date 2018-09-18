@@ -51,22 +51,26 @@ extension UIView {
         self.layer.mask = scanLayer
     }
     
-    func croppedImage(frame: CGRect?) -> UIImage {
-        let scaleFactor = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, scaleFactor)
-        self.drawHierarchy(in: bounds, afterScreenUpdates: true)
-        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+   
+    func snapshot(of rect: CGRect? = nil) -> UIImage? {
+        // snapshot entire view
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        let wholeImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        if let frame = frame {
-            // UIImages are measured in points, but CGImages are measured in pixels
-            let scaledRect = frame.applying(CGAffineTransform(scaleX: scaleFactor, y: scaleFactor))
-            
-            if let imageRef = image.cgImage!.cropping(to: scaledRect) {
-                image = UIImage(cgImage: imageRef)
-            }
-        }
-        return image
+        // if no bounds provided, return image of whole view
+        
+        guard let image = wholeImage, let rect = rect
+            else { return wholeImage }
+        
+        // otherwise, grab specified bounds of image
+        
+        let scale = image.scale
+        let scaledRect = CGRect(x: rect.origin.x * scale, y: rect.origin.y * scale, width: rect.size.width * scale, height: rect.size.height * scale)
+        guard let cgImage = image.cgImage?.cropping(to: scaledRect) else { return nil }
+        return UIImage(cgImage: cgImage, scale: scale, orientation: .up)
     }
     
     
