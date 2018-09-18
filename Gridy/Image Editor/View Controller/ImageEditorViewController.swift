@@ -45,16 +45,19 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         imageView.image = imageEditorViewModel.photo
         blurView.blurView(style: .regular)
 
+        print ("view \(gridView.frame.origin.x)")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super .viewDidLayoutSubviews()
+        print ("Layout \(gridView.frame.origin.x)")
+
         let gridViewXLocation = gridView.frame.origin.x
         let gridViewYLocation = gridView.frame.origin.y
         let gridViewWidth = gridView.frame.width
         let gridViewHeight = gridView.bounds.height
         blurView.holeInBlur(xPosition: gridViewXLocation, yPosition: gridViewYLocation, width: gridViewWidth, height: gridViewHeight)
-        print (gridViewHeight)
+        print ("appear \(gridView.frame.origin.x)")
         
     }
     
