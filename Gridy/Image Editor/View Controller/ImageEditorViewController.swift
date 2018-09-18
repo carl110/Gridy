@@ -64,6 +64,8 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         if let view = recognizer.view {
             view.center = CGPoint(x:view.center.x + translation.x,
                                   y:view.center.y + translation.y)
+            
+            
         }
         recognizer.setTranslation(CGPoint.zero, in: self.view)
     }
@@ -83,17 +85,20 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    //    @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
-    //
-    //        //        tap.numberOfTapsRequired = 2
-    //
-    //        if let view = recognizer.view {
-    //
-    //            view.transform = CGAffineTransform.identity
-    //
-    //
-    //        }
-    //    }
+        @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
+    
+            //        tap.numberOfTapsRequired = 2
+            recognizer.numberOfTapsRequired = 2
+    
+            if let view = recognizer.view {
+                //returns to original size and rotation
+                view.transform = CGAffineTransform.identity
+                //returns image to center
+                view.center = self.view.center
+
+            }
+
+        }
     
     //Allows all gestures to be used at the same time - requires UIGestureRecognizerDelegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {

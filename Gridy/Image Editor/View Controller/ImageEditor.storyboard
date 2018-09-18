@@ -26,10 +26,12 @@
                                     <outletCollection property="gestureRecognizers" destination="lgM-jx-ZZD" appends="YES" id="okK-CW-6ei"/>
                                     <outletCollection property="gestureRecognizers" destination="sTn-bg-Knb" appends="YES" id="OHG-FL-46M"/>
                                     <outletCollection property="gestureRecognizers" destination="sJu-Df-oTQ" appends="YES" id="KJi-SA-BZ3"/>
+                                    <outletCollection property="gestureRecognizers" destination="Fbj-hO-YoF" appends="YES" id="WQe-Bk-Lyo"/>
                                 </connections>
                             </imageView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDE-fz-pYf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-kG-JrL" customClass="Grid" customModule="Gridy" customModuleProvider="target">
                                 <rect key="frame" x="30" y="170" width="315" height="315"/>
@@ -62,8 +64,8 @@
                             <constraint firstItem="iEg-kG-JrL" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="150" id="Ynl-Jj-OEC"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="gPy-kS-n3T"/>
                             <constraint firstItem="II3-yw-grY" firstAttribute="bottom" secondItem="B1w-V2-dqi" secondAttribute="bottom" constant="50" id="nBH-HD-Rfr"/>
+                            <constraint firstItem="aDE-fz-pYf" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="-20" id="o0h-B8-5qU"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="bottom" secondItem="II3-yw-grY" secondAttribute="bottom" id="uen-R8-Lcp"/>
-                            <constraint firstItem="aDE-fz-pYf" firstAttribute="top" secondItem="MSg-W3-ItH" secondAttribute="top" id="wrL-F2-stM"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="xGr-ry-vt0"/>
                             <constraint firstItem="iEg-kG-JrL" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="30" id="yKu-9D-JHJ"/>
                         </constraints>
@@ -95,6 +97,12 @@
                         <outlet property="delegate" destination="c2X-7m-zaB" id="BiX-CI-UeA"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="Fbj-hO-YoF">
+                    <connections>
+                        <action selector="doubleTapWithRecognizer:" destination="c2X-7m-zaB" id="7kP-hP-OkT"/>
+                        <outlet property="delegate" destination="c2X-7m-zaB" id="N0k-vC-loW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-271.19999999999999" y="75.112443778110944"/>
         </scene>
