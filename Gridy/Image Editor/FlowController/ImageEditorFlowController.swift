@@ -17,9 +17,9 @@ class ImageEditorFlowController {
         self.navigationController = navigationController
     }
     
-    func showGamePlay(with photo: UIImage) {
+    func showGamePlay(with photo: UIImage, gridSize: Int) {
         
-        GamePlayFactory.PushIn(navigationController: navigationController, photo: photo)
+        GamePlayFactory.PushIn(navigationController: navigationController, photo: photo, gridSize: gridSize)
         
     }
     

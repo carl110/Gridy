@@ -9,9 +9,10 @@
 import UIKit
 
 class Grid: UIView {
+    
     private var path = UIBezierPath()
     fileprivate var gridSize: CGFloat {
-        return 5
+        return 4
     }
     fileprivate var gridWidth: CGFloat {
         return bounds.width/CGFloat(gridSize)

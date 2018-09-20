@@ -15,6 +15,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     //create empty contained for UIImage
     fileprivate var selectedImage: UIImage!
+    fileprivate var gridSize = 4
 
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var imageView: UIImageView!
@@ -27,7 +28,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         selectedImage = self.view.snapshot(of: CGRect(x: gridView.frame.origin.x, y: gridView.frame.origin.y, width: gridView.frame.width, height: gridView.frame.height))
         //goto showCamePlay pushing above image through
         if let image = selectedImage {
-            imageEditorFlowController.showGamePlay(with: image)
+            imageEditorFlowController.showGamePlay(with: image, gridSize: gridSize)
         }
     }
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {

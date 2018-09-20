@@ -12,7 +12,11 @@ import UIKit
 class GamePlayViewModel {
     
     let photo: UIImage
-    init(photo: UIImage) {
+    let gridSize: Int
+    init(photo: UIImage, gridSize: Int) {
         self.photo = photo
+        self.gridSize = gridSize
     }
+
+    
 }

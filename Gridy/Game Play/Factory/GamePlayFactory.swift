@@ -10,23 +10,14 @@ import Foundation
 import UIKit
 
 class GamePlayFactory {
-    static func PushIn(navigationController: UINavigationController, photo: UIImage) {
+    static func PushIn(navigationController: UINavigationController, photo: UIImage, gridSize: Int) {
         
         let gamePlay = UIStoryboard(name: "GamePlay", bundle: nil).instantiateInitialViewController() as! GamePlayViewController
         let gamePlayFlowController = GamePlayFlowController(navigationController: navigationController)
-        let gamePlayViewModel = GamePlayViewModel(photo : photo)
+        let gamePlayViewModel = GamePlayViewModel(photo : photo, gridSize: gridSize)
         gamePlay.assignDependancies(gamePlayFlowController: gamePlayFlowController, gamePlayViewModel: gamePlayViewModel)
         
         navigationController.pushViewController(gamePlay, animated: true)
         
     }
 }
-
-//static func PushIn(navigationController: UINavigationController, photo: UIImage) {
-//    
-//    let imageEditor = UIStoryboard(name: "ImageEditor", bundle: nil).instantiateInitialViewController() as! ImageEditorViewController
-//    let imageEditorFlowController = ImageEditorFlowController(navigationController: navigationController)
-//    let imageEditorViewModel = ImageEditorViewModel(photo: photo)
-//    imageEditor.assignDependancies(imageEditorFlowController: imageEditorFlowController, imageEditorViewModel: imageEditorViewModel)
-//    
-//    navigationController.pushViewController(imageEditor, animated: true)

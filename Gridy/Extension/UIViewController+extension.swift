@@ -11,16 +11,15 @@ import UIKit
 
 extension GamePlayViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoArray.count
+        return shuffledPhoto.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GamePlayUICollectionVeiwCell", for: indexPath) as! GamePlayUICollectionVeiwCell
-        //        cell.titleLabel.text = nameArr[indexPath.row]
-        for _ in photoArray {
-            cell.userImageView.image = photoArray[indexPath.item]
+
+        for _ in shuffledPhoto {
+            cell.userImageView.image = shuffledPhoto[indexPath.item]
         }
-        //        cell.userImageView.image = nameArr
         return cell
     }
 }
