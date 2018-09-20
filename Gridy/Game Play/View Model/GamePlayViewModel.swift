@@ -15,5 +15,4 @@ class GamePlayViewModel {
     init(photo: UIImage) {
         self.photo = photo
     }
-    
 }
