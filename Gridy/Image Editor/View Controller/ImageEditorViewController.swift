@@ -15,12 +15,27 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     //create empty contained for UIImage
     fileprivate var selectedImage: UIImage!
-    fileprivate var gridSize = 4
+    let grid = Grid()
+    var gridSize = 4
 
+    @IBOutlet weak var gridStepper: UIStepper!
+    @IBOutlet weak var stepperLabel: UILabel!
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var gridView: Grid!
     @IBOutlet weak var selectImage: UIButton!
+    
+    
+    @IBAction func gridStepper(_ sender: UIStepper) {
+        stepperLabel.text = Int(sender.value).description
+        grid.gridSize = CGFloat(Int(sender.value))
+        gridSize = Int(sender.value)
+        print (Int(sender.value))
+        print ("grid \(grid.gridSize)")
+
+
+    }
+    
     @IBAction func selectImage(_ sender: UIButton) {
         //hide grid so screenshot of user defined image is only the image
         gridView.isHidden = true
@@ -126,6 +141,11 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         imageView.image = imageEditorViewModel.photo
         //Add blur to entire view
         blurView.blurView(style: .regular)
+        //allows user to keep button pressed to change value
+        gridStepper.autorepeat = true
+        gridStepper.maximumValue = 10
+        gridStepper.minimumValue = 2
+        
     }
     //using viewDidLayoutSubview to calculate sizes required for screen used
     override func viewDidLayoutSubviews() {
@@ -146,4 +166,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+//    func gridSizeSquared() {
+//        grid.gridSize = Int(sender.value)
+//    }
 }

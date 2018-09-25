@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c2X-7m-zaB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c2X-7m-zaB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,21 +50,37 @@
                                     <action selector="selectImage:" destination="c2X-7m-zaB" eventType="touchUpInside" id="sef-Qv-Trh"/>
                                 </connections>
                             </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="5P0-Ah-PQX">
+                                <rect key="frame" x="30" y="66" width="94" height="29"/>
+                                <connections>
+                                    <action selector="gridStepper:" destination="c2X-7m-zaB" eventType="valueChanged" id="dGu-Hp-w3C"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkO-yr-NZi">
+                                <rect key="frame" x="30" y="40" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="bottom" secondItem="II3-yw-grY" secondAttribute="bottom" id="0Ea-48-Ndk"/>
                             <constraint firstItem="B1w-V2-dqi" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="120" id="1ku-Tf-YyI"/>
+                            <constraint firstItem="5P0-Ah-PQX" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="30" id="Fb8-y0-OVu"/>
                             <constraint firstItem="II3-yw-grY" firstAttribute="trailing" secondItem="B1w-V2-dqi" secondAttribute="trailing" constant="120" id="Gt1-oJ-9ob"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="-20" id="HFf-Jh-AA5"/>
                             <constraint firstItem="II3-yw-grY" firstAttribute="trailing" secondItem="iEg-kG-JrL" secondAttribute="trailing" constant="30" id="Lcs-QD-Ilm"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="trailing" secondItem="II3-yw-grY" secondAttribute="trailing" id="NEb-13-Cjp"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="trailing" secondItem="II3-yw-grY" secondAttribute="trailing" id="Np5-oR-Fof"/>
+                            <constraint firstItem="dkO-yr-NZi" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="30" id="VDK-b1-PEu"/>
                             <constraint firstItem="iEg-kG-JrL" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="150" id="Ynl-Jj-OEC"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="gPy-kS-n3T"/>
+                            <constraint firstItem="5P0-Ah-PQX" firstAttribute="top" secondItem="dkO-yr-NZi" secondAttribute="bottom" constant="5" id="hZT-Sl-1Cf"/>
                             <constraint firstItem="II3-yw-grY" firstAttribute="bottom" secondItem="B1w-V2-dqi" secondAttribute="bottom" constant="50" id="nBH-HD-Rfr"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="-20" id="o0h-B8-5qU"/>
                             <constraint firstItem="aDE-fz-pYf" firstAttribute="bottom" secondItem="II3-yw-grY" secondAttribute="bottom" id="uen-R8-Lcp"/>
+                            <constraint firstItem="dkO-yr-NZi" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="20" id="uuj-H5-iW3"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" id="xGr-ry-vt0"/>
                             <constraint firstItem="iEg-kG-JrL" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="30" id="yKu-9D-JHJ"/>
                         </constraints>
@@ -73,9 +88,11 @@
                     </view>
                     <connections>
                         <outlet property="blurView" destination="aDE-fz-pYf" id="TFW-dC-zs3"/>
+                        <outlet property="gridStepper" destination="5P0-Ah-PQX" id="iqr-mY-4XG"/>
                         <outlet property="gridView" destination="iEg-kG-JrL" id="nx3-ux-KQ4"/>
                         <outlet property="imageView" destination="DVZ-Fc-cyN" id="vZ6-we-YNh"/>
                         <outlet property="selectImage" destination="B1w-V2-dqi" id="1OO-Di-nSg"/>
+                        <outlet property="stepperLabel" destination="dkO-yr-NZi" id="DeH-q9-voz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuu-HM-Y83" userLabel="First Responder" sceneMemberID="firstResponder"/>

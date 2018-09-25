@@ -9,15 +9,25 @@
 import UIKit
 
 class Grid: UIView {
-    
+
     private var path = UIBezierPath()
-    fileprivate var gridSize: CGFloat {
-        return 4
+    var gridSize: CGFloat = 3 {
+        didSet {
+
+
+
+
+        }
     }
     fileprivate var gridWidth: CGFloat {
+        
         return bounds.width/CGFloat(gridSize)
+        
+
     }
     fileprivate func drawGrid() {
+        print ("draw grid")
+        print ("gridSize \(gridSize)")
         path = UIBezierPath()
         path.lineWidth = 2
         for index in 0...Int(gridSize) {
@@ -32,9 +42,12 @@ class Grid: UIView {
             path.move(to: start)
             path.addLine(to: end)
         }
+        print ("gridWidth \(gridWidth)")
         path.close()
     }
     override func draw(_ rect: CGRect) {
+
+        print (bounds.width)
         drawGrid()
         UIColor.white.setStroke()
         path.stroke()
