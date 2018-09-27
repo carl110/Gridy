@@ -13,7 +13,11 @@ class Grid: UIView {
     private var path = UIBezierPath()
     var gridSize: CGFloat = 3 {
         didSet {
-
+            print (bounds.width)
+            drawGrid()
+            UIColor.white.setStroke()
+            path.stroke()
+            print (bounds.width)
 
 
 
