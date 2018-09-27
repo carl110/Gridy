@@ -27,9 +27,12 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     @IBAction func gridStepper(_ sender: UIStepper) {
+
         stepperLabel.text = Int(sender.value).description
         grid.gridSize = CGFloat(Int(sender.value))
         gridSize = Int(sender.value)
+        //Redrawing but not using new value in didset
+        gridView.setNeedsDisplay()
         print (Int(sender.value))
         print ("grid \(grid.gridSize)")
 
@@ -70,7 +73,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         //right
         if imageView.frame.minX <= gridView.frame.minX && (imageView.frame.minX + imageView.frame.width) < (gridView.frame.minX + gridView.frame.width) {
             UIView.animate(withDuration: 0.3) {
-//                self.imageView.center = self.gridView.center
+
             self.imageView.frame.origin.x = ((self.gridView.frame.minX + self.gridView.frame.width) - (self.imageView.frame.minX + self.imageView.frame.width))
             }
         }
@@ -143,6 +146,8 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         blurView.blurView(style: .regular)
         //allows user to keep button pressed to change value
         gridStepper.autorepeat = true
+        //set initial value then min and max
+        gridStepper.value = 4
         gridStepper.maximumValue = 10
         gridStepper.minimumValue = 2
         

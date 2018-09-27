@@ -45,7 +45,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     //enable use of camera
     func displayCamera() {
-        let sourceType = UIImagePickerControllerSourceType.camera
+        let sourceType = UIImagePickerController.SourceType.camera
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
             let noPermissionMessage = "Gridy does not have access to your camera. To enable, please go to Settings -> Gridy and enable Camera"
@@ -70,7 +70,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     //enable use of photo library
     func displayLibrary() {
-        let sourceType = UIImagePickerControllerSourceType.photoLibrary
+        let sourceType = UIImagePickerController.SourceType.photoLibrary
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             let status = PHPhotoLibrary.authorizationStatus()
             let noPermissionMessage = "Gridy does not have access to your Photo Library. To enable, please go to Settings -> Gridy and enable Photos"
@@ -107,17 +107,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         return newImage
     }
     //show images from camera/library
-    func presentImagePicker(sourceType: UIImagePickerControllerSourceType){
+    func presentImagePicker(sourceType: UIImagePickerController.SourceType){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
     }
     //push image picked in camera/library to newImage
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         print ("imagePickerController")
         picker.dismiss(animated: true, completion: nil)
-        let newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let newImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
         processPicked(image: newImage)
     }
     //Error box if unable to access camera or library
@@ -133,4 +136,14 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             mainFlowController.showImageEditor(with: photo)
             }
         }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

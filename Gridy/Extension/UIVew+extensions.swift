@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func blurView(style: UIBlurEffectStyle) {
+    func blurView(style: UIBlurEffect.Style) {
         let blurEffect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = self.bounds
@@ -31,7 +31,7 @@ extension UIView {
         //        outerPath.usesEvenOddFillRule = true
         outerPath.append(superlayerPath)
         scanLayer.path = outerPath.cgPath
-        scanLayer.fillRule = kCAFillRuleEvenOdd
+        scanLayer.fillRule = CAShapeLayerFillRule.evenOdd
         //        scanLayer.fillColor = UIColor.black.cgColor
         self.layer.mask = scanLayer
     }

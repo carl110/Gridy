@@ -9,19 +9,24 @@
 import UIKit
 
 class Grid: UIView {
-
+    
     private var path = UIBezierPath()
-    var gridSize: CGFloat = 3 {
+    var gridSize: CGFloat = 4 {
         didSet {
-            print (bounds.width)
+
+            //not pulling through bounds
             drawGrid()
             UIColor.white.setStroke()
             path.stroke()
-            print (bounds.width)
-
-
 
         }
+    }
+    override func draw(_ rect: CGRect) {
+        
+        print ("draw rect \(bounds.width) /n grid size \(gridSize)")
+        drawGrid()
+        UIColor.white.setStroke()
+        path.stroke()
     }
     fileprivate var gridWidth: CGFloat {
         
@@ -46,14 +51,8 @@ class Grid: UIView {
             path.move(to: start)
             path.addLine(to: end)
         }
-        print ("gridWidth \(gridWidth)")
+        print ("draw grid gridWidth \(gridWidth)")
         path.close()
     }
-    override func draw(_ rect: CGRect) {
 
-        print (bounds.width)
-        drawGrid()
-        UIColor.white.setStroke()
-        path.stroke()
-    }
 }
