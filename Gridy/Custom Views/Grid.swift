@@ -16,8 +16,8 @@ class Grid: UIView {
 
             //not pulling through bounds
             drawGrid()
-            UIColor.white.setStroke()
-            path.stroke()
+
+            print ("didSet")
 
         }
     }
@@ -29,12 +29,21 @@ class Grid: UIView {
         path.stroke()
     }
     fileprivate var gridWidth: CGFloat {
-        
+
         return bounds.width/CGFloat(gridSize)
         
 
     }
     fileprivate func drawGrid() {
+        
+        if let subLayer = self.layer.sublayers {
+            for layer in subLayer {
+                layer.removeFromSuperlayer()
+            }
+        }
+        
+
+        let gridLayer = CAShapeLayer()
         print ("draw grid")
         print ("gridSize \(gridSize)")
         path = UIBezierPath()
@@ -53,6 +62,9 @@ class Grid: UIView {
         }
         print ("draw grid gridWidth \(gridWidth)")
         path.close()
+
+        self.layer.addSublayer(gridLayer)
+        self.setNeedsDisplay()
     }
 
 }
