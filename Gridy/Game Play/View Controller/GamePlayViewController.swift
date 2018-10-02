@@ -19,7 +19,7 @@ class GamePlayViewController: UIViewController {
     var shuffledPhoto: [UIImage] = []
     var gridSize = Int()
 
-    @IBOutlet weak var userSelectedImage: UIImageView!
+    @IBOutlet weak var puzzleGrid: Grid!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -27,7 +27,7 @@ class GamePlayViewController: UIViewController {
         super.viewDidLoad()
         
         gridSize = gamePlayViewModel.gridSize
-        userSelectedImage.image = gamePlayViewModel.photo
+
         //split photo into segments
         photoArray = gamePlayViewModel.photo.splitImage(gridSize, gridSize)
 

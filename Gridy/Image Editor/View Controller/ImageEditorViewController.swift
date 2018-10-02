@@ -15,7 +15,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     //create empty contained for UIImage
     fileprivate var selectedImage: UIImage!
-    let grid = Grid()
+//    let grid = Grid()
     var gridSize = 4
 
     @IBOutlet weak var gridStepper: UIStepper!
@@ -29,14 +29,8 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func gridStepper(_ sender: UIStepper) {
 
         stepperLabel.text = Int(sender.value).description
-        grid.gridSize = CGFloat(Int(sender.value))
+        gridView.gridSize = CGFloat(Int(sender.value))
         gridSize = Int(sender.value)
-        //Redrawing but not using new value in didset
-        gridView.setNeedsDisplay()
-        print (Int(sender.value))
-        print ("grid \(grid.gridSize)")
-
-
     }
     
     @IBAction func selectImage(_ sender: UIButton) {
@@ -50,12 +44,97 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
-        let translation = recognizer.translation(in: self.view)
+        let translation = recognizer.translation(in: self.imageView)
         if let view = recognizer.view {
             view.center = CGPoint(x:view.center.x + translation.x,
                                   y:view.center.y + translation.y)
         }
-        recognizer.setTranslation(CGPoint.zero, in: self.view)
+        recognizer.setTranslation(CGPoint.zero, in: self.imageView)
+        
+        if recognizer.state == .ended {
+            endGesture()
+        }
+    }
+    @IBAction func handleRotate(recognizer : UIRotationGestureRecognizer) {
+        if let view = recognizer.view {
+            view.transform = view.transform.rotated(by: recognizer.rotation)
+            recognizer.rotation = 0
+
+        }
+        if recognizer.state == .ended {
+            endGesture()
+        }
+    }
+    @IBAction func handlePinch(recognizer : UIPinchGestureRecognizer) {
+        if let view = recognizer.view {
+            view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
+            recognizer.scale = 1
+        }
+        if recognizer.state == .ended {
+            endGesture()
+        }
+    }
+    @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
+        //set number of taps required to initiate function
+        recognizer.numberOfTapsRequired = 2
+        if let view = recognizer.view {
+            
+            
+            //returns to original size and rotation
+            view.transform = CGAffineTransform.identity
+            imageView.frame.size = blurView.frame.size
+            //returns image to center
+            view.center = self.view.center
+            
+//            var rotation = atan2(imageView.transform.b, imageView.transform.a)
+//            rotation = rotation * CGFloat((180 / Double.pi))
+//
+//            print ("transform b \(imageView.transform.b)")
+//            print ("transform a \(imageView.transform.a)")
+            
+        }
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //set image as image selected from previouse screen
+        imageView.image = imageEditorViewModel.photo
+        //Add blur to entire view
+        blurView.blurView(style: .regular)
+        //allows user to keep button pressed to change value
+        gridStepper.autorepeat = true
+        //set initial value then min and max
+        gridStepper.value = 4
+        gridStepper.maximumValue = 10
+        gridStepper.minimumValue = 2
+        
+    }
+    
+    
+    //using viewDidLayoutSubview to calculate sizes required for screen used
+    override func viewDidLayoutSubviews() {
+        super .viewDidLayoutSubviews()
+        //calculate size and position of grid on the current screen used
+        let gridViewXLocation = gridView.frame.origin.x
+        let gridViewYLocation = gridView.frame.origin.y
+        let gridViewWidth = gridView.frame.width
+        let gridViewHeight = gridView.bounds.height
+        //implament hole in blur in location of grid
+        blurView.holeInBlur(xPosition: gridViewXLocation, yPosition: gridViewYLocation, width: gridViewWidth, height: gridViewHeight)
+    }
+    
+    func endGesture() {
+        
+        
+        
+        let ratio = blurView.frame.height / blurView.frame.width
+        print ("Ratio \(ratio)")
+
+        var rotation = atan2(imageView.transform.b, imageView.transform.a)
+        rotation = rotation * CGFloat((180 / Double.pi))
+        
+        print ("minX\(imageView.frame.minX)")
+        print ("origin X \(imageView.frame.origin.x)")
+        
         
         //Set limit of image pan
         //top
@@ -74,95 +153,32 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         if imageView.frame.minX <= gridView.frame.minX && (imageView.frame.minX + imageView.frame.width) < (gridView.frame.minX + gridView.frame.width) {
             UIView.animate(withDuration: 0.3) {
 
-            self.imageView.frame.origin.x = ((self.gridView.frame.minX + self.gridView.frame.width) - (self.imageView.frame.minX + self.imageView.frame.width))
+                self.imageView.frame.origin.x = (self.gridView.frame.minX + (self.gridView.frame.width - self.imageView.frame.width))
             }
         }
         //bottom
         if imageView.frame.minY <= gridView.frame.minY && (imageView.frame.minY + imageView.frame.height) < (gridView.frame.minY + gridView.frame.height) {
             UIView.animate(withDuration: 0.3) {
-//                self.imageView.center = self.gridView.center
-                self.imageView.frame.origin.y = ((self.gridView.frame.minY + self.gridView.frame.height) - (self.imageView.frame.minY + self.imageView.frame.height))
+                //                self.imageView.center = self.gridView.center
+                self.imageView.frame.origin.y = (self.gridView.frame.minY + ((self.gridView.frame.height - self.imageView.frame.height)))
             }
         }
         
-        print ("Grid minX \(gridView.frame.minX)")
-        print ("minX \(imageView.frame.minX)")
-        print ("imageView.frame.width \(imageView.frame.width)")
-        print ("gridView.frame.width \(gridView.frame.width)")
-        
-        print ("imageView.frame.height \(imageView.frame.height)")
-        print ("gridView.frame.height \(gridView.frame.height)")
+        if (30 ... 60).contains(rotation) || (120 ... 150).contains(rotation) || (-60 ... -30).contains(rotation) || (-150 ... -120).contains(rotation) {
+            print ("rotation called")
+            imageView.frame.size.width = 2 * gridView.frame.size.width
+            imageView.frame.size.height = 2 * (gridView.frame.size.width * ratio)
+            imageView.center = gridView.center
+        }
+        else {
+            if imageView.frame.width < gridView.frame.width || imageView.frame.height < gridView.frame.height {
+                    imageView.frame.size.height = gridView.frame.size.width * ratio
+                    imageView.frame.size.width = gridView.frame.size.width
+                    imageView.center = gridView.center
+            }
+        }
+    }
     
-    }
-    @IBAction func handleRotate(recognizer : UIRotationGestureRecognizer) {
-        if let view = recognizer.view {
-            view.transform = view.transform.rotated(by: recognizer.rotation)
-            recognizer.rotation = 0
-        }
-//        //show roatetion value
-//        var rotation = atan2(imageView.transform.b, imageView.transform.a)
-//        rotation = rotation * CGFloat((180 / Double.pi))
-//        print (rotation)
-    }
-    @IBAction func handlePinch(recognizer : UIPinchGestureRecognizer) {
-        if let view = recognizer.view {
-            view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
-            recognizer.scale = 1
-        }
-        //if picture height and width become less than grid size - resize and centre
-        if imageView.frame.size.height < gridView.frame.size.height {
-            imageView.frame.size.height = gridView.frame.size.height
-            imageView.center = gridView.center
-        }
-        if imageView.frame.size.width < gridView.frame.size.width {
-            imageView.frame.size.width = gridView.frame.size.width
-            imageView.center = gridView.center
-        }
-        if imageView.frame.width < gridView.frame.width {
-            imageView.frame.size.width = gridView.frame.size.width
-        }
-        if imageView.frame.height < gridView.frame.height {
-            imageView.frame.size.height = gridView.frame.size.height
-        }
-    }
-    @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
-            //set number of taps required to initiate function
-            recognizer.numberOfTapsRequired = 2
-            if let view = recognizer.view {
-
-
-                //returns to original size and rotation
-                view.transform = CGAffineTransform.identity
-                imageView.frame.size = blurView.frame.size
-                //returns image to center
-                view.center = self.view.center
-            }
-        }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //set image as image selected from previouse screen
-        imageView.image = imageEditorViewModel.photo
-        //Add blur to entire view
-        blurView.blurView(style: .regular)
-        //allows user to keep button pressed to change value
-        gridStepper.autorepeat = true
-        //set initial value then min and max
-        gridStepper.value = 4
-        gridStepper.maximumValue = 10
-        gridStepper.minimumValue = 2
-        
-    }
-    //using viewDidLayoutSubview to calculate sizes required for screen used
-    override func viewDidLayoutSubviews() {
-        super .viewDidLayoutSubviews()
-        //calculate size and position of grid on the current screen used
-        let gridViewXLocation = gridView.frame.origin.x
-        let gridViewYLocation = gridView.frame.origin.y
-        let gridViewWidth = gridView.frame.width
-        let gridViewHeight = gridView.bounds.height
-        //implament hole in blur in location of grid
-        blurView.holeInBlur(xPosition: gridViewXLocation, yPosition: gridViewYLocation, width: gridViewWidth, height: gridViewHeight)
-    }
     func assignDependancies(imageEditorFlowController: ImageEditorFlowController, imageEditorViewModel: ImageEditorViewModel){
         self.imageEditorFlowController = imageEditorFlowController
         self.imageEditorViewModel = imageEditorViewModel
@@ -171,7 +187,4 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-//    func gridSizeSquared() {
-//        grid.gridSize = Int(sender.value)
-//    }
 }
