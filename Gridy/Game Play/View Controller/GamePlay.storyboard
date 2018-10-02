@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X2x-93-sSM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X2x-93-sSM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,27 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oa0-2N-KT8">
-                                <rect key="frame" x="16" y="20" width="343" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="PXN-sn-vVf"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pSu-gv-mBt">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <rect key="frame" x="15" y="20" width="345" height="152"/>
+                                <color key="backgroundColor" red="0.61568627450000002" green="0.59215686270000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pSu-gv-mBt">
+                                    <size key="itemSize" width="70" height="70"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GamePlayUICollectionVeiwCell" id="Auf-jp-CQ7" customClass="GamePlayUICollectionVeiwCell" customModule="Gridy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bku-Tz-zF5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bku-Tz-zF5">
+                                                    <rect key="frame" x="0.0" y="-28" width="80" height="80"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -60,25 +56,31 @@
                                     <outlet property="delegate" destination="X2x-93-sSM" id="ZGX-jj-dn2"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fnm-8p-fz8">
-                                <rect key="frame" x="10" y="350" width="355" height="297"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-RC-8i0" customClass="Grid" customModule="Gridy" customModuleProvider="target">
+                                <rect key="frame" x="30" y="182" width="315" height="303"/>
+                                <color key="backgroundColor" red="0.61568627450000002" green="0.59215686270000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Fnm-8p-fz8" secondAttribute="bottom" constant="20" symbolic="YES" id="IKu-1m-tgT"/>
-                            <constraint firstItem="Oa0-2N-KT8" firstAttribute="trailing" secondItem="GMU-XL-wQ0" secondAttribute="trailingMargin" id="JXc-hp-GoG"/>
-                            <constraint firstItem="Oa0-2N-KT8" firstAttribute="leading" secondItem="GMU-XL-wQ0" secondAttribute="leadingMargin" id="OzA-6e-e2X"/>
-                            <constraint firstItem="Fnm-8p-fz8" firstAttribute="leading" secondItem="9QY-LS-w7e" secondAttribute="leading" constant="10" id="Sm4-Eh-WzM"/>
-                            <constraint firstItem="Oa0-2N-KT8" firstAttribute="centerX" secondItem="Fnm-8p-fz8" secondAttribute="centerX" id="gog-vf-XTa"/>
-                            <constraint firstItem="Oa0-2N-KT8" firstAttribute="top" secondItem="9QY-LS-w7e" secondAttribute="top" id="nCM-me-Onj"/>
-                            <constraint firstItem="Fnm-8p-fz8" firstAttribute="top" secondItem="Oa0-2N-KT8" secondAttribute="bottom" constant="30" id="y6S-Nl-F7a"/>
+                            <constraint firstItem="Oa0-2N-KT8" firstAttribute="leading" secondItem="9QY-LS-w7e" secondAttribute="leading" constant="15" id="2Pj-aq-u20"/>
+                            <constraint firstItem="Oa0-2N-KT8" firstAttribute="top" secondItem="9QY-LS-w7e" secondAttribute="top" id="4sW-Aq-fLz"/>
+                            <constraint firstItem="ooq-RC-8i0" firstAttribute="top" secondItem="Oa0-2N-KT8" secondAttribute="bottom" constant="10" id="QSj-H1-1xT"/>
+                            <constraint firstItem="ooq-RC-8i0" firstAttribute="centerY" secondItem="GMU-XL-wQ0" secondAttribute="centerY" id="Ug1-83-dIu"/>
+                            <constraint firstItem="9QY-LS-w7e" firstAttribute="trailing" secondItem="Oa0-2N-KT8" secondAttribute="trailing" constant="15" id="fcH-i5-OR7"/>
+                            <constraint firstItem="ooq-RC-8i0" firstAttribute="leading" secondItem="9QY-LS-w7e" secondAttribute="leading" constant="30" id="fmS-pn-bgU"/>
+                            <constraint firstItem="Oa0-2N-KT8" firstAttribute="top" secondItem="9QY-LS-w7e" secondAttribute="top" id="moh-un-RLp"/>
+                            <constraint firstItem="Oa0-2N-KT8" firstAttribute="leading" secondItem="9QY-LS-w7e" secondAttribute="leading" constant="15" id="nxP-eC-Rne"/>
+                            <constraint firstItem="ooq-RC-8i0" firstAttribute="top" secondItem="Oa0-2N-KT8" secondAttribute="bottom" constant="10" id="pcP-lq-B9G"/>
+                            <constraint firstItem="ooq-RC-8i0" firstAttribute="centerX" secondItem="GMU-XL-wQ0" secondAttribute="centerX" id="sqV-Ng-Jfn"/>
+                            <constraint firstItem="9QY-LS-w7e" firstAttribute="trailing" secondItem="Oa0-2N-KT8" secondAttribute="trailing" constant="15" id="vm7-0c-DCe"/>
+                            <constraint firstItem="9QY-LS-w7e" firstAttribute="bottom" secondItem="ooq-RC-8i0" secondAttribute="bottom" constant="182" id="zIo-OX-M3P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9QY-LS-w7e"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Oa0-2N-KT8" id="Nas-IS-3yN"/>
-                        <outlet property="userSelectedImage" destination="Fnm-8p-fz8" id="LtN-Qv-rbI"/>
+                        <outlet property="puzzleGrid" destination="ooq-RC-8i0" id="Dib-0k-kJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKi-a7-MWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
