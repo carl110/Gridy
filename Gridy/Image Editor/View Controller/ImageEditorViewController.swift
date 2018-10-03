@@ -85,13 +85,6 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
             imageView.frame.size = blurView.frame.size
             //returns image to center
             view.center = self.view.center
-            
-//            var rotation = atan2(imageView.transform.b, imageView.transform.a)
-//            rotation = rotation * CGFloat((180 / Double.pi))
-//
-//            print ("transform b \(imageView.transform.b)")
-//            print ("transform a \(imageView.transform.a)")
-            
         }
     }
     override func viewDidLoad() {
@@ -104,7 +97,17 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         gridStepper.autorepeat = true
         //set initial value then min and max
         gridStepper.value = 4
-        gridStepper.maximumValue = 10
+        //check if device being used is iPad
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
+        {
+            // Ipad
+            gridStepper.maximumValue = 10
+        }
+        else
+        {
+            // Iphone
+            gridStepper.maximumValue = 6
+        }
         gridStepper.minimumValue = 2
         
     }
@@ -131,11 +134,27 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
 
         var rotation = atan2(imageView.transform.b, imageView.transform.a)
         rotation = rotation * CGFloat((180 / Double.pi))
+
         
-        print ("minX\(imageView.frame.minX)")
-        print ("origin X \(imageView.frame.origin.x)")
-        
-        
+       
+
+        if (30 ... 60).contains(rotation) || (120 ... 150).contains(rotation) || (-60 ... -30).contains(rotation) || (-150 ... -120).contains(rotation) {
+            UIView.animate(withDuration: 0.3) {
+            print ("rotation called")
+                self.imageView.frame.size.width = 2 * self.gridView.frame.size.width
+                self.imageView.frame.size.height = 2 * (self.gridView.frame.size.width * ratio)
+                self.imageView.center = self.gridView.center
+            }
+        }
+        else {
+            if imageView.frame.width < gridView.frame.width || imageView.frame.height < gridView.frame.height {
+                UIView.animate(withDuration: 0.3) {
+                    self.imageView.frame.size.height = self.gridView.frame.size.width * ratio
+                    self.imageView.frame.size.width = self.gridView.frame.size.width
+                    self.imageView.center = self.gridView.center
+                }
+            }
+        }
         //Set limit of image pan
         //top
         if imageView.frame.minX > gridView.frame.minX {
@@ -152,7 +171,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         //right
         if imageView.frame.minX <= gridView.frame.minX && (imageView.frame.minX + imageView.frame.width) < (gridView.frame.minX + gridView.frame.width) {
             UIView.animate(withDuration: 0.3) {
-
+                
                 self.imageView.frame.origin.x = (self.gridView.frame.minX + (self.gridView.frame.width - self.imageView.frame.width))
             }
         }
@@ -161,20 +180,6 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
             UIView.animate(withDuration: 0.3) {
                 //                self.imageView.center = self.gridView.center
                 self.imageView.frame.origin.y = (self.gridView.frame.minY + ((self.gridView.frame.height - self.imageView.frame.height)))
-            }
-        }
-        
-        if (30 ... 60).contains(rotation) || (120 ... 150).contains(rotation) || (-60 ... -30).contains(rotation) || (-150 ... -120).contains(rotation) {
-            print ("rotation called")
-            imageView.frame.size.width = 2 * gridView.frame.size.width
-            imageView.frame.size.height = 2 * (gridView.frame.size.width * ratio)
-            imageView.center = gridView.center
-        }
-        else {
-            if imageView.frame.width < gridView.frame.width || imageView.frame.height < gridView.frame.height {
-                    imageView.frame.size.height = gridView.frame.size.width * ratio
-                    imageView.frame.size.width = gridView.frame.size.width
-                    imageView.center = gridView.center
             }
         }
     }

@@ -35,8 +35,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bku-Tz-zF5">
-                                                    <rect key="frame" x="0.0" y="-28" width="80" height="80"/>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bku-Tz-zF5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <gestureRecognizers/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="cxY-QG-VMf" appends="YES" id="7en-JK-9uP"/>
+                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -84,6 +88,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKi-a7-MWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="cxY-QG-VMf">
+                    <connections>
+                        <action selector="handlePanWithRecognizer:" destination="X2x-93-sSM" id="Ux4-ks-v3t"/>
+                        <outlet property="delegate" destination="X2x-93-sSM" id="WUa-SE-xbS"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="77.599999999999994" y="205.54722638680661"/>
         </scene>
