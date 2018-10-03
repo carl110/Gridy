@@ -141,8 +141,8 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         if (30 ... 60).contains(rotation) || (120 ... 150).contains(rotation) || (-60 ... -30).contains(rotation) || (-150 ... -120).contains(rotation) {
             UIView.animate(withDuration: 0.3) {
             print ("rotation called")
-                self.imageView.frame.size.width = 2 * self.gridView.frame.size.width
-                self.imageView.frame.size.height = 2 * (self.gridView.frame.size.width * ratio)
+                self.imageView.frame.size.width = 1.25 * self.gridView.frame.size.width
+                self.imageView.frame.size.height = 1.25 * (self.gridView.frame.size.width * ratio)
                 self.imageView.center = self.gridView.center
             }
         }

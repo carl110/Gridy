@@ -60,7 +60,7 @@
                                     <outlet property="delegate" destination="X2x-93-sSM" id="ZGX-jj-dn2"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-RC-8i0" customClass="Grid" customModule="Gridy" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-RC-8i0" customClass="Grid" customModule="Gridy" customModuleProvider="target">
                                 <rect key="frame" x="30" y="182" width="315" height="303"/>
                                 <color key="backgroundColor" red="0.61568627450000002" green="0.59215686270000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
