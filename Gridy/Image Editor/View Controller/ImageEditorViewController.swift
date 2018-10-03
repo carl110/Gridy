@@ -44,12 +44,13 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
-        let translation = recognizer.translation(in: self.imageView)
+        //use of superview to ensure pan uses orientation of screen for pan and not the image(without image pan would be backwards if image rotated)
+        let translation = recognizer.translation(in: self.imageView.superview)
         if let view = recognizer.view {
             view.center = CGPoint(x:view.center.x + translation.x,
                                   y:view.center.y + translation.y)
         }
-        recognizer.setTranslation(CGPoint.zero, in: self.imageView)
+        recognizer.setTranslation(CGPoint.zero, in: self.imageView.superview)
         
         if recognizer.state == .ended {
             endGesture()
