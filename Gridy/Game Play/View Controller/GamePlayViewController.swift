@@ -19,9 +19,29 @@ class GamePlayViewController: UIViewController {
     var shuffledPhoto: [UIImage] = []
     var gridSize = Int()
 
+    @IBOutlet weak var superView: UIView!
     @IBOutlet weak var puzzleGrid: Grid!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBAction func handleLongTap(recognizer: UILongPressGestureRecognizer) {
+        print ("Long Press")
+        let chosen = recognizer.location(in: self.collectionView)
+        //identify cell that was pressed
+        if let indexPath = self.collectionView.indexPathForItem(at: chosen) {
+            
+            let cell = self.collectionView.cellForItem(at: indexPath)
+            
+            cell?.removeFromSuperview()
+            
+            self.view.addSubview(recognizer.view!)
+
+            
+        }
+        else {
+                print ("Couldnt find index path")
+            }
+        }
     
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: self.collectionView)
@@ -55,6 +75,11 @@ class GamePlayViewController: UIViewController {
     func assignDependancies(gamePlayFlowController: GamePlayFlowController, gamePlayViewModel: GamePlayViewModel){
         self.gamePlayFlowController = gamePlayFlowController
         self.gamePlayViewModel = gamePlayViewModel
+    }
+    
+    //Allows all gestures to be used at the same time - requires UIGestureRecognizerDelegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 

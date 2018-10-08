@@ -39,11 +39,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <gestureRecognizers/>
                                                     <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="cxY-QG-VMf" appends="YES" id="7en-JK-9uP"/>
+                                                        <outletCollection property="gestureRecognizers" destination="kJ5-7J-MDM" appends="YES" id="Irs-Go-muK"/>
+                                                        <outletCollection property="gestureRecognizers" destination="c0l-dE-AWN" appends="YES" id="eQh-tF-rXm"/>
                                                     </connections>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="bku-Tz-zF5" secondAttribute="trailing" id="Ach-FL-gv5"/>
                                             <constraint firstItem="bku-Tz-zF5" firstAttribute="top" secondItem="Auf-jp-CQ7" secondAttribute="top" id="DzI-pS-4YI"/>
@@ -66,6 +68,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Oa0-2N-KT8" firstAttribute="leading" secondItem="9QY-LS-w7e" secondAttribute="leading" constant="15" id="2Pj-aq-u20"/>
                             <constraint firstItem="Oa0-2N-KT8" firstAttribute="top" secondItem="9QY-LS-w7e" secondAttribute="top" id="4sW-Aq-fLz"/>
@@ -88,10 +91,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKi-a7-MWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="cxY-QG-VMf">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kJ5-7J-MDM">
                     <connections>
-                        <action selector="handlePanWithRecognizer:" destination="X2x-93-sSM" id="Ux4-ks-v3t"/>
-                        <outlet property="delegate" destination="X2x-93-sSM" id="WUa-SE-xbS"/>
+                        <action selector="handleLongTapWithRecognizer:" destination="X2x-93-sSM" id="E4L-5c-xci"/>
+                        <outlet property="delegate" destination="X2x-93-sSM" id="aIx-c7-0k2"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="c0l-dE-AWN">
+                    <connections>
+                        <action selector="handlePanWithRecognizer:" destination="X2x-93-sSM" id="8X5-fe-cvs"/>
+                        <outlet property="delegate" destination="X2x-93-sSM" id="Bl4-7i-Ir7"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
