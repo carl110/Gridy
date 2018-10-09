@@ -129,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				89DC615C213D406900DB5937 /* GamePlayViewModel.swift */,
-				89EFC11021538E970010BBA0 /* GamePlayUICollectionViewCell.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -243,6 +242,7 @@
 				892F7F882139476D0003BE35 /* GridyIconButton.swift */,
 				892F7F8A213947830003BE35 /* GridyIconButton.xib */,
 				89DC6162213D7E1100DB5937 /* Grid.swift */,
+				89EFC11021538E970010BBA0 /* GamePlayUICollectionViewCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";

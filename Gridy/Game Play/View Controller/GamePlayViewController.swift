@@ -19,37 +19,43 @@ class GamePlayViewController: UIViewController {
     var shuffledPhoto: [UIImage] = []
     var gridSize = Int()
 
-    @IBOutlet weak var superView: UIView!
     @IBOutlet weak var puzzleGrid: Grid!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBAction func handleLongTap(recognizer: UILongPressGestureRecognizer) {
-        print ("Long Press")
+        
         let chosen = recognizer.location(in: self.collectionView)
         //identify cell that was pressed
         if let indexPath = self.collectionView.indexPathForItem(at: chosen) {
             
             let cell = self.collectionView.cellForItem(at: indexPath)
-            
-            cell?.removeFromSuperview()
-            
-            self.view.addSubview(recognizer.view!)
+            UIView.animate(withDuration: 0.3) {
+                cell?.removeFromSuperview()
+                
+                self.view.addSubview(cell!)
 
-            
-        }
-        else {
-                print ("Couldnt find index path")
             }
+        }
+
         }
     
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
+        let chosen = recognizer.location(in: self.collectionView)
+        //identify cell that was pressed
+        if let indexPath = self.collectionView.indexPathForItem(at: chosen) {
+            
+            let cell = self.collectionView.cellForItem(at: indexPath)
+
+        }
         let translation = recognizer.translation(in: self.collectionView)
         if let view = recognizer.view {
             view.center = CGPoint(x:view.center.x + translation.x,
                                   y:view.center.y + translation.y)
         }
         recognizer.setTranslation(CGPoint.zero, in: self.collectionView)
+        
+        print ("Photo no \(self.collectionView.visibleCells.endIndex)")
 
         }
     
@@ -66,7 +72,7 @@ class GamePlayViewController: UIViewController {
             let rand = Int(arc4random_uniform(UInt32(photoArray.count)))
             shuffledPhoto.append(photoArray[rand])
             photoArray.remove(at: rand)
-//            print (shuffledPhoto.indices)
+            print (shuffledPhoto.indices)
         }
 
     }
