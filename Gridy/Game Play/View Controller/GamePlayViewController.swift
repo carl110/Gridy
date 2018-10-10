@@ -24,38 +24,61 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBAction func handleLongTap(recognizer: UILongPressGestureRecognizer) {
-        
         let chosen = recognizer.location(in: self.collectionView)
         //identify cell that was pressed
         if let indexPath = self.collectionView.indexPathForItem(at: chosen) {
             
             let cell = self.collectionView.cellForItem(at: indexPath)
-            UIView.animate(withDuration: 0.3) {
+            
+        if recognizer.state == .began {
+        
+
+            
+
                 cell?.removeFromSuperview()
                 
                 self.view.addSubview(cell!)
+            
+            
+
+        
+        }
+            else if recognizer.state == .changed {
+                guard let view = cell else {
+                    return
+                }
+
+            
+            
+                let location = recognizer.location(in: self.view)
+                view.center = CGPoint (x: view.center.x + (location.x - view.center.x), y: view.center.y + (location.y - view.center.y))
+
+            
 
             }
         }
 
-        }
+            }
     
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
-        let chosen = recognizer.location(in: self.collectionView)
-        //identify cell that was pressed
-        if let indexPath = self.collectionView.indexPathForItem(at: chosen) {
+//        let chosen = recognizer.location(in: self.collectionView)
+//        //identify cell that was pressed
+//        if let indexPath = self.collectionView.indexPathForItem(at: chosen) {
+//
+//            let cell = self.collectionView.cellForItem(at: indexPath)
+//        }
+            let translation = recognizer.translation(in: self.view)
+            if let view = recognizer.view {
             
-            let cell = self.collectionView.cellForItem(at: indexPath)
+                view.center = CGPoint(x:view.center.x + translation.x,
+                                      y:view.center.y + translation.y)
+            }
+            recognizer.setTranslation(CGPoint.zero, in: self.view)
 
-        }
-        let translation = recognizer.translation(in: self.collectionView)
-        if let view = recognizer.view {
-            view.center = CGPoint(x:view.center.x + translation.x,
-                                  y:view.center.y + translation.y)
-        }
-        recognizer.setTranslation(CGPoint.zero, in: self.collectionView)
+    
+
         
-        print ("Photo no \(self.collectionView.visibleCells.endIndex)")
+//        print ("Photo no \(self.collectionView.visibleCells.endIndex)")
 
         }
     
