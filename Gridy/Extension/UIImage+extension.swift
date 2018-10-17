@@ -11,7 +11,8 @@ import UIKit
 
 extension UIImage {
     
-    func splitImage(_ rows: Int, _ columns: Int) -> [UIImage] {
+    func splitImage(_ rows: Int) -> [UIImage] {
+        let columns = rows
         let y = scale * (size.height / CGFloat(rows))
         let x = scale * (size.width / CGFloat(columns))
         var images: [UIImage] = []

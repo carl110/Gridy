@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oa0-2N-KT8">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oa0-2N-KT8" customClass="GamePlayCollectionView" customModule="Gridy" customModuleProvider="target">
                                 <rect key="frame" x="15" y="20" width="345" height="146"/>
                                 <color key="backgroundColor" red="0.61568627450000002" green="0.59215686270000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pSu-gv-mBt">
@@ -82,14 +82,13 @@
                         <viewLayoutGuide key="safeArea" id="9QY-LS-w7e"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="Oa0-2N-KT8" id="Nas-IS-3yN"/>
+                        <outlet property="gamePlayCollectionView" destination="Oa0-2N-KT8" id="snU-dL-n31"/>
                         <outlet property="puzzleGrid" destination="ooq-RC-8i0" id="Dib-0k-kJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKi-a7-MWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kJ5-7J-MDM">
                     <connections>
-                        <action selector="handleLongTapWithRecognizer:" destination="X2x-93-sSM" id="E4L-5c-xci"/>
                         <outlet property="delegate" destination="X2x-93-sSM" id="aIx-c7-0k2"/>
                     </connections>
                 </pongPressGestureRecognizer>

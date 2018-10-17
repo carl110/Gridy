@@ -1,25 +1,36 @@
 //
-//  UIButton+extension.swift
+//  GamePlayCollectionView.swift
 //  Gridy
 //
-//  Created by Carl Wainwright on 24/08/2018.
+//  Created by Carl Wainwright on 15/10/2018.
 //  Copyright © 2018 Carl Wainwright. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-extension GamePlayViewController : UICollectionViewDataSource {
+class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+
+
+    override func awakeFromNib() {
+        delegate = self
+        dataSource = self
+    }
+    
+    var puzzleImages: [UIImage] = []
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return shuffledPhoto.count
+        print (puzzleImages.count)
+        return puzzleImages.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GamePlayUICollectionVeiwCell", for: indexPath) as! GamePlayUICollectionVeiwCell
+        cell.config(puzzleImages: puzzleImages[indexPath.row])
 
-        for _ in shuffledPhoto {
-            cell.userImageView.image = shuffledPhoto[indexPath.item]
-        }
         return cell
     }
+
 }

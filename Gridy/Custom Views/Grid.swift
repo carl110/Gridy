@@ -14,10 +14,8 @@ class Grid: UIView {
     var gridSize: CGFloat = 4 {
         didSet {
 
-            //not pulling through bounds
             drawGrid()
 
-            print ("didSet")
 
         }
     }

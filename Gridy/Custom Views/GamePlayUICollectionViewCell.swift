@@ -11,7 +11,18 @@ import UIKit
 
 class GamePlayUICollectionVeiwCell: UICollectionViewCell {
     
+
     @IBOutlet weak var userImageView: UIImageView!
+    
+    func config (puzzleImages: UIImage) {
+        userImageView.image = puzzleImages
+    }
+    
+    override func prepareForReuse() {
+        userImageView.image = UIImage()
+    }
+    
+    
 
     
     
