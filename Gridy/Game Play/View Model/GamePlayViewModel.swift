@@ -24,7 +24,7 @@ class GamePlayViewModel {
     
     private func shuffledPhoto() -> [UIImage] {
 
-        return photo.splitImage(gridSize)
+        return photo.splitImage(gridSize).shuffled()
         }
     }
 

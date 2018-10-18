@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GamePlayUICollectionVeiwCell: UICollectionViewCell {
+class GamePlayUICollectionViewCell: UICollectionViewCell {
     
 
     @IBOutlet weak var userImageView: UIImageView!

@@ -27,7 +27,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GamePlayUICollectionVeiwCell", for: indexPath) as! GamePlayUICollectionVeiwCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GamePlayUICollectionViewCell", for: indexPath) as! GamePlayUICollectionViewCell
         cell.config(puzzleImages: puzzleImages[indexPath.row])
 
         return cell
