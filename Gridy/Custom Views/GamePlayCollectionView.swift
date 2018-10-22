@@ -33,4 +33,24 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         return cell
     }
 
+    
+    @objc func longPressGestureHandler(sender:UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            print ("longPress began")
+        case .changed:
+            print ("longPress changed")
+
+        case .ended:
+            print ("longPress ended")
+
+        default :
+            print("Default")
+        }
+    }
+    
+    
+    
+
+    
 }

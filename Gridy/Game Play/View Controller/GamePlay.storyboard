@@ -50,14 +50,12 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="userImageView" destination="bku-Tz-zF5" id="8Gn-fd-1t9"/>
-                                            <outletCollection property="gestureRecognizers" destination="c0l-dE-AWN" appends="YES" id="OoS-4O-A4P"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="X2x-93-sSM" id="s21-c8-FCH"/>
                                     <outlet property="delegate" destination="X2x-93-sSM" id="ZGX-jj-dn2"/>
-                                    <outletCollection property="gestureRecognizers" destination="kJ5-7J-MDM" appends="YES" id="e3M-fj-gAz"/>
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-RC-8i0" customClass="Grid" customModule="Gridy" customModuleProvider="target">
@@ -87,17 +85,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cKi-a7-MWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kJ5-7J-MDM">
-                    <connections>
-                        <outlet property="delegate" destination="X2x-93-sSM" id="aIx-c7-0k2"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="c0l-dE-AWN">
-                    <connections>
-                        <action selector="handlePanWithRecognizer:" destination="X2x-93-sSM" id="8X5-fe-cvs"/>
-                        <outlet property="delegate" destination="X2x-93-sSM" id="Bl4-7i-Ir7"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="77.599999999999994" y="205.54722638680661"/>
         </scene>
