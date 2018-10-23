@@ -52,13 +52,8 @@ class GamePlayViewController: UIViewController {
         
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
         gamePlayCollectionView.addGestureRecognizer(panGesture)
+        
 
-
-
-        let collectionView = GamePlayCollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(collectionView.longPressGestureHandler(sender:)))
-            gamePlayCollectionView.addGestureRecognizer(longPressGesture)
 
     }
 

@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
-    
-
+class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UIGestureRecognizerDelegate {
 
     override func awakeFromNib() {
         delegate = self
@@ -29,6 +27,9 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GamePlayUICollectionViewCell", for: indexPath) as! GamePlayUICollectionViewCell
         cell.config(puzzleImages: puzzleImages[indexPath.row])
+           let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureHandler(sender:)))
+        longPressGesture.delegate = self
+        cell.addGestureRecognizer(longPressGesture)
 
         return cell
     }
@@ -40,17 +41,13 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
             print ("longPress began")
         case .changed:
             print ("longPress changed")
-
         case .ended:
             print ("longPress ended")
-
         default :
             print("Default")
         }
     }
-    
-    
-    
 
+ 
     
 }
