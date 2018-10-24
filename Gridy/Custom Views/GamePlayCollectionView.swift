@@ -44,7 +44,6 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 print ("longPress began")
                 let cellImageView = cellView as? UIImageView
                 //Hide the cell in collectionView
-                AVA
                 cellView.isHidden = true
                 let newImageView = UIImageView(image: cellImageView?.image)
                 //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
