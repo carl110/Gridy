@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UIGestureRecognizerDelegate {
     
@@ -43,6 +44,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 print ("longPress began")
                 let cellImageView = cellView as? UIImageView
                 //Hide the cell in collectionView
+                AVA
                 cellView.isHidden = true
                 let newImageView = UIImageView(image: cellImageView?.image)
                 //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
@@ -54,6 +56,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 print ("longPress changed")
             case .ended:
                 print ("longPress ended")
+                cellView.isHidden = false
             default :
                 print("Default")
             }
