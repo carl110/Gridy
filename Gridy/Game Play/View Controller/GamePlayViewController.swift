@@ -17,44 +17,35 @@ class GamePlayViewController: UIViewController {
     fileprivate var gamePlayUICollectionViewCell: GamePlayUICollectionViewCell!
 
     var gridSize = Int()
-
+    var dragView = UIImageView()
 
     @IBOutlet weak var puzzleGrid: Grid!
     
     @IBOutlet weak var gamePlayCollectionView: GamePlayCollectionView!
-    
-//    @IBAction func handleLongTap(recognizer: UILongPressGestureRecognizer) {
-//        let chosen = recognizer.location(in: self.collectionView)
-//        //identify cell that was pressed
-//        if let indexPath = self.collectionView.indexPathForItem(at: chosen) {
-//            let cell = self.collectionView.cellForItem(at: indexPath)
-//        if recognizer.state == .began {
-//                cell?.removeFromSuperview()
-//                self.view.addSubview(cell!)
-//        }
-//            else if recognizer.state == .changed {
-//                guard let view = cell else {
-//                    return
-//                }
-//                let location = recognizer.location(in: self.view)
-//                view.center = CGPoint (x: view.center.x + (location.x - view.center.x), y: view.center.y + (location.y - view.center.y))
 //    
-    @objc func handlePan(sender: UIPanGestureRecognizer) {
-        let location = sender.location(in: view)
-        gamePlayCollectionView.center = location
-    }
+//    @objc func handlePan(sender: UIPanGestureRecognizer) {
+//        let location = sender.location(in: view)
+//        gamePlayCollectionView.center = location
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
+//        gridSize = gamePlayViewModel.gridSize
+//         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
+        
+//        let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
+//        gamePlayCollectionView.addGestureRecognizer(panGesture)
+        
+
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewDidAppear(true)
         gridSize = gamePlayViewModel.gridSize
-         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
-        
-        let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
-        gamePlayCollectionView.addGestureRecognizer(panGesture)
-        
-
-
+        gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
     }
 
     
