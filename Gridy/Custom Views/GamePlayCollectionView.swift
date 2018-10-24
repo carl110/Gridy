@@ -21,6 +21,8 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     }
     
     var puzzleImages: [UIImage] = []
+    var magicSound: AVAudioPlayer?
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print (puzzleImages.count)
@@ -43,8 +45,20 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
             case .began:
                 print ("longPress began")
                 let cellImageView = cellView as? UIImageView
+                let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
+                let url = URL(fileURLWithPath: path)
+                
+                do {
+                    magicSound = try AVAudioPlayer(contentsOf: url)
+                    magicSound?.play()
+                } catch {
+                    print("unable to find file")
+                }
+                
                 //Hide the cell in collectionView
                 cellView.isHidden = true
+                
+                
                 let newImageView = UIImageView(image: cellImageView?.image)
                 //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
                 newImageView.frame.size = CGSize(width: 20, height: 20)
