@@ -157,7 +157,6 @@
 			children = (
 				894516B521300D6600E472B2 /* Gridy */,
 				894516B421300D6600E472B2 /* Products */,
-				89F4162D21809AD200C5CBDB /* magicWand */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +171,7 @@
 		894516B521300D6600E472B2 /* Gridy */ = {
 			isa = PBXGroup;
 			children = (
+				89F4162F21809E7800C5CBDB /* Audio Files */,
 				89A41EEC21357DE600357DCC /* GridyImage */,
 				894516CE213011CB00E472B2 /* Model */,
 				89296B6C2133EB9E00B6D1F3 /* Main Screen */,
@@ -289,6 +289,14 @@
 				89DC6156213D3FEA00DB5937 /* GamePlayFlowController.swift */,
 			);
 			path = FlowController;
+			sourceTree = "<group>";
+		};
+		89F4162F21809E7800C5CBDB /* Audio Files */ = {
+			isa = PBXGroup;
+			children = (
+				89F4162D21809AD200C5CBDB /* magicWand */,
+			);
+			path = "Audio Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

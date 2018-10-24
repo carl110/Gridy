@@ -12,15 +12,16 @@ import AVFoundation
 
 class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UIGestureRecognizerDelegate {
     
- 
+    
     let gamePlayViewController = GamePlayViewController()
-
+    
     override func awakeFromNib() {
         delegate = self
         dataSource = self
     }
-    
+    //create empty array fo puzzleImages
     var puzzleImages: [UIImage] = []
+    //declare sound for use
     var magicSound: AVAudioPlayer?
     
     
@@ -39,15 +40,18 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     }
     
     @objc func longPressGestureHandler(sender:UILongPressGestureRecognizer) {
+        //capture image of the cell
         if let cellView = sender.view {
             //look at state of gesture
             switch sender.state {
             case .began:
                 print ("longPress began")
                 let cellImageView = cellView as? UIImageView
+                //locate sound file
                 let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
+                //create path for sound file
                 let url = URL(fileURLWithPath: path)
-                
+                //find and play sound file
                 do {
                     magicSound = try AVAudioPlayer(contentsOf: url)
                     magicSound?.play()
@@ -57,8 +61,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 
                 //Hide the cell in collectionView
                 cellView.isHidden = true
-                
-                
+                //create new Image of the image chosen
                 let newImageView = UIImageView(image: cellImageView?.image)
                 //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
                 newImageView.frame.size = CGSize(width: 20, height: 20)
