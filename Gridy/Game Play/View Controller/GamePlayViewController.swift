@@ -38,6 +38,7 @@ class GamePlayViewController: UIViewController {
 //        let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
 //        gamePlayCollectionView.addGestureRecognizer(panGesture)
         
+        
 
 
     }
@@ -46,6 +47,7 @@ class GamePlayViewController: UIViewController {
         super .viewDidAppear(true)
         gridSize = gamePlayViewModel.gridSize
         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
+        gamePlayCollectionView.gamePlayViewController = self
     }
 
     

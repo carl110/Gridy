@@ -12,8 +12,7 @@ import AVFoundation
 
 class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UIGestureRecognizerDelegate {
     
-    
-    let gamePlayViewController = GamePlayViewController()
+    var gamePlayViewController: GamePlayViewController!
     
     override func awakeFromNib() {
         delegate = self
@@ -35,18 +34,21 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         cell.config(puzzleImages: puzzleImages[indexPath.row])
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureHandler(sender:)))
         longPressGesture.delegate = self
-        cell.addGestureRecognizer(longPressGesture)
+        cell.userImageView.addGestureRecognizer(longPressGesture)
         return cell
     }
     
     @objc func longPressGestureHandler(sender:UILongPressGestureRecognizer) {
         //capture image of the cell
         if let cellView = sender.view {
+            let cellImageView = cellView as? UIImageView
+            //create new Image of the image chosen
+            let newImageView = UIImageView(image: cellImageView?.image)
             //look at state of gesture
             switch sender.state {
             case .began:
                 print ("longPress began")
-                let cellImageView = cellView as? UIImageView
+
                 //locate sound file
                 let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
                 //create path for sound file
@@ -58,21 +60,37 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 } catch {
                     print("unable to find file")
                 }
-                
                 //Hide the cell in collectionView
                 cellView.isHidden = true
-                //create new Image of the image chosen
-                let newImageView = UIImageView(image: cellImageView?.image)
                 //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
-                newImageView.frame.size = CGSize(width: 20, height: 20)
+                newImageView.frame.size = CGSize(width: gamePlayViewController.puzzleGrid.frame.width / CGFloat(gamePlayViewController.gridSize), height: gamePlayViewController.puzzleGrid.frame.height / CGFloat(gamePlayViewController.gridSize))
                 newImageView.center = sender.location(in: gamePlayViewController.view)
                 gamePlayViewController.dragView = newImageView
                 gamePlayViewController.view.addSubview(gamePlayViewController.dragView)
             case .changed:
                 print ("longPress changed")
+                //define cell and location to allow dragging
+                let cell = gamePlayViewController.dragView
+                let location = sender.location(in: gamePlayViewController.view)
+                            cell.center = CGPoint (x: cell.center.x + (location.x - cell.center.x), y: cell.center.y + (location.y - cell.center.y))
             case .ended:
                 print ("longPress ended")
-                cellView.isHidden = false
+            
+                if (sender.location(in: gamePlayViewController.view).x < gamePlayViewController.puzzleGrid.frame.minX) || (sender.location(in: gamePlayViewController.view).x > gamePlayViewController.puzzleGrid.frame.maxX) || (sender.location(in: gamePlayViewController.view).y < gamePlayViewController.puzzleGrid.frame.minY) || (sender.location(in: gamePlayViewController.view).y > gamePlayViewController.puzzleGrid.frame.maxY) {
+                    gamePlayViewController.dragView.removeFromSuperview()
+                    cellView.isHidden = false
+                }
+                
+//                if imageView.frame.maxX < gridView.frame.maxX {
+//                    UIView.animate(withDuration: 0.3) {
+//                        self.imageView.center = CGPoint(x: self.imageView.center.x + (self.gridView.frame.maxX - self.imageView.frame.maxX),
+//                                                        y: self.imageView.center.y)
+//                        let chosen = sender.location(in: gamePlayViewController.gamePlayCollectionView)
+//                        //identify cell that was pressed
+//                if let indexPath = gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: chosen) {
+//                    self.gamePlayViewController.gamePlayCollectionView.remove
+//                }
+//                cellView.isHidden = false
             default :
                 print("Default")
             }
