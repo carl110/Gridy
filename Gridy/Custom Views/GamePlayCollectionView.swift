@@ -44,6 +44,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
             let cellImageView = cellView as? UIImageView
             //create new Image of the image chosen
             let newImageView = UIImageView(image: cellImageView?.image)
+            
             //look at state of gesture
             switch sender.state {
             case .began:
@@ -75,22 +76,34 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                             cell.center = CGPoint (x: cell.center.x + (location.x - cell.center.x), y: cell.center.y + (location.y - cell.center.y))
             case .ended:
                 print ("longPress ended")
-            
-                if (sender.location(in: gamePlayViewController.view).x < gamePlayViewController.puzzleGrid.frame.minX) || (sender.location(in: gamePlayViewController.view).x > gamePlayViewController.puzzleGrid.frame.maxX) || (sender.location(in: gamePlayViewController.view).y < gamePlayViewController.puzzleGrid.frame.minY) || (sender.location(in: gamePlayViewController.view).y > gamePlayViewController.puzzleGrid.frame.maxY) {
+                // if puzzlePiece location outside of puzzleGrid area then remove the created piece and unhide cell in collectionView
+                let puzzleCellLocation = sender.location(in: gamePlayViewController.view)
+                if (puzzleCellLocation.x < gamePlayViewController.puzzleGrid.frame.minX) || (puzzleCellLocation.x > gamePlayViewController.puzzleGrid.frame.maxX) || (puzzleCellLocation.y < gamePlayViewController.puzzleGrid.frame.minY) || (puzzleCellLocation.y > gamePlayViewController.puzzleGrid.frame.maxY) {
                     gamePlayViewController.dragView.removeFromSuperview()
                     cellView.isHidden = false
+                } else {
+                    let puzzleCellSize = gamePlayViewController.puzzleGrid.frame.width / CGFloat(gamePlayViewController.gridSize)
+                    
+//                    let gridSizeSquared: Int = Int(pow(CGFloat(gamePlayViewController.gridSize),2))
+                    for cellsInGridByX in 0...gamePlayViewController.gridSize {
+
+                        if (puzzleCellLocation.x > gamePlayViewController.puzzleGrid.frame.minX + (CGFloat(cellsInGridByX) * puzzleCellSize)) && (puzzleCellLocation.x < (gamePlayViewController.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + puzzleCellSize)) {
+                            for cellsInGridByY in 0...gamePlayViewController.gridSize {
+                                if (puzzleCellLocation.y > gamePlayViewController.puzzleGrid.frame.minY + (CGFloat(cellsInGridByY) * puzzleCellSize)) && (puzzleCellLocation.y < (gamePlayViewController.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + puzzleCellSize)) {
+                            }
+                            UIView.animate(withDuration: 0.3) {
+                                self.gamePlayViewController.dragView.center = CGPoint(x: self.gamePlayViewController.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + (puzzleCellSize / 2), y: self.gamePlayViewController.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + (puzzleCellSize / 2))
+                                print (self.gamePlayViewController.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + (puzzleCellSize / 2))
+                                print (self.gamePlayViewController.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + (puzzleCellSize / 2))
+                                
+                            }
+                            //                        puzzleCellLocation = gamePlayViewController.puzzleGrid.frame.width
+                            
+                        }
+                        }
+                    }
                 }
-                
-//                if imageView.frame.maxX < gridView.frame.maxX {
-//                    UIView.animate(withDuration: 0.3) {
-//                        self.imageView.center = CGPoint(x: self.imageView.center.x + (self.gridView.frame.maxX - self.imageView.frame.maxX),
-//                                                        y: self.imageView.center.y)
-//                        let chosen = sender.location(in: gamePlayViewController.gamePlayCollectionView)
-//                        //identify cell that was pressed
-//                if let indexPath = gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: chosen) {
-//                    self.gamePlayViewController.gamePlayCollectionView.remove
-//                }
-//                cellView.isHidden = false
+
             default :
                 print("Default")
             }

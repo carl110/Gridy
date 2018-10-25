@@ -31,6 +31,11 @@ class GamePlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gridSize = gamePlayViewModel.gridSize
+        gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
+        gamePlayCollectionView.gamePlayViewController = self
+
+        
 //        Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
 //        gridSize = gamePlayViewModel.gridSize
 //         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
@@ -45,9 +50,6 @@ class GamePlayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super .viewDidAppear(true)
-        gridSize = gamePlayViewModel.gridSize
-        gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
-        gamePlayCollectionView.gamePlayViewController = self
     }
 
     
