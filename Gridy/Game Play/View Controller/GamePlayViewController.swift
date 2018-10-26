@@ -27,14 +27,14 @@ class GamePlayViewController: UIViewController {
 //        let location = sender.location(in: view)
 //        gamePlayCollectionView.center = location
 //    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //load grid with correct number of cells
+        puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize
         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
         gamePlayCollectionView.gamePlayViewController = self
-
         
 //        Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
 //        gridSize = gamePlayViewModel.gridSize

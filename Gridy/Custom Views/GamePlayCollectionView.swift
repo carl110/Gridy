@@ -25,7 +25,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print (puzzleImages.count)
+        print ("GamePlayCollectionView puzzleImages,count\(puzzleImages.count)")
         return puzzleImages.count
     }
     
@@ -48,8 +48,6 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
             //look at state of gesture
             switch sender.state {
             case .began:
-                print ("longPress began")
-
                 //locate sound file
                 let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
                 //create path for sound file
@@ -69,13 +67,11 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 gamePlayViewController.dragView = newImageView
                 gamePlayViewController.view.addSubview(gamePlayViewController.dragView)
             case .changed:
-                print ("longPress changed")
                 //define cell and location to allow dragging
                 let cell = gamePlayViewController.dragView
                 let location = sender.location(in: gamePlayViewController.view)
                             cell.center = CGPoint (x: cell.center.x + (location.x - cell.center.x), y: cell.center.y + (location.y - cell.center.y))
             case .ended:
-                print ("longPress ended")
                 // if puzzlePiece location outside of puzzleGrid area then remove the created piece and unhide cell in collectionView
                 let puzzleCellLocation = sender.location(in: gamePlayViewController.view)
                 if (puzzleCellLocation.x < gamePlayViewController.puzzleGrid.frame.minX) || (puzzleCellLocation.x > gamePlayViewController.puzzleGrid.frame.maxX) || (puzzleCellLocation.y < gamePlayViewController.puzzleGrid.frame.minY) || (puzzleCellLocation.y > gamePlayViewController.puzzleGrid.frame.maxY) {
@@ -83,20 +79,19 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                     cellView.isHidden = false
                 } else {
                     let puzzleCellSize = gamePlayViewController.puzzleGrid.frame.width / CGFloat(gamePlayViewController.gridSize)
-                    
-//                    let gridSizeSquared: Int = Int(pow(CGFloat(gamePlayViewController.gridSize),2))
+                    //loop to see where puzzle piece is and snap to closest cell
                     for cellsInGridByX in 0...gamePlayViewController.gridSize {
-
                         if (puzzleCellLocation.x > gamePlayViewController.puzzleGrid.frame.minX + (CGFloat(cellsInGridByX) * puzzleCellSize)) && (puzzleCellLocation.x < (gamePlayViewController.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + puzzleCellSize)) {
                             for cellsInGridByY in 0...gamePlayViewController.gridSize {
                                 if (puzzleCellLocation.y > gamePlayViewController.puzzleGrid.frame.minY + (CGFloat(cellsInGridByY) * puzzleCellSize)) && (puzzleCellLocation.y < (gamePlayViewController.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + puzzleCellSize)) {
                                     UIView.animate(withDuration: 0.3) {
-                                        self.gamePlayViewController.dragView.center = CGPoint(x: self.gamePlayViewController.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + (puzzleCellSize / 2), y: self.gamePlayViewController.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + (puzzleCellSize / 2))
+                                        self.gamePlayViewController.dragView.center = CGPoint(x:
+                                            self.gamePlayViewController.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + (puzzleCellSize / 2), y:
+                                            self.gamePlayViewController.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + (puzzleCellSize / 2))
                                     }
                                 }
                             //                        puzzleCellLocation = gamePlayViewController.puzzleGrid.frame.width
-                            
-                        }
+                            }
                         }
                     }
                 }
