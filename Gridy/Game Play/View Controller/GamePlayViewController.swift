@@ -22,11 +22,35 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var puzzleGrid: Grid!
     
     @IBOutlet weak var gamePlayCollectionView: GamePlayCollectionView!
-//    
-//    @objc func handlePan(sender: UIPanGestureRecognizer) {
-//        let location = sender.location(in: view)
-//        gamePlayCollectionView.center = location
-//    }
+  
+    @objc func handlePan(sender: UIPanGestureRecognizer) {
+        let location = sender.location(in: view)
+        dragView.center = location
+        print ("Pan start")
+
+        if sender.state == .ended {
+            let puzzleCellLocation = sender.location(in: view)
+            if (puzzleCellLocation.x < puzzleGrid.frame.minX) || (puzzleCellLocation.x > puzzleGrid.frame.maxX) || (puzzleCellLocation.y < puzzleGrid.frame.minY) || (puzzleCellLocation.y > puzzleGrid.frame.maxY) {
+                print ("return cell")
+            } else { //puzzle piece within the puzzle grid
+                let puzzleCellSize = puzzleGrid.frame.width / CGFloat(gridSize)
+                //loop to see where puzzle piece is and snap to closest cell
+                for cellsInGridByX in 0...gridSize {
+                    if (puzzleCellLocation.x > puzzleGrid.frame.minX + (CGFloat(cellsInGridByX) * puzzleCellSize)) && (puzzleCellLocation.x < (puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + puzzleCellSize)) {
+                        for cellsInGridByY in 0...gridSize {
+                            if (puzzleCellLocation.y > puzzleGrid.frame.minY + (CGFloat(cellsInGridByY) * puzzleCellSize)) && (puzzleCellLocation.y < (puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + puzzleCellSize)) {
+                                UIView.animate(withDuration: 0.3) {
+                                    self.dragView.center = CGPoint(x:
+                                        self.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + (puzzleCellSize / 2), y:
+                                        self.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + (puzzleCellSize / 2))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,21 +59,19 @@ class GamePlayViewController: UIViewController {
         gridSize = gamePlayViewModel.gridSize
         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
         gamePlayCollectionView.gamePlayViewController = self
+        let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
+        self.view.addGestureRecognizer(panGesture)
+//        dragView.isUserInteractionEnabled = true
         
 //        Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
 //        gridSize = gamePlayViewModel.gridSize
 //         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
         
-//        let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
-//        gamePlayCollectionView.addGestureRecognizer(panGesture)
         
+//        self.dragView.addGestureRecognizer(panGesture)
         
 
 
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super .viewDidAppear(true)
     }
 
     

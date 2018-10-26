@@ -48,17 +48,16 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
             //look at state of gesture
             switch sender.state {
             case .began:
-                //locate sound file
-                let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
-                //create path for sound file
-                let url = URL(fileURLWithPath: path)
-                //find and play sound file
-                do {
-                    magicSound = try AVAudioPlayer(contentsOf: url)
-                    magicSound?.play()
-                } catch {
-                    print("unable to find file")
-                }
+                print ("Long Press Began")
+             
+                        let chosen = sender.location(in: gamePlayViewController.gamePlayCollectionView)
+                        //identify cell that was pressed
+//                        if let indexPath = gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: chosen) {
+//                            let cell = gamePlayViewController.gamePlayCollectionView.cellForItem(at: indexPath)
+//
+
+ 
+
                 //Hide the cell in collectionView
                 cellView.isHidden = true
                 //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
@@ -66,18 +65,19 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 newImageView.center = sender.location(in: gamePlayViewController.view)
                 gamePlayViewController.dragView = newImageView
                 gamePlayViewController.view.addSubview(gamePlayViewController.dragView)
+                gamePlayViewController.dragView.isUserInteractionEnabled = true
             case .changed:
                 //define cell and location to allow dragging
-                let cell = gamePlayViewController.dragView
+                let dragViewCell = gamePlayViewController.dragView
                 let location = sender.location(in: gamePlayViewController.view)
-                            cell.center = CGPoint (x: cell.center.x + (location.x - cell.center.x), y: cell.center.y + (location.y - cell.center.y))
+                            dragViewCell.center = CGPoint (x: dragViewCell.center.x + (location.x - dragViewCell.center.x), y: dragViewCell.center.y + (location.y - dragViewCell.center.y))
             case .ended:
                 // if puzzlePiece location outside of puzzleGrid area then remove the created piece and unhide cell in collectionView
                 let puzzleCellLocation = sender.location(in: gamePlayViewController.view)
                 if (puzzleCellLocation.x < gamePlayViewController.puzzleGrid.frame.minX) || (puzzleCellLocation.x > gamePlayViewController.puzzleGrid.frame.maxX) || (puzzleCellLocation.y < gamePlayViewController.puzzleGrid.frame.minY) || (puzzleCellLocation.y > gamePlayViewController.puzzleGrid.frame.maxY) {
                     gamePlayViewController.dragView.removeFromSuperview()
                     cellView.isHidden = false
-                } else {
+                } else { //puzzle piece within the puzzle grid
                     let puzzleCellSize = gamePlayViewController.puzzleGrid.frame.width / CGFloat(gamePlayViewController.gridSize)
                     //loop to see where puzzle piece is and snap to closest cell
                     for cellsInGridByX in 0...gamePlayViewController.gridSize {
@@ -88,9 +88,24 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                                         self.gamePlayViewController.dragView.center = CGPoint(x:
                                             self.gamePlayViewController.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + (puzzleCellSize / 2), y:
                                             self.gamePlayViewController.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + (puzzleCellSize / 2))
+                                        //locate sound file
+                                        let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
+                                        //create path for sound file
+                                        let url = URL(fileURLWithPath: path)
+                                        //find and play sound file
+                                        do {
+                                            self.magicSound = try AVAudioPlayer(contentsOf: url)
+                                            self.magicSound?.play()
+                                        } catch {
+                                            print("unable to find file")
+                                        }
+                                        //remove cell from Collectionview
+//                                        self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [IndexPath] )
+                                        
                                     }
                                 }
                             //                        puzzleCellLocation = gamePlayViewController.puzzleGrid.frame.width
+                                print (gamePlayViewController.dragView.description)
                             }
                         }
                     }
