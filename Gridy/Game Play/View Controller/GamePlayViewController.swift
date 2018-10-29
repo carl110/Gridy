@@ -20,17 +20,21 @@ class GamePlayViewController: UIViewController {
     var dragView = UIImageView()
 
     @IBOutlet weak var puzzleGrid: Grid!
-    
     @IBOutlet weak var gamePlayCollectionView: GamePlayCollectionView!
-  
+   
     @objc func handlePan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: view)
         dragView.center = location
-
         if sender.state == .ended {
             let puzzleCellLocation = sender.location(in: view)
+            //if location of dragview is outseide of the grid
             if (puzzleCellLocation.x < puzzleGrid.frame.minX) || (puzzleCellLocation.x > puzzleGrid.frame.maxX) || (puzzleCellLocation.y < puzzleGrid.frame.minY) || (puzzleCellLocation.y > puzzleGrid.frame.maxY) {
-                
+                //delecte dragView
+                dragView.removeFromSuperview()
+                //add image from dragView back to array
+                gamePlayCollectionView.puzzleImages.append(dragView.image!)
+                //reload UICollectionView to show added cell
+                gamePlayCollectionView.reloadData()
                 print ("return cell")
             } else { //puzzle piece within the puzzle grid
                 let puzzleCellSize = puzzleGrid.frame.width / CGFloat(gridSize)
@@ -53,7 +57,6 @@ class GamePlayViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize
@@ -61,18 +64,11 @@ class GamePlayViewController: UIViewController {
         gamePlayCollectionView.gamePlayViewController = self
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
         self.view.addGestureRecognizer(panGesture)
-
     }
 
-    
     func assignDependancies(gamePlayFlowController: GamePlayFlowController, gamePlayViewModel: GamePlayViewModel){
         self.gamePlayFlowController = gamePlayFlowController
         self.gamePlayViewModel = gamePlayViewModel
-    }
-    
-    //Allows all gestures to be used at the same time - requires UIGestureRecognizerDelegate
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
     }
 }
 

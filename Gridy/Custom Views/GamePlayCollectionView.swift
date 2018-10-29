@@ -106,36 +106,15 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                             }
                         }
                     }
-
+                    //use initialTouchLocation coordinates to work out which cell was pressed and remove from the puzzleImages array
                     if let indexPath = gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: initialTouchLocation) {
-                        let cell = gamePlayViewController.gamePlayCollectionView.cellForItem(at: indexPath)
                         puzzleImages.remove(at: indexPath.item)
-                        print(cell.debugDescription)
-                        print ("indexPath.item\(puzzleImages[indexPath.item])")
                         gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
-                        //                            gamePlayViewController.gamePlayCollectionView.reloadData()
+                        gamePlayViewController.gamePlayCollectionView.reloadData()
                     }
                 }
-
-            default :
-                print("Default")
+            default : break
             }
         }
     }
 }
-
-///    @IBAction func handleLongTap(recognizer: UILongPressGestureRecognizer) {
-//        let chosen = recognizer.location(in: self.collectionView)
-//        //identify cell that was pressed
-//        if let indexPath = self.collectionView.indexPathForItem(at: chosen) {
-//            let cell = self.collectionView.cellForItem(at: indexPath)
-//        if recognizer.state == .began {
-//                cell?.removeFromSuperview()
-//                self.view.addSubview(cell!)
-//        }
-//            else if recognizer.state == .changed {
-//                guard let view = cell else {
-//                    return
-//                }
-//                let location = recognizer.location(in: self.view)
-//                view.center = CGPoint (x: view.center.x + (location.x - view.center.x), y: view.center.y + (location.y - view.center.y))
