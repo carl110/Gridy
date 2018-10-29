@@ -22,6 +22,8 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     var puzzleImages: [UIImage] = []
     //declare sound for use
     var magicSound: AVAudioPlayer?
+    //initial location of touch to allow removal of cell
+    var initialTouchLocation: CGPoint!
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -38,7 +40,15 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         return cell
     }
     
+
+    //calculate the location of the inital touch
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        initialTouchLocation = touches.first!.location(in: gamePlayViewController.gamePlayCollectionView)
+    }
+    
     @objc func longPressGestureHandler(sender:UILongPressGestureRecognizer) {
+
         //capture image of the cell
         if let cellView = sender.view {
             let cellImageView = cellView as? UIImageView
@@ -49,15 +59,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
             switch sender.state {
             case .began:
                 print ("Long Press Began")
-             
-                        let chosen = sender.location(in: gamePlayViewController.gamePlayCollectionView)
-                        //identify cell that was pressed
-//                        if let indexPath = gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: chosen) {
-//                            let cell = gamePlayViewController.gamePlayCollectionView.cellForItem(at: indexPath)
-//
-
- 
-
+                
                 //Hide the cell in collectionView
                 cellView.isHidden = true
                 //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
@@ -99,15 +101,19 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                                         } catch {
                                             print("unable to find file")
                                         }
-                                        //remove cell from Collectionview
-//                                        self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [IndexPath] )
-                                        
                                     }
                                 }
-                            //                        puzzleCellLocation = gamePlayViewController.puzzleGrid.frame.width
-                                print (gamePlayViewController.dragView.description)
                             }
                         }
+                    }
+
+                    if let indexPath = gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: initialTouchLocation) {
+                        let cell = gamePlayViewController.gamePlayCollectionView.cellForItem(at: indexPath)
+                        puzzleImages.remove(at: indexPath.item)
+                        print(cell.debugDescription)
+                        print ("indexPath.item\(puzzleImages[indexPath.item])")
+                        gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
+                        //                            gamePlayViewController.gamePlayCollectionView.reloadData()
                     }
                 }
 

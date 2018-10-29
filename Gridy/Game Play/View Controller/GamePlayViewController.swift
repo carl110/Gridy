@@ -26,11 +26,11 @@ class GamePlayViewController: UIViewController {
     @objc func handlePan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: view)
         dragView.center = location
-        print ("Pan start")
 
         if sender.state == .ended {
             let puzzleCellLocation = sender.location(in: view)
             if (puzzleCellLocation.x < puzzleGrid.frame.minX) || (puzzleCellLocation.x > puzzleGrid.frame.maxX) || (puzzleCellLocation.y < puzzleGrid.frame.minY) || (puzzleCellLocation.y > puzzleGrid.frame.maxY) {
+                
                 print ("return cell")
             } else { //puzzle piece within the puzzle grid
                 let puzzleCellSize = puzzleGrid.frame.width / CGFloat(gridSize)
@@ -61,16 +61,6 @@ class GamePlayViewController: UIViewController {
         gamePlayCollectionView.gamePlayViewController = self
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
         self.view.addGestureRecognizer(panGesture)
-//        dragView.isUserInteractionEnabled = true
-        
-//        Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
-//        gridSize = gamePlayViewModel.gridSize
-//         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
-        
-        
-//        self.dragView.addGestureRecognizer(panGesture)
-        
-
 
     }
 
