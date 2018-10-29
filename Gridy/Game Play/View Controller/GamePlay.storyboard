@@ -65,6 +65,16 @@
                                     <constraint firstAttribute="width" secondItem="ooq-RC-8i0" secondAttribute="height" multiplier="1:1" id="eL2-6g-JKI"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqY-df-g1u">
+                                <rect key="frame" x="153" y="581" width="75" height="30"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="HINT">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="hint:" destination="X2x-93-sSM" eventType="touchUpInside" id="IRN-Nr-2vo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -72,15 +82,19 @@
                             <constraint firstItem="ooq-RC-8i0" firstAttribute="top" secondItem="Oa0-2N-KT8" secondAttribute="bottom" constant="10" id="21d-xj-73k"/>
                             <constraint firstItem="ooq-RC-8i0" firstAttribute="leading" secondItem="9QY-LS-w7e" secondAttribute="leading" constant="30" id="9wv-cE-IZ8"/>
                             <constraint firstItem="9QY-LS-w7e" firstAttribute="trailing" secondItem="ooq-RC-8i0" secondAttribute="trailing" constant="30" id="BbS-93-IHf"/>
+                            <constraint firstItem="WqY-df-g1u" firstAttribute="top" secondItem="ooq-RC-8i0" secondAttribute="bottom" constant="90" id="KkS-zp-EwJ"/>
                             <constraint firstItem="Oa0-2N-KT8" firstAttribute="top" secondItem="9QY-LS-w7e" secondAttribute="top" id="NaJ-JB-3eq"/>
+                            <constraint firstItem="WqY-df-g1u" firstAttribute="leading" secondItem="9QY-LS-w7e" secondAttribute="leading" constant="153" id="SDa-GW-7i8"/>
                             <constraint firstItem="ooq-RC-8i0" firstAttribute="centerY" secondItem="GMU-XL-wQ0" secondAttribute="centerY" id="VKm-bm-CXI"/>
                             <constraint firstItem="Oa0-2N-KT8" firstAttribute="leading" secondItem="9QY-LS-w7e" secondAttribute="leading" constant="15" id="iRT-lg-Qaj"/>
                             <constraint firstItem="9QY-LS-w7e" firstAttribute="trailing" secondItem="Oa0-2N-KT8" secondAttribute="trailing" constant="15" id="ppQ-8f-zcG"/>
+                            <constraint firstItem="9QY-LS-w7e" firstAttribute="trailing" secondItem="WqY-df-g1u" secondAttribute="trailing" constant="147" id="zFI-sD-oLx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9QY-LS-w7e"/>
                     </view>
                     <connections>
                         <outlet property="gamePlayCollectionView" destination="Oa0-2N-KT8" id="snU-dL-n31"/>
+                        <outlet property="hint" destination="WqY-df-g1u" id="v1q-9A-bKg"/>
                         <outlet property="puzzleGrid" destination="ooq-RC-8i0" id="Dib-0k-kJ6"/>
                     </connections>
                 </viewController>

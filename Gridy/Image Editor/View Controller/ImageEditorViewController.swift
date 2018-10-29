@@ -23,7 +23,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var gridView: Grid!
-    @IBOutlet weak var selectImage: UIButton!
+    @IBOutlet weak var selectImage: GridyIconButton!
     
     
     @IBAction func gridStepper(_ sender: UIStepper) {
@@ -188,6 +188,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
             gridStepper.maximumValue = 6
         }
         gridStepper.minimumValue = 2
+
         
     }
     

@@ -101,17 +101,19 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                                         } catch {
                                             print("unable to find file")
                                         }
+                                        //use initialTouchLocation coordinates to work out which cell was pressed and remove from the puzzleImages array
+                                        if let indexPath = self.gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: self.initialTouchLocation) {
+                                            self.puzzleImages.remove(at: indexPath.item)
+                                            self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
+                                            print (indexPath.description)
+                                            self.gamePlayViewController.gamePlayCollectionView.reloadData()
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                    //use initialTouchLocation coordinates to work out which cell was pressed and remove from the puzzleImages array
-                    if let indexPath = gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: initialTouchLocation) {
-                        puzzleImages.remove(at: indexPath.item)
-                        gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
-                        gamePlayViewController.gamePlayCollectionView.reloadData()
-                    }
+
                 }
             default : break
             }
