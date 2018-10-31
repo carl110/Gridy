@@ -54,12 +54,20 @@ extension UIView {
     func fadeIn(_ duration: TimeInterval = 5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.alpha = 1.0
-        }, completion: completion)  }
+        }, completion: completion)
+    }
     
     func fadeOut(_ duration: TimeInterval = 3, delay: TimeInterval = 1.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.alpha = 0.0
         }, completion: completion)
+    }
+    func roundCorners(for corners: UIRectCorner, cornerRadius: CGFloat)
+    {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        self.layer.mask = maskLayer
     }
 }
 

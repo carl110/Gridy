@@ -23,7 +23,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var gridView: Grid!
-    @IBOutlet weak var selectImage: GridyIconButton!
+    @IBOutlet weak var selectImage: UIButton!
     
     
     @IBAction func gridStepper(_ sender: UIStepper) {
@@ -168,6 +168,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
         //set image as image selected from previouse screen
         imageView.image = imageEditorViewModel.photo
         //Add blur to entire view
