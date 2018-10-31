@@ -103,10 +103,14 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                                         }
                                         //use initialTouchLocation coordinates to work out which cell was pressed and remove from the puzzleImages array
                                         if let indexPath = self.gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: self.initialTouchLocation) {
+                                            //works fine when all cells are visable
                                             self.puzzleImages.remove(at: indexPath.item)
                                             self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
-                                            print (indexPath.description)
-                                            self.gamePlayViewController.gamePlayCollectionView.reloadData()
+                                            dump(self.puzzleImages)
+                                            print ("indexPath \(indexPath)")
+                                            print ("indexPath item \(String(describing: self.gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: self.initialTouchLocation)))")
+                                            dump(self.puzzleImages)
+
                                         }
                                     }
                                 }
