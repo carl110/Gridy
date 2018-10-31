@@ -25,8 +25,6 @@ class GamePlayViewController: UIViewController {
     @IBOutlet weak var gamePlayCollectionView: GamePlayCollectionView!
    
     @IBAction func hint(_ sender: UIButton) {
-        //remove any previose view that may be present
-        completePuzzle.removeFromSuperview()
         //create size and location for hintView
         let hintImageView = UIImageView(image: gamePlayViewModel.photo)
         hintImageView.frame.size = CGSize(width: puzzleGrid.frame.width, height: puzzleGrid.frame.height)
@@ -35,7 +33,16 @@ class GamePlayViewController: UIViewController {
         completePuzzle.alpha = 0
         self.view.addSubview(completePuzzle)
         completePuzzle.fadeIn()
-        completePuzzle.fadeOut()
+        //wait 2 seconds from code run to run fadeout
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.completePuzzle.fadeOut()
+        }
+        //wait 6 seconds from code run to remove temp image from superview
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            self.completePuzzle.removeFromSuperview()
+            
+        }
+        
     }
     @objc func handlePan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: view)

@@ -52,7 +52,7 @@ extension UIView {
     }
     
     func fadeIn(_ duration: TimeInterval = 5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
-        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.alpha = 1.0
         }, completion: completion)  }
     
