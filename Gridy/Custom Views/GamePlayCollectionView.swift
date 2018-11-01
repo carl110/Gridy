@@ -39,7 +39,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GamePlayUICollectionViewCell", for: indexPath) as! GamePlayUICollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! GamePlayUICollectionViewCell
         cell.config(puzzleImages: puzzleImages[indexPath.row])
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureHandler(sender:)))
         longPressGesture.delegate = self

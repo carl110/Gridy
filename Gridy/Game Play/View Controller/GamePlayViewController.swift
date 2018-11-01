@@ -19,12 +19,15 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     var gridSize = Int()
     var dragView = UIImageView()
     var completePuzzle = UIImageView()
+     var additionalTime = 8.0
 
     @IBOutlet weak var hint: UIButton!
     @IBOutlet weak var puzzleGrid: Grid!
     @IBOutlet weak var gamePlayCollectionView: GamePlayCollectionView!
    
     @IBAction func hint(_ sender: UIButton) {
+        hint.disableButton()
+       
         //create size and location for hintView
         let hintImageView = UIImageView(image: gamePlayViewModel.photo)
         hintImageView.frame.size = CGSize(width: puzzleGrid.frame.width, height: puzzleGrid.frame.height)
@@ -33,16 +36,16 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         completePuzzle.alpha = 0
         self.view.addSubview(completePuzzle)
         completePuzzle.fadeIn()
-        //wait 2 seconds from code run to run fadeout
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        //wait 4 seconds from code run to run fadeout
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             self.completePuzzle.fadeOut()
         }
-        //wait 6 seconds from code run to remove temp image from superview
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+        //wait 8 seconds first time then an extra 10 seconds each time
+        DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) {
             self.completePuzzle.removeFromSuperview()
-            
+            self.hint.enableButton()
         }
-        
+        additionalTime += 10.0
     }
     @objc func handlePan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: view)
@@ -84,6 +87,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         hint.roundCorners(for: .allCorners, cornerRadius: 8)
+        hint.centerTextHorizontally(spacing: 2)
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize

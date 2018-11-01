@@ -169,6 +169,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
+        selectImage.centerTextHorizontally(spacing: 2)
         //set image as image selected from previouse screen
         imageView.image = imageEditorViewModel.photo
         //Add blur to entire view
