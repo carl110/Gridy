@@ -19,7 +19,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     var gridSize = Int()
     var dragView = UIImageView()
     var completePuzzle = UIImageView()
-     var additionalTime = 8.0
+     var additionalTime = 10.0
 
     @IBOutlet weak var hint: UIButton!
     @IBOutlet weak var puzzleGrid: Grid!
@@ -36,8 +36,8 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         completePuzzle.alpha = 0
         self.view.addSubview(completePuzzle)
         completePuzzle.fadeIn()
-        //wait 4 seconds from code run to run fadeout
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+        //wait 2 seconds from code run to run fadeout
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.completePuzzle.fadeOut()
         }
         //wait 8 seconds first time then an extra 10 seconds each time

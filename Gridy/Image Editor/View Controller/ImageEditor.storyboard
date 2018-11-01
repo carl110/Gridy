@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c2X-7m-zaB">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="ImageEditor" id="c2X-7m-zaB" customClass="ImageEditorViewController" customModule="Gridy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MSg-W3-ItH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVZ-Fc-cyN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="lgM-jx-ZZD" appends="YES" id="okK-CW-6ei"/>
@@ -29,11 +29,11 @@
                                 </connections>
                             </imageView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDE-fz-pYf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <gestureRecognizers/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-kG-JrL" customClass="Grid" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="30" y="170" width="315" height="315"/>
+                                <rect key="frame" x="30" y="170" width="260" height="260"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -41,8 +41,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-V2-dqi">
-                                <rect key="frame" x="120" y="587" width="135" height="30"/>
+                                <rect key="frame" x="92.5" y="400" width="135" height="30"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="5z8-Ob-Cgm"/>
+                                </constraints>
                                 <state key="normal" title="Select Image">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -57,7 +60,7 @@
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the + and - to change the grid size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkO-yr-NZi">
-                                <rect key="frame" x="30" y="40" width="298.5" height="21"/>
+                                <rect key="frame" x="30" y="40" width="299" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,9 +69,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="bottom" secondItem="II3-yw-grY" secondAttribute="bottom" id="0Ea-48-Ndk"/>
-                            <constraint firstItem="B1w-V2-dqi" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="120" id="1ku-Tf-YyI"/>
+                            <constraint firstItem="B1w-V2-dqi" firstAttribute="centerX" secondItem="iEg-kG-JrL" secondAttribute="centerX" id="9Zx-2B-SG6"/>
                             <constraint firstItem="5P0-Ah-PQX" firstAttribute="leading" secondItem="II3-yw-grY" secondAttribute="leading" constant="30" id="Fb8-y0-OVu"/>
-                            <constraint firstItem="II3-yw-grY" firstAttribute="trailing" secondItem="B1w-V2-dqi" secondAttribute="trailing" constant="120" id="Gt1-oJ-9ob"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="top" secondItem="II3-yw-grY" secondAttribute="top" constant="-20" id="HFf-Jh-AA5"/>
                             <constraint firstItem="II3-yw-grY" firstAttribute="trailing" secondItem="iEg-kG-JrL" secondAttribute="trailing" constant="30" id="Lcs-QD-Ilm"/>
                             <constraint firstItem="DVZ-Fc-cyN" firstAttribute="trailing" secondItem="II3-yw-grY" secondAttribute="trailing" id="NEb-13-Cjp"/>
