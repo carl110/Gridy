@@ -16,7 +16,7 @@ protocol GamePlayDelegate {
 }
 
 
-class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UIGestureRecognizerDelegate {
+class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var gamePlayViewController: GamePlayViewController!
     var gamePlayDelegate: GamePlayDelegate? = nil
@@ -42,7 +42,6 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! GamePlayUICollectionViewCell
         cell.config(puzzleImages: puzzleImages[indexPath.row])
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureHandler(sender:)))
-        longPressGesture.delegate = self
         cell.userImageView.addGestureRecognizer(longPressGesture)
         return cell
     }
@@ -81,12 +80,9 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 let location = sender.location(in: gamePlayViewController.view)
                             dragViewCell.center = CGPoint (x: dragViewCell.center.x + (location.x - dragViewCell.center.x), y: dragViewCell.center.y + (location.y - dragViewCell.center.y))
             case .ended:
-                // if puzzlePiece location outside of puzzleGrid area then remove the created piece and unhide cell in collectionView
                 let puzzleCellLocation = sender.location(in: gamePlayViewController.view)
-                if (puzzleCellLocation.x < gamePlayViewController.puzzleGrid.frame.minX) || (puzzleCellLocation.x > gamePlayViewController.puzzleGrid.frame.maxX) || (puzzleCellLocation.y < gamePlayViewController.puzzleGrid.frame.minY) || (puzzleCellLocation.y > gamePlayViewController.puzzleGrid.frame.maxY) {
-                    gamePlayViewController.dragView.removeFromSuperview()
-                    cellView.isHidden = false
-                } else { //puzzle piece within the puzzle grid
+               //check if puzzle piece is within the puzzleGrid
+                if gamePlayViewController.puzzleGrid.frame.contains(puzzleCellLocation) {
                     let puzzleCellSize = gamePlayViewController.puzzleGrid.frame.width / CGFloat(gamePlayViewController.gridSize)
                     //loop to see where puzzle piece is and snap to closest cell
                     for cellsInGridByX in 0...gamePlayViewController.gridSize {
@@ -128,6 +124,14 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                     }
 
                 }
+                    // if puzzlePiece location outside of puzzleGrid area then remove the created piece and unhide cell in collectionView
+                else {
+                    gamePlayViewController.dragView.removeFromSuperview()
+                    print ("puzzleCellLocation\(puzzleCellLocation)")
+                    print ("gamePlayViewController.puzzleGrid.frame.minX\(gamePlayViewController.puzzleGrid.frame)")
+                    
+                }
+                cellView.isHidden = false
             default : break
             }
         }
