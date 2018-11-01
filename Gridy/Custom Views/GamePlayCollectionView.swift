@@ -10,10 +10,17 @@ import Foundation
 import UIKit
 import AVFoundation
 
+
+protocol GamePlayDelegate {
+    func didEnd()
+}
+
+
 class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,UIGestureRecognizerDelegate {
     
     var gamePlayViewController: GamePlayViewController!
-    
+    var gamePlayDelegate: GamePlayDelegate? = nil
+
     override func awakeFromNib() {
         delegate = self
         dataSource = self
@@ -106,10 +113,12 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                                             //works fine when all cells are visable
                                             self.puzzleImages.remove(at: indexPath.item)
                                             self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
-                                            dump(self.puzzleImages)
+                      
                                             print ("indexPath \(indexPath)")
                                             print ("indexPath item \(String(describing: self.gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: self.initialTouchLocation)))")
-                                            dump(self.puzzleImages)
+                                       
+                                            
+                                            self.gamePlayDelegate?.didEnd()
 
                                         }
                                     }

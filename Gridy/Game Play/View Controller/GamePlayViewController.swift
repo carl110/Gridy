@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GamePlayViewController: UIViewController {
+class GamePlayViewController: UIViewController, GamePlayDelegate {
     
     fileprivate var gamePlayFlowController : GamePlayFlowController!
     fileprivate var gamePlayViewModel : GamePlayViewModel!
@@ -89,14 +89,17 @@ class GamePlayViewController: UIViewController {
         gridSize = gamePlayViewModel.gridSize
         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
         gamePlayCollectionView.gamePlayViewController = self
-        
+        gamePlayCollectionView.gamePlayDelegate = self
     }
     
-    override func viewDidLayoutSubviews() {
-        super .viewDidLayoutSubviews()
+    func didEnd() {
+        print ("didEnd")
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
+//        self.puzzleGrid.subviews.last!.addGestureRecognizer(panGesture)
         dragView.addGestureRecognizer(panGesture)
+        gamePlayCollectionView.reloadData()
     }
+    
 
     func assignDependancies(gamePlayFlowController: GamePlayFlowController, gamePlayViewModel: GamePlayViewModel){
         self.gamePlayFlowController = gamePlayFlowController
