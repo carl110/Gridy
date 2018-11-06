@@ -13,15 +13,10 @@ class Grid: UIView {
     private var path = UIBezierPath()
     var gridSize: CGFloat = 4 {
         didSet {
-
             drawGrid()
-
-
         }
     }
     override func draw(_ rect: CGRect) {
-        
-        print ("draw rect \(bounds.width) /n grid size \(gridSize)")
         drawGrid()
         UIColor.white.setStroke()
         path.stroke()
@@ -39,11 +34,8 @@ class Grid: UIView {
                 layer.removeFromSuperlayer()
             }
         }
-        
 
         let gridLayer = CAShapeLayer()
-        print ("draw grid")
-        print ("gridSize \(gridSize)")
         path = UIBezierPath()
         path.lineWidth = 2
         for index in 0...Int(gridSize) {
@@ -58,7 +50,6 @@ class Grid: UIView {
             path.move(to: start)
             path.addLine(to: end)
         }
-        print ("draw grid gridWidth \(gridWidth)")
         path.close()
 
         self.layer.addSublayer(gridLayer)

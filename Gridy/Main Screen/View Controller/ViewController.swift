@@ -20,16 +20,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var gridyPick: GridyIconButton!
     @IBOutlet weak var cameraSelect: GridyIconButton!
     @IBOutlet weak var photoLibrarySelect: GridyIconButton!
-    @IBAction func gridyPick(_ sender: GridyIconButton) {
-        //call pickRandom Func
-        pickRandom()
-    }
-    @IBAction func cameraSelect(_ sender: GridyIconButton) {
-        displayCamera()
-    }
-    @IBAction func photoLibrarySelect(_ sender: GridyIconButton) {
-        displayLibrary()
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //        PickButton.setImage(UIImage(named:"Gridy-name-small-grey"), for: .normal)
@@ -39,6 +30,16 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         photoLibrarySelect.gridyImageView.image = UIImage(named: "Gridy-library")
         cameraSelect.gridyLabelView.text = "Camera"
         cameraSelect.gridyImageView.image = UIImage(named: "Gridy-camera")
+    }
+    @IBAction func gridyPick(_ sender: GridyIconButton) {
+        //call pickRandom Func
+        pickRandom()
+    }
+    @IBAction func cameraSelect(_ sender: GridyIconButton) {
+        displayCamera()
+    }
+    @IBAction func photoLibrarySelect(_ sender: GridyIconButton) {
+        displayLibrary()
     }
     func assignDependancies(mainFlowController: MainFlowController) {
         self.mainFlowController = mainFlowController
@@ -115,8 +116,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     //push image picked in camera/library to newImage
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
         print ("imagePickerController")
         picker.dismiss(animated: true, completion: nil)

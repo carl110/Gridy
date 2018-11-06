@@ -25,6 +25,42 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var gridView: Grid!
     @IBOutlet weak var selectImage: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
+        selectImage.centerTextHorizontally(spacing: 2)
+        //set image as image selected from previouse screen
+        imageView.image = imageEditorViewModel.photo
+        //Add blur to entire view
+        blurView.blurView(style: .regular)
+        //allows user to keep button pressed to change value
+        gridStepper.autorepeat = true
+        //set initial value then min and max
+        gridStepper.value = 4
+        //check if device being used is iPad
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
+        {
+            // Ipad
+            gridStepper.maximumValue = 10
+        }
+        else
+        {
+            // Iphone
+            gridStepper.maximumValue = 6
+        }
+        gridStepper.minimumValue = 2
+    }
+    //using viewDidLayoutSubview to calculate sizes required for screen used
+    override func viewDidLayoutSubviews() {
+        super .viewDidLayoutSubviews()
+        //calculate size and position of grid on the current screen used
+        let gridViewXLocation = gridView.frame.origin.x
+        let gridViewYLocation = gridView.frame.origin.y
+        let gridViewWidth = gridView.frame.width
+        let gridViewHeight = gridView.bounds.height
+        //implament hole in blur in location of grid
+        blurView.holeInBlur(xPosition: gridViewXLocation, yPosition: gridViewYLocation, width: gridViewWidth, height: gridViewHeight)
+    }
     
     @IBAction func gridStepper(_ sender: UIStepper) {
 
@@ -165,46 +201,6 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
                                                 y: self.imageView.center.y + (self.gridView.frame.maxY - self.imageView.frame.maxY))
             }
         }
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
-        selectImage.centerTextHorizontally(spacing: 2)
-        //set image as image selected from previouse screen
-        imageView.image = imageEditorViewModel.photo
-        //Add blur to entire view
-        blurView.blurView(style: .regular)
-        //allows user to keep button pressed to change value
-        gridStepper.autorepeat = true
-        //set initial value then min and max
-        gridStepper.value = 4
-        //check if device being used is iPad
-        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
-        {
-            // Ipad
-            gridStepper.maximumValue = 10
-        }
-        else
-        {
-            // Iphone
-            gridStepper.maximumValue = 6
-        }
-        gridStepper.minimumValue = 2
-
-        
-    }
-    
-    
-    //using viewDidLayoutSubview to calculate sizes required for screen used
-    override func viewDidLayoutSubviews() {
-        super .viewDidLayoutSubviews()
-        //calculate size and position of grid on the current screen used
-        let gridViewXLocation = gridView.frame.origin.x
-        let gridViewYLocation = gridView.frame.origin.y
-        let gridViewWidth = gridView.frame.width
-        let gridViewHeight = gridView.bounds.height
-        //implament hole in blur in location of grid
-        blurView.holeInBlur(xPosition: gridViewXLocation, yPosition: gridViewYLocation, width: gridViewWidth, height: gridViewHeight)
     }
     func assignDependancies(imageEditorFlowController: ImageEditorFlowController, imageEditorViewModel: ImageEditorViewModel){
         self.imageEditorFlowController = imageEditorFlowController

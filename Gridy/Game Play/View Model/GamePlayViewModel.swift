@@ -27,16 +27,3 @@ class GamePlayViewModel {
         return photo.splitImage(gridSize).shuffled()
         }
     }
-
-    
-
-//    //split photo into segments
-//    photoArray = gamePlayViewModel.photo.splitImage(gridSize, gridSize)
-//
-////randomize the split photo
-//for _ in 0..<photoArray.count {
-//    let rand = Int(arc4random_uniform(UInt32(photoArray.count)))
-//    shuffledPhoto.append(photoArray[rand])
-//    photoArray.remove(at: rand)
-//    print (shuffledPhoto.indices)
-//}

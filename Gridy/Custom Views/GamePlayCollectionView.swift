@@ -15,16 +15,10 @@ protocol GamePlayDelegate {
     func didEnd()
 }
 
-
 class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var gamePlayViewController: GamePlayViewController!
     var gamePlayDelegate: GamePlayDelegate? = nil
-
-    override func awakeFromNib() {
-        delegate = self
-        dataSource = self
-    }
     //create empty array fo puzzleImages
     var puzzleImages: [UIImage] = []
     //declare sound for use
@@ -32,9 +26,17 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     //initial location of touch to allow removal of cell
     var initialTouchLocation: CGPoint!
     
-    
+    override func awakeFromNib() {
+        delegate = self
+        dataSource = self
+    }
+    //calculate the location of the inital touch
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        initialTouchLocation = touches.first!.location(in: gamePlayViewController.gamePlayCollectionView)
+    }
+ 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print ("GamePlayCollectionView puzzleImages,count\(puzzleImages.count)")
         return puzzleImages.count
     }
     
@@ -44,13 +46,6 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureHandler(sender:)))
         cell.userImageView.addGestureRecognizer(longPressGesture)
         return cell
-    }
-    
-
-    //calculate the location of the inital touch
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        initialTouchLocation = touches.first!.location(in: gamePlayViewController.gamePlayCollectionView)
     }
     
     @objc func longPressGestureHandler(sender:UILongPressGestureRecognizer) {
@@ -64,8 +59,6 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
             //look at state of gesture
             switch sender.state {
             case .began:
-                print ("Long Press Began")
-                
                 //Hide the cell in collectionView
                 cellView.isHidden = true
                 //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
@@ -109,13 +102,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                                             //works fine when all cells are visable
                                             self.puzzleImages.remove(at: indexPath.item)
                                             self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
-                      
-                                            print ("indexPath \(indexPath)")
-                                            print ("indexPath item \(String(describing: self.gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: self.initialTouchLocation)))")
-                                       
-                                            
                                             self.gamePlayDelegate?.didEnd()
-
                                         }
                                     }
                                 }
@@ -126,10 +113,8 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 }
                     // if puzzlePiece location outside of puzzleGrid area then remove the created piece and unhide cell in collectionView
                 else {
-                    gamePlayViewController.dragView.removeFromSuperview()
-                    print ("puzzleCellLocation\(puzzleCellLocation)")
-                    print ("gamePlayViewController.puzzleGrid.frame.minX\(gamePlayViewController.puzzleGrid.frame)")
                     
+                    gamePlayViewController.dragView.removeFromSuperview()
                 }
                 cellView.isHidden = false
             default : break

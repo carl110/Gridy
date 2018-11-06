@@ -19,11 +19,23 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     var gridSize = Int()
     var dragView = UIImageView()
     var completePuzzle = UIImageView()
-     var additionalTime = 10.0
+    var additionalTime = 10.0
 
     @IBOutlet weak var hint: UIButton!
     @IBOutlet weak var puzzleGrid: Grid!
     @IBOutlet weak var gamePlayCollectionView: GamePlayCollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        hint.roundCorners(for: .allCorners, cornerRadius: 8)
+        hint.centerTextHorizontally(spacing: 2)
+        //load grid with correct number of cells
+        puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
+        gridSize = gamePlayViewModel.gridSize
+        gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
+        gamePlayCollectionView.gamePlayViewController = self
+        gamePlayCollectionView.gamePlayDelegate = self
+    }
    
     @IBAction func hint(_ sender: UIButton) {
         hint.disableButton()
@@ -52,18 +64,12 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         dragView.center = location
         if sender.state == .ended {
             let puzzleCellLocation = sender.location(in: view)
-            //if location of dragview is outseide of the grid
-            if (puzzleCellLocation.x < puzzleGrid.frame.minX) || (puzzleCellLocation.x > puzzleGrid.frame.maxX) || (puzzleCellLocation.y < puzzleGrid.frame.minY) || (puzzleCellLocation.y > puzzleGrid.frame.maxY) {
-
-                //add image from dragView back to array
-                gamePlayCollectionView.puzzleImages.append(dragView.image!)
-                //reload UICollectionView to show added cell
-                gamePlayCollectionView.reloadData()
-                //delecte dragView
-                dragView.removeFromSuperview()
-                print ("return cell")
-                
-            } else { //puzzle piece within the puzzle grid
+            print ("location\(location)")
+            print ("distance\(location.distance(toPoint: puzzleGrid.center))")
+            print ("puzzlegrid centre\(puzzleGrid.center)")
+            //if location of dragview is inside of the grid
+            if puzzleGrid.frame.contains(location) {
+                //puzzle piece within the puzzle grid
                 let puzzleCellSize = puzzleGrid.frame.width / CGFloat(gridSize)
                 //loop to see where puzzle piece is and snap to closest cell
                 for cellsInGridByX in 0...gridSize {
@@ -79,40 +85,29 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                         }
                     }
                 }
+            } else {
+                
+                //add image from dragView back to array
+                gamePlayCollectionView.puzzleImages.append(dragView.image!)
+                //reload UICollectionView to show added cell
+                gamePlayCollectionView.reloadData()
+                //delete dragView
+                dragView.removeFromSuperview()
             }
         }
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        hint.roundCorners(for: .allCorners, cornerRadius: 8)
-        hint.centerTextHorizontally(spacing: 2)
-        //load grid with correct number of cells
-        puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
-        gridSize = gamePlayViewModel.gridSize
-        gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
-        gamePlayCollectionView.gamePlayViewController = self
-        gamePlayCollectionView.gamePlayDelegate = self
-    }
-    
     func didEnd() {
-        print ("didEnd")
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
 //        self.puzzleGrid.subviews.last!.addGestureRecognizer(panGesture)
-        dragView.addGestureRecognizer(panGesture)
-        gamePlayCollectionView.reloadData()
+        view.subviews.last!.addGestureRecognizer(panGesture)
+//        dragView.addGestureRecognizer(panGesture)
+//        puzzleGrid.subviews.last?.addGestureRecognizer(panGesture)
     }
     
-
     func assignDependancies(gamePlayFlowController: GamePlayFlowController, gamePlayViewModel: GamePlayViewModel){
         self.gamePlayFlowController = gamePlayFlowController
         self.gamePlayViewModel = gamePlayViewModel
-    }
-    
-    //Allows all gestures to be used at the same time - requires UIGestureRecognizerDelegate
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
     }
 }
 

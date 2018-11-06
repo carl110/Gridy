@@ -21,9 +21,4 @@ class GamePlayUICollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         userImageView.image = UIImage()
     }
-    
-    
-
-    
-    
 }
