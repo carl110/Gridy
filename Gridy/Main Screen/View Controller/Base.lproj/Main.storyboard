@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,8 +35,47 @@
                                     <constraint firstAttribute="width" secondItem="mVO-cd-sbD" secondAttribute="height" multiplier="6:5" id="Bqh-Fz-4Kn"/>
                                     <constraint firstAttribute="width" constant="120" id="Jrw-7k-7vf"/>
                                 </constraints>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="2lq-ao-DOU"/>
+                                        <exclude reference="Bqh-Fz-4Kn"/>
+                                        <exclude reference="Jrw-7k-7vf"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="cameraSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7U8-d3-RMZ"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challange yourself with a photo puzzle      " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
+                                <rect key="frame" x="25" y="180" width="290" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4E-Bm-DcT" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
+                                <rect key="frame" x="127.5" y="217" width="120" height="100"/>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="UXS-O0-WCj"/>
+                                    <constraint firstAttribute="height" constant="100" id="aIq-D3-TcB"/>
+                                    <constraint firstAttribute="width" secondItem="y4E-Bm-DcT" secondAttribute="height" multiplier="6:5" id="hi8-sP-fbu"/>
+                                    <constraint firstAttribute="width" secondItem="y4E-Bm-DcT" secondAttribute="height" multiplier="40:39" id="kO8-0i-haw"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kO8-0i-haw"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="UXS-O0-WCj"/>
+                                        <exclude reference="aIq-D3-TcB"/>
+                                        <exclude reference="hi8-sP-fbu"/>
+                                        <include reference="kO8-0i-haw"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="gridyPick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Irp-ke-PFd"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aas-0R-8uK" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
@@ -48,48 +86,114 @@
                                     <constraint firstAttribute="width" secondItem="aas-0R-8uK" secondAttribute="height" multiplier="6:5" id="Vcd-WP-SmW"/>
                                     <constraint firstAttribute="height" constant="100" id="aO4-ve-V8T"/>
                                 </constraints>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="NM2-S3-nd2"/>
+                                        <exclude reference="Vcd-WP-SmW"/>
+                                        <exclude reference="aO4-ve-V8T"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="photoLibrarySelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XqT-AE-Ztk"/>
-                                </connections>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challange yourself with a photo puzzle      " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFU-eJ-nVq">
-                                <rect key="frame" x="25" y="180" width="290" height="19"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4E-Bm-DcT" customClass="GridyIconButton" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="128" y="217" width="120" height="100"/>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="UXS-O0-WCj"/>
-                                    <constraint firstAttribute="height" constant="100" id="aIq-D3-TcB"/>
-                                    <constraint firstAttribute="width" secondItem="y4E-Bm-DcT" secondAttribute="height" multiplier="6:5" id="hi8-sP-fbu"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="gridyPick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Irp-ke-PFd"/>
                                 </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NK0-op-hxI" secondAttribute="trailing" constant="119" id="1Sf-Dy-JcM"/>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3tH-eW-80X"/>
+                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="top" secondItem="UPq-SL-aSj" secondAttribute="bottom" id="5ip-qG-lPJ"/>
+                            <constraint firstItem="NK0-op-hxI" firstAttribute="top" secondItem="y4E-Bm-DcT" secondAttribute="bottom" constant="10" id="B9W-2J-nUT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aas-0R-8uK" secondAttribute="trailing" constant="36" id="DPW-mb-jpc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mVO-cd-sbD" secondAttribute="bottom" constant="20" id="JoT-0Q-1G1"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="top" secondItem="gFU-eJ-nVq" secondAttribute="bottom" constant="10" id="MN1-yJ-hbM"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MNL-vl-hmC"/>
                             <constraint firstItem="gFU-eJ-nVq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="160" id="NbB-Pg-TtI"/>
+                            <constraint firstItem="mVO-cd-sbD" firstAttribute="width" secondItem="aas-0R-8uK" secondAttribute="width" id="Nju-td-Q5I"/>
+                            <constraint firstItem="mVO-cd-sbD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="OVb-IL-xu1"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="width" secondItem="mVO-cd-sbD" secondAttribute="width" id="OfV-wv-lCk"/>
                             <constraint firstItem="y4E-Bm-DcT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R56-W3-sfl"/>
+                            <constraint firstItem="y4E-Bm-DcT" firstAttribute="height" secondItem="mVO-cd-sbD" secondAttribute="height" id="RxV-x5-Ehn"/>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="165" id="SRe-Oa-sJI"/>
                             <constraint firstItem="mVO-cd-sbD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="Uwg-sp-pXB"/>
                             <constraint firstItem="mVO-cd-sbD" firstAttribute="top" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="35" id="Vbi-L3-0mh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gFU-eJ-nVq" secondAttribute="trailing" constant="60" id="WiA-kb-0h3"/>
+                            <constraint firstItem="NK0-op-hxI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZCg-je-rIy"/>
                             <constraint firstItem="y4E-Bm-DcT" firstAttribute="top" secondItem="UPq-SL-aSj" secondAttribute="bottom" constant="17" id="ZGk-7x-bxP"/>
                             <constraint firstItem="NK0-op-hxI" firstAttribute="top" secondItem="y4E-Bm-DcT" secondAttribute="bottom" constant="8" symbolic="YES" id="ZZh-HV-f1v"/>
                             <constraint firstItem="UPq-SL-aSj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="ZrP-kY-JQb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="20" id="cgC-Yx-9df"/>
                             <constraint firstItem="UPq-SL-aSj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="dRC-o9-3im"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UPq-SL-aSj" secondAttribute="trailing" constant="25" id="fVg-0v-RCx"/>
+                            <constraint firstItem="UPq-SL-aSj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="fyD-Sx-adU"/>
                             <constraint firstItem="aas-0R-8uK" firstAttribute="top" secondItem="NK0-op-hxI" secondAttribute="bottom" constant="35" id="g1H-cP-ZL7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aas-0R-8uK" secondAttribute="bottom" constant="20" id="hDI-Rn-VMM"/>
                             <constraint firstItem="NK0-op-hxI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="120" id="k9B-jk-7WT"/>
+                            <constraint firstItem="mVO-cd-sbD" firstAttribute="height" secondItem="aas-0R-8uK" secondAttribute="height" id="lPG-Xy-YLE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aas-0R-8uK" secondAttribute="trailing" constant="40" id="pAv-bW-NmQ"/>
+                            <constraint firstItem="gFU-eJ-nVq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x7I-qS-YXC"/>
                             <constraint firstItem="gFU-eJ-nVq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="y7X-J0-iLu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JoT-0Q-1G1"/>
+                                <exclude reference="cgC-Yx-9df"/>
+                                <exclude reference="hDI-Rn-VMM"/>
+                                <exclude reference="pAv-bW-NmQ"/>
+                                <exclude reference="3tH-eW-80X"/>
+                                <exclude reference="SRe-Oa-sJI"/>
+                                <exclude reference="fyD-Sx-adU"/>
+                                <exclude reference="Nju-td-Q5I"/>
+                                <exclude reference="OVb-IL-xu1"/>
+                                <exclude reference="lPG-Xy-YLE"/>
+                                <exclude reference="5ip-qG-lPJ"/>
+                                <exclude reference="x7I-qS-YXC"/>
+                                <exclude reference="MN1-yJ-hbM"/>
+                                <exclude reference="MNL-vl-hmC"/>
+                                <exclude reference="OfV-wv-lCk"/>
+                                <exclude reference="RxV-x5-Ehn"/>
+                                <exclude reference="B9W-2J-nUT"/>
+                                <exclude reference="ZCg-je-rIy"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="1Sf-Dy-JcM"/>
+                                <exclude reference="DPW-mb-jpc"/>
+                                <include reference="JoT-0Q-1G1"/>
+                                <exclude reference="WiA-kb-0h3"/>
+                                <include reference="cgC-Yx-9df"/>
+                                <exclude reference="fVg-0v-RCx"/>
+                                <include reference="hDI-Rn-VMM"/>
+                                <include reference="pAv-bW-NmQ"/>
+                                <include reference="3tH-eW-80X"/>
+                                <include reference="SRe-Oa-sJI"/>
+                                <exclude reference="ZrP-kY-JQb"/>
+                                <exclude reference="dRC-o9-3im"/>
+                                <include reference="fyD-Sx-adU"/>
+                                <include reference="Nju-td-Q5I"/>
+                                <include reference="OVb-IL-xu1"/>
+                                <exclude reference="Uwg-sp-pXB"/>
+                                <exclude reference="Vbi-L3-0mh"/>
+                                <include reference="lPG-Xy-YLE"/>
+                                <include reference="5ip-qG-lPJ"/>
+                                <exclude reference="NbB-Pg-TtI"/>
+                                <include reference="x7I-qS-YXC"/>
+                                <exclude reference="y7X-J0-iLu"/>
+                                <include reference="MN1-yJ-hbM"/>
+                                <include reference="MNL-vl-hmC"/>
+                                <include reference="OfV-wv-lCk"/>
+                                <exclude reference="R56-W3-sfl"/>
+                                <include reference="RxV-x5-Ehn"/>
+                                <exclude reference="ZGk-7x-bxP"/>
+                                <include reference="B9W-2J-nUT"/>
+                                <include reference="ZCg-je-rIy"/>
+                                <exclude reference="ZZh-HV-f1v"/>
+                                <exclude reference="k9B-jk-7WT"/>
+                                <exclude reference="g1H-cP-ZL7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="cameraSelect" destination="mVO-cd-sbD" id="scC-kL-X6n"/>
@@ -99,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="138.98050974512745" y="149.59999999999999"/>
         </scene>
     </scenes>
     <resources>
