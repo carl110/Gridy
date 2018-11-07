@@ -82,7 +82,7 @@
                                 <rect key="frame" x="400" y="145" width="60" height="30"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="HTm-yT-0HJ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="HTm-yT-0HJ"/>
                                     <constraint firstAttribute="width" constant="60" id="ntf-NZ-cVu"/>
                                 </constraints>
                                 <state key="normal" title="HINT">

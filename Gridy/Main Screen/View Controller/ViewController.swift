@@ -31,6 +31,29 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         cameraSelect.gridyLabelView.text = "Camera"
         cameraSelect.gridyImageView.image = UIImage(named: "Gridy-camera")
     }
+  
+    override var traitCollection: UITraitCollection {
+
+        if UIDevice.current.userInterfaceIdiom == .pad && (UIDevice.current.orientation.isLandscape == true)
+        {
+            let traits = UITraitCollection(horizontalSizeClass: UIUserInterfaceSizeClass.compact)
+            let traits2 = UITraitCollection(verticalSizeClass: UIUserInterfaceSizeClass.compact)
+            let traitCollection = UITraitCollection(traitsFrom: [traits, traits2])
+            
+            print ("ipad")
+            
+            return traitCollection
+            
+        }
+        else
+        {
+            print ("not ipad")
+            print(UIDevice.current.orientation.isPortrait)
+            return super.traitCollection
+        }
+        
+    }
+    
     @IBAction func gridyPick(_ sender: GridyIconButton) {
         //call pickRandom Func
         pickRandom()

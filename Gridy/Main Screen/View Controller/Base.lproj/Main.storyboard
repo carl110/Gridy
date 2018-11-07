@@ -144,9 +144,6 @@
                                 <exclude reference="3tH-eW-80X"/>
                                 <exclude reference="SRe-Oa-sJI"/>
                                 <exclude reference="fyD-Sx-adU"/>
-                                <exclude reference="Nju-td-Q5I"/>
-                                <exclude reference="OVb-IL-xu1"/>
-                                <exclude reference="lPG-Xy-YLE"/>
                                 <exclude reference="5ip-qG-lPJ"/>
                                 <exclude reference="x7I-qS-YXC"/>
                                 <exclude reference="MN1-yJ-hbM"/>
@@ -155,6 +152,9 @@
                                 <exclude reference="RxV-x5-Ehn"/>
                                 <exclude reference="B9W-2J-nUT"/>
                                 <exclude reference="ZCg-je-rIy"/>
+                                <exclude reference="Nju-td-Q5I"/>
+                                <exclude reference="OVb-IL-xu1"/>
+                                <exclude reference="lPG-Xy-YLE"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
@@ -172,11 +172,6 @@
                                 <exclude reference="ZrP-kY-JQb"/>
                                 <exclude reference="dRC-o9-3im"/>
                                 <include reference="fyD-Sx-adU"/>
-                                <include reference="Nju-td-Q5I"/>
-                                <include reference="OVb-IL-xu1"/>
-                                <exclude reference="Uwg-sp-pXB"/>
-                                <exclude reference="Vbi-L3-0mh"/>
-                                <include reference="lPG-Xy-YLE"/>
                                 <include reference="5ip-qG-lPJ"/>
                                 <exclude reference="NbB-Pg-TtI"/>
                                 <include reference="x7I-qS-YXC"/>
@@ -191,6 +186,11 @@
                                 <include reference="ZCg-je-rIy"/>
                                 <exclude reference="ZZh-HV-f1v"/>
                                 <exclude reference="k9B-jk-7WT"/>
+                                <include reference="Nju-td-Q5I"/>
+                                <include reference="OVb-IL-xu1"/>
+                                <exclude reference="Uwg-sp-pXB"/>
+                                <exclude reference="Vbi-L3-0mh"/>
+                                <include reference="lPG-Xy-YLE"/>
                                 <exclude reference="g1H-cP-ZL7"/>
                             </mask>
                         </variation>
