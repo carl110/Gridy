@@ -32,8 +32,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         cameraSelect.gridyImageView.image = UIImage(named: "Gridy-camera")
     }
   
-    override var traitCollection: UITraitCollection {
-
+    override func overrideTraitCollection(forChild childViewController: UIViewController) -> UITraitCollection? {
         if UIDevice.current.userInterfaceIdiom == .pad && (UIDevice.current.orientation.isLandscape == true)
         {
             let traits = UITraitCollection(horizontalSizeClass: UIUserInterfaceSizeClass.compact)
@@ -51,8 +50,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
             print(UIDevice.current.orientation.isPortrait)
             return super.traitCollection
         }
-        
     }
+
     
     @IBAction func gridyPick(_ sender: GridyIconButton) {
         //call pickRandom Func

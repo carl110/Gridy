@@ -66,6 +66,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             let puzzleCellLocation = sender.location(in: view)
             print ("location\(location)")
             print ("distance\(location.distance(toPoint: puzzleGrid.center))")
+            print ("vector \(location.vector(toPoint: puzzleGrid.center))")
             print ("puzzlegrid centre\(puzzleGrid.center)")
             //if location of dragview is inside of the grid
             if puzzleGrid.frame.contains(location) {

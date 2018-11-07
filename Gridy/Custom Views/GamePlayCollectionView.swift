@@ -79,6 +79,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                     let puzzleCellSize = gamePlayViewController.puzzleGrid.frame.width / CGFloat(gamePlayViewController.gridSize)
                     //loop to see where puzzle piece is and snap to closest cell
                     for cellsInGridByX in 0...gamePlayViewController.gridSize {
+                        
                         if (puzzleCellLocation.x > gamePlayViewController.puzzleGrid.frame.minX + (CGFloat(cellsInGridByX) * puzzleCellSize)) && (puzzleCellLocation.x < (gamePlayViewController.puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(cellsInGridByX)) + puzzleCellSize)) {
                             for cellsInGridByY in 0...gamePlayViewController.gridSize {
                                 if (puzzleCellLocation.y > gamePlayViewController.puzzleGrid.frame.minY + (CGFloat(cellsInGridByY) * puzzleCellSize)) && (puzzleCellLocation.y < (gamePlayViewController.puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(cellsInGridByY)) + puzzleCellSize)) {
@@ -117,6 +118,8 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                     gamePlayViewController.dragView.removeFromSuperview()
                 }
                 cellView.isHidden = false
+                print ("distance CGPoint \(puzzleCellLocation.distance(toPoint: gamePlayViewController.puzzleGrid.center))")
+                print ("vector \(puzzleCellLocation.vector(toPoint: gamePlayViewController.puzzleGrid.center))")
             default : break
             }
         }
