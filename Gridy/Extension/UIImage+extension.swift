@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    
+    //splits and image into (X) pieces
     func splitImage(_ rowsandcolumns: Int) -> [UIImage] {
         let y = scale * (size.height / CGFloat(rowsandcolumns))
         let x = scale * (size.width / CGFloat(rowsandcolumns))

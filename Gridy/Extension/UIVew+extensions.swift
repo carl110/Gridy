@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
+    //creates a blur effect
     func blurView(style: UIBlurEffect.Style) {
         let blurEffect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: blurEffect)
@@ -18,7 +18,7 @@ extension UIView {
         blurView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(blurView)
     }
-    
+    //puts see through hole onm a blur view
     func holeInBlur(xPosition: CGFloat, yPosition:CGFloat, width: CGFloat, height: CGFloat) {
         let xPosition = xPosition
         let yPosition = yPosition
@@ -37,7 +37,7 @@ extension UIView {
         //        scanLayer.fillColor = UIColor.black.cgColor
         self.layer.mask = scanLayer
     }
-    
+    //captures picture of part of the screen
     func snapshot(of rect: CGRect? = nil) -> UIImage? {
         // snapshot entire view
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
@@ -65,7 +65,7 @@ extension UIView {
             self.alpha = 0.0
         }, completion: completion)
     }
-    
+    //round corners of a view, individually or all together
     func roundCorners(for corners: UIRectCorner, cornerRadius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
         let maskLayer = CAShapeLayer()
