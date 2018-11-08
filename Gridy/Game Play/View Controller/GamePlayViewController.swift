@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class GamePlayViewController: UIViewController, GamePlayDelegate {
     
@@ -15,33 +16,34 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     fileprivate var gamePlayViewModel : GamePlayViewModel!
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     fileprivate var gamePlayUICollectionViewCell: GamePlayUICollectionViewCell!
-
+    
     var gridSize = Int()
     var dragView = UIImageView()
     var completePuzzle = UIImageView()
     var additionalTime = 10.0
     //create empty array for cell locations
-    var cellArray = [CGPoint]()
+    var cellCoordinatesArray = [CGPoint]()
     var halfCellHypotenuse = CGFloat()
-
+    var player:AVAudioPlayer = AVAudioPlayer()
+    
     @IBOutlet weak var hint: UIButton!
+    @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var puzzleGrid: Grid!
     @IBOutlet weak var gamePlayCollectionView: GamePlayCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hint.roundCorners(for: .allCorners, cornerRadius: 8)
-        hint.centerTextHorizontally(spacing: 2)
+        soundButton.roundCorners(for: .allCorners, cornerRadius: 8)
+        soundButton.centerTextHorizontally(spacing: 2)
+        soundButton.setTitle("Sound Off", for: .normal)
+
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize
         gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
-        
-//        let puzzleCellSize = gamePlayViewController.puzzleGrid.frame.width / CGFloat(gamePlayViewController.gridSize)
-        
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,7 +53,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             for col in 0...gridSize - 1{
                 let puzzleCellSize = puzzleGrid.frame.width / CGFloat(gridSize)
                 let arrayItem = CGPoint(x: puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(col)) + (puzzleCellSize / 2), y: puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(row)) + (puzzleCellSize / 2))
-                cellArray.append(arrayItem)
+                cellCoordinatesArray.append(arrayItem)
             }
         }
         halfCellHypotenuse = (CGFloat(sqrt(pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00) + pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00)))) / 2
@@ -61,7 +63,19 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     override open var shouldAutorotate: Bool {
         return false
     }
-   
+    
+    @IBAction func soundButton (_sender: UIButton) {
+        
+        if gamePlayCollectionView.soundVolume == Float(1) {
+            gamePlayCollectionView.soundVolume = 0
+            soundButton.setTitle("Sound Off", for: .normal)
+        } else {
+            gamePlayCollectionView.soundVolume = 1
+            soundButton.setTitle("Sound On", for: .normal)
+        }
+        
+        
+    }
     @IBAction func hint(_ sender: UIButton) {
         hint.disableButton()
         //create size and location for hintView
@@ -90,7 +104,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             let puzzleCellLocation = sender.location(in: view)
             if puzzleGrid.frame.contains(location) {
                 //loop to see where puzzle piece is and snap to closest cell
-                for cellLocation in cellArray {
+                for cellLocation in cellCoordinatesArray {
                     if puzzleCellLocation.distance(toPoint: cellLocation) < halfCellHypotenuse {
                         UIView.animate(withDuration: 0.3) {
                             self.dragView.center = cellLocation
@@ -110,11 +124,13 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     
     func didEnd() {
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
-//        self.puzzleGrid.subviews.last!.addGestureRecognizer(panGesture)
+        //        self.puzzleGrid.subviews.last!.addGestureRecognizer(panGesture)
         view.subviews.last!.addGestureRecognizer(panGesture)
+        gamePlayCollectionView.reloadData()
 
-//        dragView.addGestureRecognizer(panGesture)
-//        puzzleGrid.subviews.last?.addGestureRecognizer(panGesture)
+        
+        //        dragView.addGestureRecognizer(panGesture)
+        //        puzzleGrid.subviews.last?.addGestureRecognizer(panGesture)
     }
     
     func assignDependancies(gamePlayFlowController: GamePlayFlowController, gamePlayViewModel: GamePlayViewModel){

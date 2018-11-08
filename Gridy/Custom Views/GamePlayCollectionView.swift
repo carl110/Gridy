@@ -23,6 +23,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     var puzzleImages: [UIImage] = []
     //declare sound for use
     var magicSound: AVAudioPlayer?
+    var soundVolume: Float = 0
     //initial location of touch to allow removal of cell
     var initialTouchLocation: CGPoint!
 
@@ -79,7 +80,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                //check if puzzle piece is within the puzzleGrid
                 if gamePlayViewController.puzzleGrid.frame.contains(puzzleCellLocation) {
                     //Loop to see which cell the piece is closest to
-                    for i in gamePlayViewController.cellArray {
+                    for i in gamePlayViewController.cellCoordinatesArray {
                         if puzzleCellLocation.distance(toPoint: i) < gamePlayViewController.halfCellHypotenuse {
                             UIView.animate(withDuration: 0.3) {
                                 self.gamePlayViewController.dragView.center = i
@@ -91,6 +92,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                                 do {
                                     self.magicSound = try AVAudioPlayer(contentsOf: url)
                                     self.magicSound?.play()
+                                    self.magicSound?.volume = self.soundVolume
                                 } catch {
                                     print("unable to find file")
                                 }
