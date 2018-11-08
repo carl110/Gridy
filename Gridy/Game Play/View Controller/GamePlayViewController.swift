@@ -55,6 +55,11 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             }
         }
         halfCellHypotenuse = (CGFloat(sqrt(pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00) + pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00)))) / 2
+        
+    }
+    //Stops the rotation of the current screen
+    override open var shouldAutorotate: Bool {
+        return false
     }
    
     @IBAction func hint(_ sender: UIButton) {
