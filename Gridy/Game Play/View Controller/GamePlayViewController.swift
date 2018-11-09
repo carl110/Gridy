@@ -48,6 +48,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(true)
+        
         //loop through grid and assign coordinates of each cell to array
         for row in 0...(gridSize - 1) {
             for col in 0...gridSize - 1{
@@ -99,17 +100,12 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     }
     @objc func handlePan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: view)
-        view.subviews.last!.center = location
+        sender.view?.center = locatio
         if sender.state == .ended {
-            let puzzleCellLocation = sender.location(in: view)
             if puzzleGrid.frame.contains(location) {
-                //loop to see where puzzle piece is and snap to closest cell
-                for cellLocation in cellCoordinatesArray {
-                    if puzzleCellLocation.distance(toPoint: cellLocation) < halfCellHypotenuse {
-                        UIView.animate(withDuration: 0.3) {
-                            self.dragView.center = cellLocation
-                        }
-                    }
+                UIView.animate(withDuration: 0.3) {
+                    //loop to see where puzzle piece is and snap to closest cell
+                    sender.view?.center = self.cellCoordinatesArray.closetsCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)
                 }
             } else {
                 //add image from dragView back to array
@@ -124,13 +120,8 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     
     func didEnd() {
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
-        //        self.puzzleGrid.subviews.last!.addGestureRecognizer(panGesture)
         view.subviews.last!.addGestureRecognizer(panGesture)
         gamePlayCollectionView.reloadData()
-
-        
-        //        dragView.addGestureRecognizer(panGesture)
-        //        puzzleGrid.subviews.last?.addGestureRecognizer(panGesture)
     }
     
     func assignDependancies(gamePlayFlowController: GamePlayFlowController, gamePlayViewModel: GamePlayViewModel){

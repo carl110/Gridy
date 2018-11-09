@@ -24,6 +24,7 @@
 		894516D921301AC100E472B2 /* UIVew+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894516D821301AC100E472B2 /* UIVew+extensions.swift */; };
 		895E1638218B24B8005FAA18 /* UIButton+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895E1637218B24B8005FAA18 /* UIButton+extensions.swift */; };
 		895E163A218B49F4005FAA18 /* CGPoint+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895E1639218B49F4005FAA18 /* CGPoint+extensions.swift */; };
+		897116B62195BD3B00CADFA7 /* Array+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897116B52195BD3B00CADFA7 /* Array+extensions.swift */; };
 		89A41EF221357EBA00357DCC /* GridyImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A41EF121357EBA00357DCC /* GridyImageViewController.swift */; };
 		89A41EF42135815E00357DCC /* GridyImageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89A41EF32135815E00357DCC /* GridyImageView.storyboard */; };
 		89D7ACE921749F1700AF1474 /* GamePlayCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7ACE821749F1700AF1474 /* GamePlayCollectionView.swift */; };
@@ -62,6 +63,7 @@
 		894516D821301AC100E472B2 /* UIVew+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVew+extensions.swift"; sourceTree = "<group>"; };
 		895E1637218B24B8005FAA18 /* UIButton+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extensions.swift"; sourceTree = "<group>"; };
 		895E1639218B49F4005FAA18 /* CGPoint+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+extensions.swift"; sourceTree = "<group>"; };
+		897116B52195BD3B00CADFA7 /* Array+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extensions.swift"; sourceTree = "<group>"; };
 		89A41EF121357EBA00357DCC /* GridyImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridyImageViewController.swift; sourceTree = "<group>"; };
 		89A41EF32135815E00357DCC /* GridyImageView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GridyImageView.storyboard; sourceTree = "<group>"; };
 		89D7ACE821749F1700AF1474 /* GamePlayCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayCollectionView.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				894516D821301AC100E472B2 /* UIVew+extensions.swift */,
 				890B0C072193B8CF0018FA15 /* UINavigationController+extensons.swift */,
 				895E1639218B49F4005FAA18 /* CGPoint+extensions.swift */,
+				897116B52195BD3B00CADFA7 /* Array+extensions.swift */,
 				895E1637218B24B8005FAA18 /* UIButton+extensions.swift */,
 				8922E5C22141531200420A71 /* UIColor+extensions.swift */,
 				8922E5C42141662900420A71 /* UIImage+extension.swift */,
@@ -398,6 +401,7 @@
 				89DC614A213D30DA00DB5937 /* ImageEditorFlowController.swift in Sources */,
 				894516B921300D6600E472B2 /* ViewController.swift in Sources */,
 				8922E5C52141662900420A71 /* UIImage+extension.swift in Sources */,
+				897116B62195BD3B00CADFA7 /* Array+extensions.swift in Sources */,
 				894516D921301AC100E472B2 /* UIVew+extensions.swift in Sources */,
 				89DC6159213D403B00DB5937 /* GamePlayFactory.swift in Sources */,
 				89A41EF221357EBA00357DCC /* GridyImageViewController.swift in Sources */,

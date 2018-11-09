@@ -26,7 +26,6 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     var soundVolume: Float = 0
     //initial location of touch to allow removal of cell
     var initialTouchLocation: CGPoint!
-
     
     override func awakeFromNib() {
         delegate = self
@@ -76,34 +75,29 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                             dragViewCell.center = CGPoint (x: dragViewCell.center.x + (location.x - dragViewCell.center.x), y: dragViewCell.center.y + (location.y - dragViewCell.center.y))
             case .ended:
                 let puzzleCellLocation = sender.location(in: gamePlayViewController.view)
-                
                //check if puzzle piece is within the puzzleGrid
                 if gamePlayViewController.puzzleGrid.frame.contains(puzzleCellLocation) {
-                    //Loop to see which cell the piece is closest to
-                    for i in gamePlayViewController.cellCoordinatesArray {
-                        if puzzleCellLocation.distance(toPoint: i) < gamePlayViewController.halfCellHypotenuse {
-                            UIView.animate(withDuration: 0.3) {
-                                self.gamePlayViewController.dragView.center = i
-                                //locate sound file
-                                let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
-                                //create path for sound file
-                                let url = URL(fileURLWithPath: path)
-                                //find and play sound file
-                                do {
-                                    self.magicSound = try AVAudioPlayer(contentsOf: url)
-                                    self.magicSound?.play()
-                                    self.magicSound?.volume = self.soundVolume
-                                } catch {
-                                    print("unable to find file")
-                                }
-                                //use initialTouchLocation coordinates to work out which cell was pressed and remove from the puzzleImages array
-                                if let indexPath = self.gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: self.initialTouchLocation) {
-                                    //works fine when all cells are visable
-                                    self.puzzleImages.remove(at: indexPath.item)
-                                    self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
-                                    self.gamePlayDelegate?.didEnd()
-                                }
-                            }
+                    UIView.animate(withDuration: 0.3) {
+                        //Use extension Loop to see which cell the piece is closest to
+                        self.gamePlayViewController.dragView.center = self.gamePlayViewController.cellCoordinatesArray.closetsCell(nonFixedLocation: puzzleCellLocation, hyp: self.gamePlayViewController.halfCellHypotenuse)
+                        //locate sound file
+                        let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
+                        //create path for sound file
+                        let url = URL(fileURLWithPath: path)
+                        //find and play sound file
+                        do {
+                            self.magicSound = try AVAudioPlayer(contentsOf: url)
+                            self.magicSound?.play()
+                            self.magicSound?.volume = self.soundVolume
+                        } catch {
+                            print("unable to find file")
+                        }
+                        //use initialTouchLocation coordinates to work out which cell was pressed and remove from the puzzleImages array
+                        if let indexPath = self.gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: self.initialTouchLocation) {
+                            //works fine when all cells are visable
+                            self.puzzleImages.remove(at: indexPath.item)
+                            self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
+                            self.gamePlayDelegate?.didEnd()
                         }
                     }
                 }
