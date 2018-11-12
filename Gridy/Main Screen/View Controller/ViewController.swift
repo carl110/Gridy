@@ -33,7 +33,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
   
     override func overrideTraitCollection(forChild childViewController: UIViewController) -> UITraitCollection? {
-        if UIDevice.current.userInterfaceIdiom == .pad && (UIDevice.current.orientation.isLandscape == true)
+        if UIDevice.current.orientation.isLandscape == true
         {
             let traits = UITraitCollection(horizontalSizeClass: UIUserInterfaceSizeClass.compact)
             let traits2 = UITraitCollection(verticalSizeClass: UIUserInterfaceSizeClass.compact)

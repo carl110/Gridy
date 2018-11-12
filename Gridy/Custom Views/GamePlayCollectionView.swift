@@ -22,10 +22,10 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     //create empty array fo puzzleImages
     var puzzleImages: [UIImage] = []
     //declare sound for use
-    var magicSound: AVAudioPlayer?
+    private var magicSound: AVAudioPlayer?
     var soundVolume: Float = 0
     //initial location of touch to allow removal of cell
-    var initialTouchLocation: CGPoint!
+    private var initialTouchLocation: CGPoint!
     
     override func awakeFromNib() {
         delegate = self
@@ -79,7 +79,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 if gamePlayViewController.puzzleGrid.frame.contains(puzzleCellLocation) {
                     UIView.animate(withDuration: 0.3) {
                         //Use extension Loop to see which cell the piece is closest to
-                        self.gamePlayViewController.dragView.center = self.gamePlayViewController.cellCoordinatesArray.closetsCell(nonFixedLocation: puzzleCellLocation, hyp: self.gamePlayViewController.halfCellHypotenuse)
+                        self.gamePlayViewController.dragView.center = self.gamePlayViewController.cellCoordinatesArray.closestCell(nonFixedLocation: puzzleCellLocation, hyp: self.gamePlayViewController.halfCellHypotenuse)
                         //locate sound file
                         let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
                         //create path for sound file
@@ -106,6 +106,8 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                     gamePlayViewController.dragView.removeFromSuperview()
                 }
                 cellView.isHidden = false
+                gamePlayViewController.scoreCount += 1
+                gamePlayViewController.score.text = "Score : \(gamePlayViewController.scoreCount)"
             default : break
             }
         }

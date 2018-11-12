@@ -11,7 +11,7 @@ import UIKit
 
 extension Array {
     //calculates the closes cell in a gris to a nonFixedLocation
-    func closetsCell(nonFixedLocation: CGPoint, hyp: CGFloat) -> CGPoint {
+    func closestCell(nonFixedLocation: CGPoint, hyp: CGFloat) -> CGPoint {
         var x:CGPoint!
         for i in self as! [CGPoint]{
             if nonFixedLocation.distance(toPoint: i ) < hyp {

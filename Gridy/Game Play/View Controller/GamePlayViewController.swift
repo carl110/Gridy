@@ -25,7 +25,9 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     var cellCoordinatesArray = [CGPoint]()
     var halfCellHypotenuse = CGFloat()
     var player:AVAudioPlayer = AVAudioPlayer()
+    var scoreCount = 0
     
+    @IBOutlet weak var score: UILabel!
     @IBOutlet weak var hint: UIButton!
     @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var puzzleGrid: Grid!
@@ -33,10 +35,13 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hint.roundCorners(for: .allCorners, cornerRadius: 8)
-        soundButton.roundCorners(for: .allCorners, cornerRadius: 8)
+        hint.setRadius(radius: 8)
+        soundButton.setRadius(radius: 8)
+        soundButton.titleLabel?.numberOfLines = 2
         soundButton.centerTextHorizontally(spacing: 2)
         soundButton.setTitle("Sound Off", for: .normal)
+        score.setRadius(radius: 8)
+        
 
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
@@ -69,6 +74,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         
         if gamePlayCollectionView.soundVolume == Float(1) {
             gamePlayCollectionView.soundVolume = 0
+            
             soundButton.setTitle("Sound Off", for: .normal)
         } else {
             gamePlayCollectionView.soundVolume = 1
@@ -100,12 +106,12 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     }
     @objc func handlePan(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: view)
-        sender.view?.center = locatio
+        sender.view?.center = location
         if sender.state == .ended {
             if puzzleGrid.frame.contains(location) {
                 UIView.animate(withDuration: 0.3) {
                     //loop to see where puzzle piece is and snap to closest cell
-                    sender.view?.center = self.cellCoordinatesArray.closetsCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)
+                    sender.view?.center = self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)
                 }
             } else {
                 //add image from dragView back to array
@@ -115,6 +121,8 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                 //delete dragView
                 dragView.removeFromSuperview()
             }
+            scoreCount += 1
+            score.text = "Score : \(scoreCount)"
         }
     }
     
