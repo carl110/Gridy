@@ -18,3 +18,15 @@ extension Dictionary
         }
     }
 }
+
+extension Array where Element: Any {
+    
+    var toDictionary: [Int:Element] {
+        var dictionary: [Int:Element] = [:]
+        for (index, element) in enumerated() {
+            dictionary[index] = element
+        }
+        return dictionary
+    }
+    
+}

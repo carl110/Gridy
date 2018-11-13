@@ -64,6 +64,11 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         }
         halfCellHypotenuse = (CGFloat(sqrt(pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00) + pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00)))) / 2
         
+        let dict = cellCoordinatesArray.toDictionary
+        let dict2 = gamePlayViewModel.orderedPhotoArray.toDictionary
+        
+        print ("dictionary array\(dict)")
+        print (dict2)
     }
     //Stops the rotation of the current screen
     override open var shouldAutorotate: Bool {
@@ -114,12 +119,15 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                     sender.view?.center = self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)
                 }
             } else {
+                
+                let puzzlePieceImage = sender.view as! UIImageView
                 //add image from dragView back to array
-                gamePlayCollectionView.puzzleImages.append(dragView.image!)
+                gamePlayCollectionView.puzzleImages.append(puzzlePieceImage.image!)
                 //reload UICollectionView to show added cell
                 gamePlayCollectionView.reloadData()
                 //delete dragView
-                dragView.removeFromSuperview()
+                puzzlePieceImage.removeFromSuperview()
+                
             }
             scoreCount += 1
             score.text = "Score : \(scoreCount)"
