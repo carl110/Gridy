@@ -46,7 +46,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         soundButton.centerTextHorizontally(spacing: 2)
         soundButton.setTitle("Sound Off", for: .normal)
         score.setRadius(radius: 8)
-        countDownTimer.isHidden = true
+        countDownTimer.alpha = 0
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize
@@ -103,7 +103,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         completePuzzle.fadeIn()
         //wait 2 seconds from code run to run fadeout
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.countDownTimer.isHidden = false
+            self.countDownTimer.fadeIn()
             self.completePuzzle.fadeOut()
         }
         //wait 8 seconds first time then an extra 10 seconds each time
@@ -114,7 +114,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             self.timer.invalidate()
             //Set timer to new value
             self.seconds = Int(self.additionalTime)
-            self.countDownTimer.isHidden = true
+            self.countDownTimer.alpha = 0
         }
         additionalTime += 10.1
     }
