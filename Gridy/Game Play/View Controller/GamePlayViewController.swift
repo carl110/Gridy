@@ -26,7 +26,12 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     var halfCellHypotenuse = CGFloat()
     var player:AVAudioPlayer = AVAudioPlayer()
     var scoreCount = 0
-    
+    //set econds for timer
+    var seconds = 10
+    //declare NSObject Timer
+    var timer = Timer()
+   
+    @IBOutlet weak var countDownTimer: UILabel!
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var hint: UIButton!
     @IBOutlet weak var soundButton: UIButton!
@@ -41,8 +46,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         soundButton.centerTextHorizontally(spacing: 2)
         soundButton.setTitle("Sound Off", for: .normal)
         score.setRadius(radius: 8)
-        
-
+        countDownTimer.isHidden = true
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize
@@ -87,6 +91,8 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     }
     @IBAction func hint(_ sender: UIButton) {
         hint.disableButton()
+        //Start Timer
+        runTimer()
         //create size and location for hintView
         let hintImageView = UIImageView(image: gamePlayViewModel.photo)
         hintImageView.frame.size = CGSize(width: puzzleGrid.frame.width, height: puzzleGrid.frame.height)
@@ -97,14 +103,20 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         completePuzzle.fadeIn()
         //wait 2 seconds from code run to run fadeout
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.countDownTimer.isHidden = false
             self.completePuzzle.fadeOut()
         }
         //wait 8 seconds first time then an extra 10 seconds each time
         DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) {
             self.completePuzzle.removeFromSuperview()
             self.hint.enableButton()
+            //Stop timer
+            self.timer.invalidate()
+            //Set timer to new value
+            self.seconds = Int(self.additionalTime)
+            self.countDownTimer.isHidden = true
         }
-        additionalTime += 10.0
+        additionalTime += 10.1
     }
     @objc func handlePan(sender: UIPanGestureRecognizer) {
         //declare puzzlepiece
@@ -143,6 +155,15 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
         view.subviews.last!.addGestureRecognizer(panGesture)
         gamePlayCollectionView.reloadData()
+    }
+    //set timer to use seconds (timerinterval)
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updatedTimer)), userInfo: nil, repeats: true)
+    }
+    //Sets timer to countdown in intervals of 1
+    @objc func updatedTimer() {
+        seconds -= 1
+        countDownTimer.text = "\(seconds)"
     }
     
     func assignDependancies(gamePlayFlowController: GamePlayFlowController, gamePlayViewModel: GamePlayViewModel){
