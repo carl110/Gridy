@@ -13,19 +13,24 @@ class GamePlayViewModel {
     
     let photo: UIImage
     var photoArray: [UIImage] = []
-    var orderedPhotoArray: [UIImage] = []
+    var orderedPhotoArray: [Int:UIImage] = [:]
     let gridSize: Int
     init(photo: UIImage, gridSize: Int) {
         self.photo = photo
         self.gridSize = gridSize
-        self.photoArray = photoSplitToPuzzlePieces().shuffled()
-        self.orderedPhotoArray = photoSplitToPuzzlePieces()
+        self.photoArray = photoSplitToPuzzlePieces()
+        self.orderedPhotoArray = dictionaryOfPhotos()
 
         
     }
     
     private func photoSplitToPuzzlePieces() -> [UIImage] {
 
-        return photo.splitImage(gridSize)
+        return photo.splitImage(gridSize).shuffled()
         }
+    
+    private func dictionaryOfPhotos() -> [Int:UIImage] {
+        
+        return photo.splitImage(gridSize).toDictionary
+    }
     }

@@ -64,11 +64,8 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         }
         halfCellHypotenuse = (CGFloat(sqrt(pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00) + pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00)))) / 2
         
-        let dict = cellCoordinatesArray.toDictionary
-        let dict2 = gamePlayViewModel.orderedPhotoArray.toDictionary
-        
-        print ("dictionary array\(dict)")
-        print (dict2)
+//        let dict = cellCoordinatesArray.toDictionary
+
     }
     //Stops the rotation of the current screen
     override open var shouldAutorotate: Bool {
@@ -110,7 +107,11 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         additionalTime += 10.0
     }
     @objc func handlePan(sender: UIPanGestureRecognizer) {
+        //declare puzzlepiece
+        let puzzlePiece = sender.view as! UIImageView
         let location = sender.location(in: view)
+        //set currently pressed puzzlepiece to be on top
+        self.view.bringSubviewToFront(puzzlePiece)
         sender.view?.center = location
         if sender.state == .ended {
             if puzzleGrid.frame.contains(location) {
@@ -119,16 +120,20 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                     sender.view?.center = self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)
                 }
             } else {
-                
-                let puzzlePieceImage = sender.view as! UIImageView
-                //add image from dragView back to array
-                gamePlayCollectionView.puzzleImages.append(puzzlePieceImage.image!)
+                //add image from puzzlePiece back to array
+                gamePlayCollectionView.puzzleImages.append(puzzlePiece.image!)
                 //reload UICollectionView to show added cell
                 gamePlayCollectionView.reloadData()
                 //delete dragView
-                puzzlePieceImage.removeFromSuperview()
+                puzzlePiece.removeFromSuperview()
+                scoreCount += 1
                 
             }
+//            for (index, element) in cellCoordinatesArray.enumerated() {
+//                print ("Item \(index): \(element)")
+//            }
+// 
+            
             scoreCount += 1
             score.text = "Score : \(scoreCount)"
         }
