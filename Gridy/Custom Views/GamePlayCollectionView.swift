@@ -78,8 +78,10 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                //check if puzzle piece is within the puzzleGrid
                 if gamePlayViewController.puzzleGrid.frame.contains(puzzleCellLocation) {
                     UIView.animate(withDuration: 0.3) {
-                        //Use extension Loop to see which cell the piece is closest to
-                        self.gamePlayViewController.dragView.center = self.gamePlayViewController.cellCoordinatesArray.closestCell(nonFixedLocation: puzzleCellLocation, hyp: self.gamePlayViewController.halfCellHypotenuse)
+                        //check if cell is empty
+                        if (self.gamePlayViewController.view.subviews.filter{ $0.center == (self.gamePlayViewController.cellCoordinatesArray.closestCell(nonFixedLocation: puzzleCellLocation, hyp: self.gamePlayViewController.halfCellHypotenuse)) }).count == 0 {
+                                                    self.gamePlayViewController.dragView.center = self.gamePlayViewController.cellCoordinatesArray.closestCell(nonFixedLocation: puzzleCellLocation, hyp: self.gamePlayViewController.halfCellHypotenuse)
+                        
                         //locate sound file
                         let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
                         //create path for sound file
@@ -98,6 +100,10 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                             self.puzzleImages.remove(at: indexPath.item)
                             self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
                             self.gamePlayDelegate?.didEnd()
+                            }
+                        } else {
+                            self.gamePlayViewController.dragView.removeFromSuperview()
+                            
                         }
                     }
                 }

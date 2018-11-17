@@ -30,7 +30,8 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     var seconds = 10
     //declare NSObject Timer
     var timer = Timer()
-   
+    var imageLocationDictionary: [UIImage:CGPoint] = [:]
+    
     @IBOutlet weak var countDownTimer: UILabel!
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var hint: UIButton!
@@ -50,7 +51,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize
-        gamePlayCollectionView.puzzleImages = gamePlayViewModel.photoArray
+        gamePlayCollectionView.puzzleImages = gamePlayViewModel.shuffledphotoArray
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
     }
@@ -68,6 +69,9 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         }
         halfCellHypotenuse = (CGFloat(sqrt(pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00) + pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00)))) / 2
         
+        imageLocationDictionary = Dictionary(uniqueKeysWithValues: zip(gamePlayViewModel.orderedPhotoArray, cellCoordinatesArray))
+        
+//        imageLocationDictionary = [gamePlayViewModel.orderedPhotoArray:cellCoordinatesArray]
 //        let dict = cellCoordinatesArray.toDictionary
 
     }
@@ -126,10 +130,25 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         self.view.bringSubviewToFront(puzzlePiece)
         sender.view?.center = location
         if sender.state == .ended {
+            
+            if (self.view.subviews.filter{ $0.center == (self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)) }).count == 0 {
+                
+                print (sender.view?.center as Any)
+                
+            }
             if puzzleGrid.frame.contains(location) {
                 UIView.animate(withDuration: 0.3) {
-                    //loop to see where puzzle piece is and snap to closest cell
-                    sender.view?.center = self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)
+                    //check if the cell already contains a puzzlepiece
+                    if (self.view.subviews.filter{ $0.center == (self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)) }).count == 0 {
+                        //loop to see where puzzle piece is and snap to closest cell
+                        sender.view?.center = self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse) } else {
+                        //add image from puzzlePiece back to array
+                        self.gamePlayCollectionView.puzzleImages.append(puzzlePiece.image!)
+                        //reload UICollectionView to show added cell
+                        self.gamePlayCollectionView.reloadData()
+                        //delete dragView
+                        puzzlePiece.removeFromSuperview()
+                    }
                 }
             } else {
                 //add image from puzzlePiece back to array
@@ -144,12 +163,19 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
 //            for (index, element) in cellCoordinatesArray.enumerated() {
 //                print ("Item \(index): \(element)")
 //            }
-// 
+//            var cellIndex = cellCoordinatesArray.index(of: (sender.view?.center)!)
+//            print (cellIndex)
+////
+//            print (gamePlayViewModel.orderedPhotoArray[cellIndex!])
+//
+//            print (imageLocationDictionary)
+
             
             scoreCount += 1
             score.text = "Score : \(scoreCount)"
         }
     }
+    
     
     func didEnd() {
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))

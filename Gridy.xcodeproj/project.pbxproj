@@ -183,7 +183,6 @@
 			children = (
 				89F4162F21809E7800C5CBDB /* Audio Files */,
 				89A41EEC21357DE600357DCC /* GridyImage */,
-				894516CE213011CB00E472B2 /* Model */,
 				89296B6C2133EB9E00B6D1F3 /* Main Screen */,
 				89296B712133F22A00B6D1F3 /* Image Editor */,
 				89296B722133F26200B6D1F3 /* Game Play */,
@@ -213,13 +212,6 @@
 				894516BA21300D6600E472B2 /* Main.storyboard */,
 			);
 			path = "View Controller";
-			sourceTree = "<group>";
-		};
-		894516CE213011CB00E472B2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		894516CF213011EE00E472B2 /* Flow Controller */ = {
