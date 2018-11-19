@@ -28,4 +28,13 @@ class MainFactory {
         window.rootViewController = navigationController
         
     }
+    
+    static func PushIn(navigationController: UINavigationController) {
+        
+        let mainEditor = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ViewController
+        let mainFlowController = MainFlowController(navigationController: navigationController)
+        mainEditor.assignDependancies(mainFlowController: mainFlowController)
+        navigationController.pushViewController(mainEditor, animated: true)
+        
+    }
 }

@@ -32,6 +32,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     var timer = Timer()
     var imageLocationDictionary: [UIImage:CGPoint] = [:]
     
+    @IBOutlet weak var newGame: UIButton!
     @IBOutlet weak var countDownTimer: UILabel!
     @IBOutlet weak var score: UILabel!
     @IBOutlet weak var hint: UIButton!
@@ -48,12 +49,27 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         soundButton.setTitle("Sound Off", for: .normal)
         score.setRadius(radius: 8)
         countDownTimer.alpha = 0
+        newGame.setRadius(radius: 8)
+        newGame.centerTextHorizontally(spacing: 2)
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize
         gamePlayCollectionView.puzzleImages = gamePlayViewModel.shuffledphotoArray
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
+        
+                if (UIDevice.current.orientation.isLandscape) {
+                    let layout = UICollectionViewFlowLayout()
+                    layout.scrollDirection = .vertical
+
+                    gamePlayCollectionView.collectionViewLayout = layout
+                    print ("landscape")
+                }
+        
+        //        let layout = UICollectionViewFlowLayout()
+        //        layout.estimatedItemSize = CGSize(width: 100 , height: 100)
+        //        layout.scrollDirection = .horizontal
+        //        gamePlayCollectionView.collectionViewLayout = layout
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,9 +87,9 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         
         imageLocationDictionary = Dictionary(uniqueKeysWithValues: zip(gamePlayViewModel.orderedPhotoArray, cellCoordinatesArray))
         
-//        imageLocationDictionary = [gamePlayViewModel.orderedPhotoArray:cellCoordinatesArray]
-//        let dict = cellCoordinatesArray.toDictionary
-
+        //        imageLocationDictionary = [gamePlayViewModel.orderedPhotoArray:cellCoordinatesArray]
+        //        let dict = cellCoordinatesArray.toDictionary
+        
     }
     //Stops the rotation of the current screen
     override open var shouldAutorotate: Bool {
@@ -91,6 +107,13 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             soundButton.setTitle("Sound On", for: .normal)
         }
         
+        }
+    
+    @IBAction func newGame(_ sender: UIButton) {
+        
+
+        
+        gamePlayFlowController.showMain()
         
     }
     @IBAction func hint(_ sender: UIButton) {
@@ -121,6 +144,8 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             self.countDownTimer.alpha = 0
         }
         additionalTime += 10.1
+        scoreCount += 1
+        score.text = "Tally : \(scoreCount)"
     }
     @objc func handlePan(sender: UIPanGestureRecognizer) {
         //declare puzzlepiece
@@ -130,12 +155,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         self.view.bringSubviewToFront(puzzlePiece)
         sender.view?.center = location
         if sender.state == .ended {
-            
-            if (self.view.subviews.filter{ $0.center == (self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)) }).count == 0 {
-                
-                print (sender.view?.center as Any)
-                
-            }
             if puzzleGrid.frame.contains(location) {
                 UIView.animate(withDuration: 0.3) {
                     //check if the cell already contains a puzzlepiece
@@ -160,22 +179,31 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                 scoreCount += 1
                 
             }
-//            for (index, element) in cellCoordinatesArray.enumerated() {
-//                print ("Item \(index): \(element)")
-//            }
-//            var cellIndex = cellCoordinatesArray.index(of: (sender.view?.center)!)
-//            print (cellIndex)
-////
-//            print (gamePlayViewModel.orderedPhotoArray[cellIndex!])
-//
-//            print (imageLocationDictionary)
-
             
             scoreCount += 1
-            score.text = "Score : \(scoreCount)"
+            score.text = "Tally : \(scoreCount)"
+            puzzleEnded()
         }
+        
     }
     
+    func puzzleEnded() {
+        if gamePlayCollectionView.visibleCells.isEmpty {
+            
+            
+            for (key, element) in imageLocationDictionary {
+                if (view.subviews.filter{ $0.center == element }).count == 1 {
+                    print (key)
+                    print ("test")
+                    print (element)
+                    
+                }
+                
+            }
+        } else {
+            print ("isNotEmpty")
+        }
+    }
     
     func didEnd() {
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))

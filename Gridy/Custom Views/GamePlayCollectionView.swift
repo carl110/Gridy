@@ -113,7 +113,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 }
                 cellView.isHidden = false
                 gamePlayViewController.scoreCount += 1
-                gamePlayViewController.score.text = "Score : \(gamePlayViewController.scoreCount)"
+                gamePlayViewController.score.text = "Tally : \(gamePlayViewController.scoreCount)"
             default : break
             }
         }

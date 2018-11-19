@@ -17,4 +17,9 @@ class GamePlayFlowController {
         self.navigationController = navigationController
     }
     
+    func showMain() {
+        MainFactory.PushIn(navigationController: navigationController)
+    }
+    
+    
 }
