@@ -182,7 +182,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             
             scoreCount += 1
             score.text = "Tally : \(scoreCount)"
-            puzzleEnded()
         }
         
     }
@@ -190,18 +189,34 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     func puzzleEnded() {
         if gamePlayCollectionView.visibleCells.isEmpty {
             
-            
-            for (key, element) in imageLocationDictionary {
-                if (view.subviews.filter{ $0.center == element }).count == 1 {
-                    print (key)
-                    print ("test")
-                    print (element)
-                    
-                }
+            if gamePlayCollectionView.visibleCells.isEmpty {
+                print ("no cells left")
+                //Alert title and message
+               
+                let alert = UIAlertController(title: "Puzzle Complete", message: "Congratulations, you have completed the puzzle with a tally of \(scoreCount). \n Are you ready for a new game?", preferredStyle: UIAlertController.Style.alert)
                 
+                // add the actions (buttons)
+                alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
+                    self.gamePlayFlowController.showMain()
+                }))
+//                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
             }
-        } else {
-            print ("isNotEmpty")
+            
+            
+//            for (key, element) in imageLocationDictionary {
+//                if (view.subviews.filter{ $0.center == element }).count == 1 {
+//                    print (key)
+//                    print ("test")
+//                    print (element)
+//
+//                }
+//
+//            }
+//        } else {
+//            print ("isNotEmpty")
         }
     }
     

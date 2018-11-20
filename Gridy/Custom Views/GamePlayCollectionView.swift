@@ -100,6 +100,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                             self.puzzleImages.remove(at: indexPath.item)
                             self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
                             self.gamePlayDelegate?.didEnd()
+                            
                             }
                         } else {
                             self.gamePlayViewController.dragView.removeFromSuperview()
@@ -114,6 +115,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 cellView.isHidden = false
                 gamePlayViewController.scoreCount += 1
                 gamePlayViewController.score.text = "Tally : \(gamePlayViewController.scoreCount)"
+                self.gamePlayViewController.puzzleEnded()
             default : break
             }
         }
