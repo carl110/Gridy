@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8908AC1521A41E4C003EADA2 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908AC1421A41E4C003EADA2 /* UIAlertController+extensions.swift */; };
 		890B0C082193B8CF0018FA15 /* UINavigationController+extensons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B0C072193B8CF0018FA15 /* UINavigationController+extensons.swift */; };
 		8922E5C32141531200420A71 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8922E5C22141531200420A71 /* UIColor+extensions.swift */; };
 		8922E5C52141662900420A71 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8922E5C42141662900420A71 /* UIImage+extension.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8908AC1421A41E4C003EADA2 /* UIAlertController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+extensions.swift"; sourceTree = "<group>"; };
 		890B0C072193B8CF0018FA15 /* UINavigationController+extensons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extensons.swift"; sourceTree = "<group>"; };
 		8922E5C22141531200420A71 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 		8922E5C42141662900420A71 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				894516D821301AC100E472B2 /* UIVew+extensions.swift */,
+				8908AC1421A41E4C003EADA2 /* UIAlertController+extensions.swift */,
 				894520E42195D88E00BB480A /* Dictionary+extensions.swift */,
 				890B0C072193B8CF0018FA15 /* UINavigationController+extensons.swift */,
 				895E1639218B49F4005FAA18 /* CGPoint+extensions.swift */,
@@ -387,6 +390,7 @@
 				89DC614E213D310900DB5937 /* ImageEditorViewModel.swift in Sources */,
 				89DC614C213D30EF00DB5937 /* ImageEditorFactory.swift in Sources */,
 				89DC6163213D7E1100DB5937 /* Grid.swift in Sources */,
+				8908AC1521A41E4C003EADA2 /* UIAlertController+extensions.swift in Sources */,
 				89DC6153213D371600DB5937 /* ImageEditorViewController.swift in Sources */,
 				89296B702133EC0300B6D1F3 /* MainFlowController.swift in Sources */,
 				890B0C082193B8CF0018FA15 /* UINavigationController+extensons.swift in Sources */,

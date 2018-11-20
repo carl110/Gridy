@@ -202,7 +202,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
 //                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
                 
                 // show the alert
-                self.present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true)
             }
             
             
@@ -240,4 +240,3 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         self.gamePlayViewModel = gamePlayViewModel
     }
 }
-
