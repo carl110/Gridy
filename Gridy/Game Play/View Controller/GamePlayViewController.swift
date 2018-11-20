@@ -17,20 +17,22 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     fileprivate var gamePlayUICollectionViewCell: GamePlayUICollectionViewCell!
     
+    
+    private var completePuzzle = UIImageView()
+    private var additionalTime = 10.0
+    //set econds for timer
+    private var seconds = 10
+    //declare NSObject Timer
+    private var timer = Timer()
+    private var imageLocationDictionary: [UIImage:CGPoint] = [:]
     var gridSize = Int()
     var dragView = UIImageView()
-    var completePuzzle = UIImageView()
-    var additionalTime = 10.0
     //create empty array for cell locations
     var cellCoordinatesArray = [CGPoint]()
     var halfCellHypotenuse = CGFloat()
-    var player:AVAudioPlayer = AVAudioPlayer()
+    //var player:AVAudioPlayer = AVAudioPlayer()
     var scoreCount = 0
-    //set econds for timer
-    var seconds = 10
-    //declare NSObject Timer
-    var timer = Timer()
-    var imageLocationDictionary: [UIImage:CGPoint] = [:]
+
     
     @IBOutlet weak var newGame: UIButton!
     @IBOutlet weak var countDownTimer: UILabel!

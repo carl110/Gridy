@@ -14,9 +14,9 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var imageEditorFlowController : ImageEditorFlowController!
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     //create empty contained for UIImage
-    fileprivate var selectedImage: UIImage!
+    private var selectedImage: UIImage!
 //    let grid = Grid()
-    var gridSize = 4
+    private var gridSize = 4
 
     @IBOutlet weak var gridStepper: UIStepper!
     @IBOutlet weak var stepperLabel: UILabel!
