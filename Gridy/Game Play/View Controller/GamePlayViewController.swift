@@ -58,13 +58,13 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
         
-                if (UIDevice.current.orientation.isLandscape) {
-                    let layout = UICollectionViewFlowLayout()
-                    layout.scrollDirection = .vertical
-
-                    gamePlayCollectionView.collectionViewLayout = layout
-                    print ("landscape")
-                }
+        if (UIDevice.current.orientation.isLandscape) {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            
+            gamePlayCollectionView.collectionViewLayout = layout
+            print ("landscape")
+        }
         
         //        let layout = UICollectionViewFlowLayout()
         //        layout.estimatedItemSize = CGSize(width: 100 , height: 100)
@@ -107,11 +107,11 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             soundButton.setTitle("Sound On", for: .normal)
         }
         
-        }
+    }
     
     @IBAction func newGame(_ sender: UIButton) {
         
-
+        
         
         gamePlayFlowController.showMain()
         
@@ -186,37 +186,45 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         
     }
     
-    func puzzleEnded() {
+    func puzzleComplete() {
         if gamePlayCollectionView.visibleCells.isEmpty {
             
             if gamePlayCollectionView.visibleCells.isEmpty {
-                print ("no cells left")
-                //Alert title and message
-               
-                let alert = UIAlertController(title: "Puzzle Complete", message: "Congratulations, you have completed the puzzle with a tally of \(scoreCount). \n Are you ready for a new game?", preferredStyle: UIAlertController.Style.alert)
+//                //Alert title and message
+//                let alert = UIAlertController(title: "Puzzle Complete", message: "Congratulations, you have completed the puzzle with a tally of \(scoreCount). \n Are you ready for a new game?", preferredStyle: UIAlertController.Style.alert)
+//                // add the actions (buttons)
+//                alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
+//                    self.gamePlayFlowController.showMain()
+//                }))
+//                //                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+//
+//                // show the alert
+//                self.present(alert, animated: true)
                 
+                //Alert title and message
+                let alert = UIAlertController(title: "Puzzle Incomplete", message: "Unfortunatly you have not correctly completed the puzzle.\nYour tally currently stands at \(scoreCount).\nDo you want to complete this game or start a new one?", preferredStyle: UIAlertController.Style.alert)
                 // add the actions (buttons)
                 alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
                     self.gamePlayFlowController.showMain()
                 }))
-//                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "Complete this Game", style: UIAlertAction.Style.cancel, handler: nil))
                 
                 // show the alert
                 self.present(alert, animated: true)
             }
             
             
-//            for (key, element) in imageLocationDictionary {
-//                if (view.subviews.filter{ $0.center == element }).count == 1 {
-//                    print (key)
-//                    print ("test")
-//                    print (element)
-//
-//                }
-//
-//            }
-//        } else {
-//            print ("isNotEmpty")
+            //            for (key, element) in imageLocationDictionary {
+            //                if (view.subviews.filter{ $0.center == element }).count == 1 {
+            //                    print (key)
+            //                    print ("test")
+            //                    print (element)
+            //
+            //                }
+            //
+            //            }
+            //        } else {
+            //            print ("isNotEmpty")
         }
     }
     

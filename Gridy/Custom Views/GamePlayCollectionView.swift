@@ -115,7 +115,7 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                 cellView.isHidden = false
                 gamePlayViewController.scoreCount += 1
                 gamePlayViewController.score.text = "Tally : \(gamePlayViewController.scoreCount)"
-                self.gamePlayViewController.puzzleEnded()
+                self.gamePlayViewController.puzzleComplete()
             default : break
             }
         }
