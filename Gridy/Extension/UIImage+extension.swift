@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 
 extension UIImage {
+    //converts UIView to UIImage
+    convenience init(view: UIView) {
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.init(cgImage: (image?.cgImage)!)
+    }
     //splits and image into (X) pieces
     func splitImage(_ rowsandcolumns: Int) -> [UIImage] {
         let y = scale * (size.height / CGFloat(rowsandcolumns))
@@ -35,7 +43,12 @@ extension UIImage {
         return images
     }
     
+    
+    func isEqualToImage(image: UIImage) -> Bool {
+        let data1: NSData = self.pngData()! as NSData
+        let data2: NSData = image.pngData()! as NSData
+        return data1.isEqual(data2)
+    }
 }
 
-    
 

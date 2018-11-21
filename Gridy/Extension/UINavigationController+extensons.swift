@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+//to use the autorotation bool to stop the rotation of a screen with a device
+
 extension UINavigationController {
     
     override open var shouldAutorotate: Bool {

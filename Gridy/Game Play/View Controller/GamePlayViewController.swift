@@ -93,7 +93,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         //        let dict = cellCoordinatesArray.toDictionary
         
     }
-    //Stops the rotation of the current screen
+    //Stops the rotation of the current screen - uses UINavigation extension
     override open var shouldAutorotate: Bool {
         return false
     }
@@ -169,6 +169,9 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                         self.gamePlayCollectionView.reloadData()
                         //delete dragView
                         puzzlePiece.removeFromSuperview()
+                        
+
+                        
                     }
                 }
             } else {
@@ -189,20 +192,33 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     }
     
     func puzzleComplete() {
-        if gamePlayCollectionView.visibleCells.isEmpty {
-            
-            if gamePlayCollectionView.visibleCells.isEmpty {
-//                //Alert title and message
-//                let alert = UIAlertController(title: "Puzzle Complete", message: "Congratulations, you have completed the puzzle with a tally of \(scoreCount). \n Are you ready for a new game?", preferredStyle: UIAlertController.Style.alert)
-//                // add the actions (buttons)
-//                alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
-//                    self.gamePlayFlowController.showMain()
-//                }))
-//                //                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-//
-//                // show the alert
-//                self.present(alert, animated: true)
+
+            for (key, element) in imageLocationDictionary {
                 
+                //if subview center is equal to cgpoint from dictionary then image is subviews image and if it equals dictionary image
+                for i in view.subviews {
+                    let image = UIImage(view: i)
+                    if i.center == element && (key.isEqualToImage(image: image)) {
+                        print ("subview correct for \(i)")
+                    }
+                }
+                
+                //if all cells removed from collectionView
+                if gamePlayCollectionView.visibleCells.isEmpty {
+                if (view.subviews.filter{ $0.center == element }).count == 1 {//&& image = image{
+                //Alert title and message
+                let alert = UIAlertController(title: "Puzzle Complete", message: "Congratulations, you have completed the puzzle with a tally of \(scoreCount). \n Are you ready for a new game?", preferredStyle: UIAlertController.Style.alert)
+                // add the actions (buttons)
+                alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
+                    self.gamePlayFlowController.showMain()
+                }))
+                //                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+
+                // show the alert
+                self.present(alert, animated: true)
+
+            }
+            else {
                 //Alert title and message
                 let alert = UIAlertController(title: "Puzzle Incomplete", message: "Unfortunatly you have not correctly completed the puzzle.\nYour tally currently stands at \(scoreCount).\nDo you want to complete this game or start a new one?", preferredStyle: UIAlertController.Style.alert)
                 // add the actions (buttons)
@@ -210,26 +226,13 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                     self.gamePlayFlowController.showMain()
                 }))
                 alert.addAction(UIAlertAction(title: "Complete this Game", style: UIAlertAction.Style.cancel, handler: nil))
-                
+
                 // show the alert
                 self.present(alert, animated: true)
             }
-            
-            
-            //            for (key, element) in imageLocationDictionary {
-            //                if (view.subviews.filter{ $0.center == element }).count == 1 {
-            //                    print (key)
-            //                    print ("test")
-            //                    print (element)
-            //
-            //                }
-            //
-            //            }
-            //        } else {
-            //            print ("isNotEmpty")
         }
     }
-    
+}
     func didEnd() {
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
         view.subviews.last!.addGestureRecognizer(panGesture)

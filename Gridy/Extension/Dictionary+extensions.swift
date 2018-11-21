@@ -20,7 +20,7 @@ extension Dictionary
 }
 
 extension Array where Element: Any {
-    
+    //create disctionary from array with key as Int
     var toDictionary: [Int:Element] {
         var dictionary: [Int:Element] = [:]
         for (index, element) in enumerated() {
