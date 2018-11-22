@@ -64,7 +64,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func gridStepper(_ sender: UIStepper) {
 
-        stepperLabel.text = Int(sender.value).description
+        stepperLabel.text = "Current Grid Size = \(Int(sender.value).description)"
         gridView.gridSize = CGFloat(Int(sender.value))
         gridSize = Int(sender.value)
     }
