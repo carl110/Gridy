@@ -19,9 +19,9 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     
     
     private var completePuzzle = UIImageView()
-    private var additionalTime = 10.0
+    private var additionalTime = 11.0
     //set econds for timer
-    private var seconds = 10
+    private var seconds = 11
     //declare NSObject Timer
     private var timer = Timer()
     var gridSize = Int()
@@ -31,7 +31,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     var halfCellHypotenuse = CGFloat()
     //var player:AVAudioPlayer = AVAudioPlayer()
     var scoreCount = 0
-
+    
     @IBOutlet weak var newGame: UIButton!
     @IBOutlet weak var countDownTimer: UILabel!
     @IBOutlet weak var score: UILabel!
@@ -114,6 +114,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         hint.disableButton()
         //Start Timer
         runTimer()
+        countDownTimer.fadeIn()
         //create size and location for hintView
         let hintImageView = UIImageView(image: gamePlayViewModel.photo)
         hintImageView.frame.size = CGSize(width: puzzleGrid.frame.width, height: puzzleGrid.frame.height)
@@ -124,20 +125,20 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         completePuzzle.fadeIn()
         //wait 2 seconds from code run to run fadeout
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.countDownTimer.fadeIn()
+            
             self.completePuzzle.fadeOut()
         }
         //wait 8 seconds first time then an extra 10 seconds each time
         DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) {
-            self.completePuzzle.removeFromSuperview()
-            self.hint.enableButton()
+//            self.completePuzzle.removeFromSuperview()
+//            self.hint.enableButton()
             //Stop timer
-            self.timer.invalidate()
+//            self.timer.invalidate()
             //Set timer to new value
-            self.seconds = Int(self.additionalTime)
-            self.countDownTimer.alpha = 0
+//            self.seconds = Int(self.additionalTime)
+//            self.countDownTimer.alpha = 0
         }
-        additionalTime += 10.1
+//        additionalTime += 10.1
         scoreCount += 1
         score.text = "Tally : \(scoreCount)"
     }
@@ -198,7 +199,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                     correctPuzzlePiecePlacement += 1
                 }
             }
-            
             if correctPuzzlePiecePlacement == (gridSize * gridSize) {
                 //Alert title and message
                 let alert = UIAlertController(title: "Puzzle Complete", message: "Congratulations, you have completed the puzzle with a tally of \(scoreCount). \n Are you ready for a new game?", preferredStyle: UIAlertController.Style.alert)
@@ -208,10 +208,9 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                 }))
                 // show the alert
                 self.present(alert, animated: true)
-                
             } else {
                 //Alert title and message
-                let alert = UIAlertController(title: "Puzzle Incomplete", message: "Unfortunatly you have not correctly completed the puzzle.\nYour tally currently stands at \(scoreCount).\nDo you want to complete this game or start a new one?", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Puzzle Incomplete", message: "Unfortunatly you have not correctly completed the puzzle.\nYour tally currently stands at \(scoreCount).\nYour are \(Int((Double(correctPuzzlePiecePlacement)/(Double(gridSize)*Double(gridSize)))*100))% correct.\n Do you want to complete this game or start a new one?", preferredStyle: UIAlertController.Style.alert)
                 // add the actions (buttons)
                 alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
                     self.gamePlayFlowController.showMain()
@@ -235,6 +234,20 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     @objc func updatedTimer() {
         seconds -= 1
         countDownTimer.text = "\(seconds)"
+        
+        if seconds == 0 {
+            resetTimer()
+        }
+    }
+    
+    func resetTimer() {
+        timer.invalidate()
+        additionalTime = additionalTime + 10
+        seconds = Int(additionalTime)
+        
+        self.completePuzzle.removeFromSuperview()
+        self.hint.enableButton()
+        self.countDownTimer.alpha = 0
     }
     
     func assignDependancies(gamePlayFlowController: GamePlayFlowController, gamePlayViewModel: GamePlayViewModel){

@@ -42,23 +42,6 @@ extension UIImage {
         }
         return images
     }
-    
-    
-    func isEqualToImage(image: UIImage) -> Bool {
-        guard let data1: Data = self.pngData(),
-            let data2: Data = image.pngData() else {
-                return false
-        }
-        return data1.elementsEqual(data2)
-    }
-    
-    func elementsEqual(to image: UIImage) -> Bool {
-        guard let data1: Data = self.pngData(),
-            let data2: Data = image.pngData() else {
-                return false
-        }
-        return data1.elementsEqual(data2)
-    }
 }
 
 
