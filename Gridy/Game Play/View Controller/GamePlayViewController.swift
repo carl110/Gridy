@@ -15,7 +15,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     fileprivate var gamePlayFlowController : GamePlayFlowController!
     fileprivate var gamePlayViewModel : GamePlayViewModel!
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
-
+    
     private var completePuzzle = UIImageView()
     private var additionalTime = 11.0
     //set econds for timer
@@ -63,11 +63,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             gamePlayCollectionView.collectionViewLayout = layout
             print ("landscape")
         }
-        
-        //        let layout = UICollectionViewFlowLayout()
-        //        layout.estimatedItemSize = CGSize(width: 100 , height: 100)
-        //        layout.scrollDirection = .horizontal
-        //        gamePlayCollectionView.collectionViewLayout = layout
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,34 +104,27 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         
     }
     @IBAction func hint(_ sender: UIButton) {
-        hint.disableButton()
+        //        hint.disableButton()
         //Start Timer
         runTimer()
-        countDownTimer.fadeIn()
-        //create size and location for hintView
-        let hintImageView = UIImageView(image: gamePlayViewModel.photo)
-        hintImageView.frame.size = CGSize(width: puzzleGrid.frame.width, height: puzzleGrid.frame.height)
-        hintImageView.center = puzzleGrid.center
-        completePuzzle = hintImageView
-        completePuzzle.alpha = 0
-        self.view.addSubview(completePuzzle)
-        completePuzzle.fadeIn()
-        //wait 2 seconds from code run to run fadeout
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.countDownTimer.fadeIn()
+            self.hint.disableButton()
             
-            self.completePuzzle.fadeOut()
+            //create size and location for hintView
+            let hintImageView = UIImageView(image: self.gamePlayViewModel.photo)
+            hintImageView.frame.size = CGSize(width: self.puzzleGrid.frame.width, height: self.puzzleGrid.frame.height)
+            hintImageView.center = self.puzzleGrid.center
+            self.completePuzzle = hintImageView
+            self.completePuzzle.alpha = 0
+            self.view.addSubview(self.completePuzzle)
+            self.completePuzzle.fadeIn()
+            
+            //wait 2 seconds from code run to run fadeout
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.completePuzzle.fadeOut()
+            }
         }
-        //wait 8 seconds first time then an extra 10 seconds each time
-        DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) {
-//            self.completePuzzle.removeFromSuperview()
-//            self.hint.enableButton()
-            //Stop timer
-//            self.timer.invalidate()
-            //Set timer to new value
-//            self.seconds = Int(self.additionalTime)
-//            self.countDownTimer.alpha = 0
-        }
-//        additionalTime += 10.1
         scoreCount += 1
         score.text = "Tally : \(scoreCount)"
     }
