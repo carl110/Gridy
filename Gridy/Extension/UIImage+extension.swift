@@ -19,12 +19,12 @@ extension UIImage {
         self.init(cgImage: (image?.cgImage)!)
     }
     //splits and image into (X) pieces
-    func splitImage(_ rowsandcolumns: Int) -> [UIImage] {
+    func splitImage(_ rowsandcolumns: Int) -> [Int : UIImage] {
         let y = scale * (size.height / CGFloat(rowsandcolumns))
         let x = scale * (size.width / CGFloat(rowsandcolumns))
-        var images: [UIImage] = []
+        var images = [Int : UIImage]()
         images.reserveCapacity(rowsandcolumns * rowsandcolumns)
-        guard let cgImage = cgImage else { return [] }
+        guard let cgImage = cgImage else { return [:] }
         (0..<rowsandcolumns).forEach { row in
             (0..<rowsandcolumns).forEach { column in
                 var width = Int(x)
@@ -36,7 +36,7 @@ extension UIImage {
                     width = Int(scale * (size.width - (size.width / CGFloat(rowsandcolumns) * (CGFloat(rowsandcolumns)-1))))
                 }
                 if let image = cgImage.cropping(to: CGRect(origin: CGPoint(x: column * Int(x), y:  row * Int(x)), size: CGSize(width: width, height: height))) {
-                    images.append(UIImage(cgImage: image, scale: scale, orientation: imageOrientation))
+                    images[images.count] = UIImage(cgImage: image, scale: scale, orientation: imageOrientation)
                 }
             }
         }
@@ -45,9 +45,19 @@ extension UIImage {
     
     
     func isEqualToImage(image: UIImage) -> Bool {
-        let data1: NSData = self.pngData()! as NSData
-        let data2: NSData = image.pngData()! as NSData
-        return data1.isEqual(data2)
+        guard let data1: Data = self.pngData(),
+            let data2: Data = image.pngData() else {
+                return false
+        }
+        return data1.elementsEqual(data2)
+    }
+    
+    func elementsEqual(to image: UIImage) -> Bool {
+        guard let data1: Data = self.pngData(),
+            let data2: Data = image.pngData() else {
+                return false
+        }
+        return data1.elementsEqual(data2)
     }
 }
 

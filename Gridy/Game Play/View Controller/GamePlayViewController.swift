@@ -24,7 +24,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     private var seconds = 10
     //declare NSObject Timer
     private var timer = Timer()
-    private var imageLocationDictionary: [UIImage:CGPoint] = [:]
     var gridSize = Int()
     var dragView = UIImageView()
     //create empty array for cell locations
@@ -33,7 +32,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     //var player:AVAudioPlayer = AVAudioPlayer()
     var scoreCount = 0
 
-    
     @IBOutlet weak var newGame: UIButton!
     @IBOutlet weak var countDownTimer: UILabel!
     @IBOutlet weak var score: UILabel!
@@ -56,7 +54,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         //load grid with correct number of cells
         puzzleGrid.gridSize = CGFloat(gamePlayViewModel.gridSize)
         gridSize = gamePlayViewModel.gridSize
-        gamePlayCollectionView.puzzleImages = gamePlayViewModel.shuffledphotoArray
+        gamePlayCollectionView.puzzleImages = gamePlayViewModel.images
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
         
@@ -86,12 +84,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             }
         }
         halfCellHypotenuse = (CGFloat(sqrt(pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00) + pow(Double(Int(puzzleGrid.frame.width) / gridSize), 2.00)))) / 2
-        
-        imageLocationDictionary = Dictionary(uniqueKeysWithValues: zip(gamePlayViewModel.orderedPhotoArray, cellCoordinatesArray))
-        
-        //        imageLocationDictionary = [gamePlayViewModel.orderedPhotoArray:cellCoordinatesArray]
-        //        let dict = cellCoordinatesArray.toDictionary
-        
     }
     //Stops the rotation of the current screen - uses UINavigation extension
     override open var shouldAutorotate: Bool {
@@ -169,9 +161,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                         self.gamePlayCollectionView.reloadData()
                         //delete dragView
                         puzzlePiece.removeFromSuperview()
-                        
-
-                        
                     }
                 }
             } else {
@@ -191,34 +180,36 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         
     }
     
+    private func indexOfPuzzles(with image: UIImage) -> Int? {
+        
+        guard let key = (gamePlayViewModel.puzzleDictionary as NSDictionary).allKeys(for: image).first else
+        {return nil}
+        return key as? Int
+    }
+    
     func puzzleComplete() {
-
-            for (key, element) in imageLocationDictionary {
-                
-                //if subview center is equal to cgpoint from dictionary then image is subviews image and if it equals dictionary image
-                for i in view.subviews {
-                    let image = UIImage(view: i)
-                    if i.center == element && (key.isEqualToImage(image: image)) {
-                        print ("subview correct for \(i)")
-                    }
+        if gamePlayCollectionView.visibleCells.isEmpty {
+            var correctPuzzlePiecePlacement = 0
+            view.subviews.forEach { (puzzleFieldView) in
+                guard let image = (puzzleFieldView as? UIImageView)?.image else {return}
+                guard let fieldIndex = indexOfPuzzles(with: image) else {return}
+                guard let fieldCenterIndex = cellCoordinatesArray.index(of: puzzleFieldView.center) else {return}
+                if fieldCenterIndex == fieldIndex {
+                    correctPuzzlePiecePlacement += 1
                 }
-                
-                //if all cells removed from collectionView
-                if gamePlayCollectionView.visibleCells.isEmpty {
-                if (view.subviews.filter{ $0.center == element }).count == 1 {//&& image = image{
+            }
+            
+            if correctPuzzlePiecePlacement == (gridSize * gridSize) {
                 //Alert title and message
                 let alert = UIAlertController(title: "Puzzle Complete", message: "Congratulations, you have completed the puzzle with a tally of \(scoreCount). \n Are you ready for a new game?", preferredStyle: UIAlertController.Style.alert)
                 // add the actions (buttons)
                 alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
                     self.gamePlayFlowController.showMain()
                 }))
-                //                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-
                 // show the alert
                 self.present(alert, animated: true)
-
-            }
-            else {
+                
+            } else {
                 //Alert title and message
                 let alert = UIAlertController(title: "Puzzle Incomplete", message: "Unfortunatly you have not correctly completed the puzzle.\nYour tally currently stands at \(scoreCount).\nDo you want to complete this game or start a new one?", preferredStyle: UIAlertController.Style.alert)
                 // add the actions (buttons)
@@ -226,13 +217,11 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                     self.gamePlayFlowController.showMain()
                 }))
                 alert.addAction(UIAlertAction(title: "Complete this Game", style: UIAlertAction.Style.cancel, handler: nil))
-
                 // show the alert
                 self.present(alert, animated: true)
             }
         }
     }
-}
     func didEnd() {
         let panGesture = UIPanGestureRecognizer(target:self, action: #selector(handlePan(sender:)))
         view.subviews.last!.addGestureRecognizer(panGesture)

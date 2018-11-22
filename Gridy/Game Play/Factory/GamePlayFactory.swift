@@ -14,7 +14,8 @@ class GamePlayFactory {
         
         let gamePlay = UIStoryboard(name: "GamePlay", bundle: nil).instantiateInitialViewController() as! GamePlayViewController
         let gamePlayFlowController = GamePlayFlowController(navigationController: navigationController)
-        let gamePlayViewModel = GamePlayViewModel(photo : photo, gridSize: gridSize)
+        let puzzleDictionary = photo.splitImage(gridSize)
+        let gamePlayViewModel = GamePlayViewModel(photo : photo, gridSize: gridSize, puzzleDictionary: puzzleDictionary)
         gamePlay.assignDependancies(gamePlayFlowController: gamePlayFlowController, gamePlayViewModel: gamePlayViewModel)
         
         navigationController.pushViewController(gamePlay, animated: true)
