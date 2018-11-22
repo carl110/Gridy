@@ -18,7 +18,7 @@ extension UIView {
         blurView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(blurView)
     }
-    //puts see through hole onm a blur view
+    //puts see through hole on a blur view
     func holeInBlur(xPosition: CGFloat, yPosition:CGFloat, width: CGFloat, height: CGFloat) {
         let xPosition = xPosition
         let yPosition = yPosition

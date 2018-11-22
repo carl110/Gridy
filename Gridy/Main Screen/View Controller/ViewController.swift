@@ -11,7 +11,6 @@ import Photos
 import AVFoundation
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    fileprivate let viewModel = MainViewModel()
     fileprivate var mainFlowController: MainFlowController!
     //Array of local images
     fileprivate let localImages: [UIImage] = [UIImage(named: "Wands")!, UIImage(named: "Plant")!, UIImage(named: "Orangutan")!, UIImage(named: "Dobby")!, UIImage(named: "Frog")!]

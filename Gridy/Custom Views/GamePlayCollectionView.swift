@@ -18,7 +18,7 @@ protocol GamePlayDelegate {
 class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var gamePlayViewController: GamePlayViewController!
-    var gamePlayDelegate: GamePlayDelegate? = nil
+    var gamePlayDelegate: GamePlayDelegate?
     //create empty array fo puzzleImages
     var puzzleImages: [UIImage] = []
     //declare sound for use

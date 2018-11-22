@@ -38,7 +38,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         //set initial value then min and max
         gridStepper.value = 4
         //check if device being used is iPad
-        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad)
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
         {
             // Ipad
             gridStepper.maximumValue = 10

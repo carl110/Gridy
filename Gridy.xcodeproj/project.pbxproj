@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		8908AC1521A41E4C003EADA2 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908AC1421A41E4C003EADA2 /* UIAlertController+extensions.swift */; };
 		890B0C082193B8CF0018FA15 /* UINavigationController+extensons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B0C072193B8CF0018FA15 /* UINavigationController+extensons.swift */; };
-		8922E5C32141531200420A71 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8922E5C22141531200420A71 /* UIColor+extensions.swift */; };
 		8922E5C52141662900420A71 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8922E5C42141662900420A71 /* UIImage+extension.swift */; };
 		89296B6E2133EBF400B6D1F3 /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89296B6D2133EBF400B6D1F3 /* MainFactory.swift */; };
 		89296B702133EC0300B6D1F3 /* MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89296B6F2133EC0300B6D1F3 /* MainFlowController.swift */; };
-		89296B7B2133F78300B6D1F3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89296B7A2133F78300B6D1F3 /* MainViewModel.swift */; };
 		892F7F892139476D0003BE35 /* GridyIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892F7F882139476D0003BE35 /* GridyIconButton.swift */; };
 		892F7F8B213947830003BE35 /* GridyIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892F7F8A213947830003BE35 /* GridyIconButton.xib */; };
 		894516B721300D6600E472B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894516B621300D6600E472B2 /* AppDelegate.swift */; };
@@ -46,11 +44,9 @@
 /* Begin PBXFileReference section */
 		8908AC1421A41E4C003EADA2 /* UIAlertController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+extensions.swift"; sourceTree = "<group>"; };
 		890B0C072193B8CF0018FA15 /* UINavigationController+extensons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extensons.swift"; sourceTree = "<group>"; };
-		8922E5C22141531200420A71 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 		8922E5C42141662900420A71 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
 		89296B6D2133EBF400B6D1F3 /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
 		89296B6F2133EC0300B6D1F3 /* MainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowController.swift; sourceTree = "<group>"; };
-		89296B7A2133F78300B6D1F3 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		892F7F882139476D0003BE35 /* GridyIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridyIconButton.swift; sourceTree = "<group>"; };
 		892F7F8A213947830003BE35 /* GridyIconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridyIconButton.xib; sourceTree = "<group>"; };
 		894516B321300D6600E472B2 /* Gridy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gridy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				894516CD213011C200E472B2 /* View Controller */,
-				894516CA2130113700E472B2 /* View Model */,
 				894516CF213011EE00E472B2 /* Flow Controller */,
 				894516D0213011F200E472B2 /* Factory */,
 			);
@@ -194,14 +189,6 @@
 			path = Gridy;
 			sourceTree = "<group>";
 		};
-		894516CA2130113700E472B2 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				89296B7A2133F78300B6D1F3 /* MainViewModel.swift */,
-			);
-			path = "View Model";
-			sourceTree = "<group>";
-		};
 		894516CD213011C200E472B2 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +224,6 @@
 				895E1639218B49F4005FAA18 /* CGPoint+extensions.swift */,
 				897116B52195BD3B00CADFA7 /* Array+extensions.swift */,
 				895E1637218B24B8005FAA18 /* UIButton+extensions.swift */,
-				8922E5C22141531200420A71 /* UIColor+extensions.swift */,
 				8922E5C42141662900420A71 /* UIImage+extension.swift */,
 			);
 			path = Extension;
@@ -390,14 +376,12 @@
 				894516D921301AC100E472B2 /* UIVew+extensions.swift in Sources */,
 				89DC6159213D403B00DB5937 /* GamePlayFactory.swift in Sources */,
 				895E1638218B24B8005FAA18 /* UIButton+extensions.swift in Sources */,
-				8922E5C32141531200420A71 /* UIColor+extensions.swift in Sources */,
 				894516B721300D6600E472B2 /* AppDelegate.swift in Sources */,
 				89296B6E2133EBF400B6D1F3 /* MainFactory.swift in Sources */,
 				89DC615D213D406900DB5937 /* GamePlayViewModel.swift in Sources */,
 				89D7ACE921749F1700AF1474 /* GamePlayCollectionView.swift in Sources */,
 				892F7F892139476D0003BE35 /* GridyIconButton.swift in Sources */,
 				89DC6157213D3FEA00DB5937 /* GamePlayFlowController.swift in Sources */,
-				89296B7B2133F78300B6D1F3 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +457,8 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -527,6 +513,8 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;

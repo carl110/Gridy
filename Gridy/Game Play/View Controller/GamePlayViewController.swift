@@ -15,9 +15,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     fileprivate var gamePlayFlowController : GamePlayFlowController!
     fileprivate var gamePlayViewModel : GamePlayViewModel!
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
-    fileprivate var gamePlayUICollectionViewCell: GamePlayUICollectionViewCell!
-    
-    
+
     private var completePuzzle = UIImageView()
     private var additionalTime = 11.0
     //set econds for timer
@@ -58,7 +56,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
         
-        if (UIDevice.current.orientation.isLandscape) {
+        if UIDevice.current.orientation.isLandscape {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
             
@@ -77,7 +75,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         
         //loop through grid and assign coordinates of each cell to array
         for row in 0...(gridSize - 1) {
-            for col in 0...gridSize - 1{
+            for col in 0...gridSize - 1 {
                 let puzzleCellSize = puzzleGrid.frame.width / CGFloat(gridSize)
                 let arrayItem = CGPoint(x: puzzleGrid.frame.minX + (puzzleCellSize * CGFloat(col)) + (puzzleCellSize / 2), y: puzzleGrid.frame.minY + (puzzleCellSize * CGFloat(row)) + (puzzleCellSize / 2))
                 cellCoordinatesArray.append(arrayItem)
@@ -203,7 +201,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                 //Alert title and message
                 let alert = UIAlertController(title: "Puzzle Complete", message: "Congratulations, you have completed the puzzle with a tally of \(scoreCount). \n Are you ready for a new game?", preferredStyle: UIAlertController.Style.alert)
                 // add the actions (buttons)
-                alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
+                alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { _ in
                     self.gamePlayFlowController.showMain()
                 }))
                 // show the alert
@@ -212,7 +210,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
                 //Alert title and message
                 let alert = UIAlertController(title: "Puzzle Incomplete", message: "Unfortunatly you have not correctly completed the puzzle.\nYour tally currently stands at \(scoreCount).\nYour are \(Int((Double(correctPuzzlePiecePlacement)/(Double(gridSize)*Double(gridSize)))*100))% correct.\n Do you want to complete this game or start a new one?", preferredStyle: UIAlertController.Style.alert)
                 // add the actions (buttons)
-                alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { action in
+                alert.addAction(UIAlertAction(title: "New Game", style: UIAlertAction.Style.default, handler: { _ in
                     self.gamePlayFlowController.showMain()
                 }))
                 alert.addAction(UIAlertAction(title: "Complete this Game", style: UIAlertAction.Style.cancel, handler: nil))
@@ -242,7 +240,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     
     func resetTimer() {
         timer.invalidate()
-        additionalTime = additionalTime + 10
+        additionalTime += 10
         seconds = Int(additionalTime)
         
         self.completePuzzle.removeFromSuperview()
