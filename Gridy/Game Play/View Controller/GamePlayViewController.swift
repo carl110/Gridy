@@ -61,7 +61,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             layout.scrollDirection = .vertical
             
             gamePlayCollectionView.collectionViewLayout = layout
-            print ("landscape")
         }
     }
     
