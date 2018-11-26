@@ -15,7 +15,6 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate var imageEditorViewModel : ImageEditorViewModel!
     //create empty contained for UIImage
     private var selectedImage: UIImage!
-//    let grid = Grid()
     private var gridSize = 4
 
     @IBOutlet weak var gridStepper: UIStepper!
@@ -25,17 +24,12 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var gridView: Grid!
     @IBOutlet weak var selectImage: UIButton!
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async {
-            self.selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
-            self.selectImage.centerTextHorizontally(spacing: 2)
+        DispatchQueue.main.async { [weak self] in
+            self?.selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
+            self?.selectImage.centerTextHorizontally(spacing: 2)
         }
-        
-//        selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
-//        selectImage.centerTextHorizontally(spacing: 2)
         //set image as image selected from previouse screen
         imageView.image = imageEditorViewModel.photo
         //Add blur to entire view
@@ -45,8 +39,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         //set initial value then min and max
         gridStepper.value = 4
         //check if device being used is iPad
-        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
-        {
+        if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
             // Ipad
             gridStepper.maximumValue = 10
         }
@@ -56,6 +49,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
             gridStepper.maximumValue = 6
         }
         gridStepper.minimumValue = 2
+        gridStepper.stepValue = 2
     }
     //using viewDidLayoutSubview to calculate sizes required for screen used
     override func viewDidLayoutSubviews() {
@@ -70,7 +64,6 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func gridStepper(_ sender: UIStepper) {
-
         stepperLabel.text = "Current Grid Size = \(Int(sender.value).description)"
         gridView.gridSize = CGFloat(Int(sender.value))
         gridSize = Int(sender.value)
@@ -128,7 +121,6 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         if let view = recognizer.view {
             view.transform = view.transform.rotated(by: recognizer.rotation)
             recognizer.rotation = 0
-
         }
         if recognizer.state == .ended {
 
@@ -147,13 +139,10 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
 
         }
     }
-    
     @IBAction func doubleTap(recognizer: UITapGestureRecognizer) {
         //set number of taps required to initiate function
         recognizer.numberOfTapsRequired = 2
         if let view = recognizer.view {
-            
-            
             //returns to original size and rotation
             view.transform = CGAffineTransform.identity
             imageView.frame.size = blurView.frame.size
@@ -162,9 +151,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    
     func endGesture() {
-        
         if imageView.frame.size.width < gridView.frame.size.width || imageView.frame.size.height < gridView.frame.size.height {
             //get current rotation value
             let rotation = atan2(imageView.transform.b, imageView.transform.a)
@@ -177,35 +164,34 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
             imageView.transform = CGAffineTransform(rotationAngle: rotation)
             //centre the imageView
             imageView.center = gridView.center
-            
         }
-        
         //Set limit of image pan
         //top
         if imageView.frame.minY > gridView.frame.minY {
-            UIView.animate(withDuration: 0.3) {
-                self.imageView.center = CGPoint(x: self.imageView.center.x, y: self.imageView.center.y - (self.imageView.frame.minY - self.gridView.frame.minY))
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                let strongSelf = self!
+                strongSelf.imageView.center = CGPoint(x: strongSelf.imageView.center.x, y: strongSelf.imageView.center.y - (strongSelf.imageView.frame.minY - strongSelf.gridView.frame.minY))
             }
         }
         //left
         if imageView.frame.minX > gridView.frame.minX {
-            UIView.animate(withDuration: 0.3) {
-                self.imageView.center = CGPoint(x: self.imageView.center.x - (self.imageView.frame.minX - self.gridView.frame.minX),
-                                                y: self.imageView.center.y)
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self!.imageView.center = CGPoint(x: self!.imageView.center.x - (self!.imageView.frame.minX - self!.gridView.frame.minX),
+                                                y: self!.imageView.center.y)
             }
         }
         //right
         if imageView.frame.maxX < gridView.frame.maxX {
-            UIView.animate(withDuration: 0.3) {
-                self.imageView.center = CGPoint(x: self.imageView.center.x + (self.gridView.frame.maxX - self.imageView.frame.maxX),
-                                                y: self.imageView.center.y)
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self!.imageView.center = CGPoint(x: self!.imageView.center.x + (self!.gridView.frame.maxX - self!.imageView.frame.maxX),
+                                                y: self!.imageView.center.y)
             }
         }
         //bottom
         if imageView.frame.maxY < gridView.frame.maxY {
-            UIView.animate(withDuration: 0.3) {
-                self.imageView.center = CGPoint(x: self.imageView.center.x,
-                                                y: self.imageView.center.y + (self.gridView.frame.maxY - self.imageView.frame.maxY))
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self!.imageView.center = CGPoint(x: self!.imageView.center.x,
+                                                y: self!.imageView.center.y + (self!.gridView.frame.maxY - self!.imageView.frame.maxY))
             }
         }
     }

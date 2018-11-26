@@ -56,11 +56,9 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
 
-        
         if UIDevice.current.orientation.isLandscape {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
-            
             gamePlayCollectionView.collectionViewLayout = layout
         }
     }
@@ -107,22 +105,22 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         //        hint.disableButton()
         //Start Timer
         runTimer()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.countDownTimer.fadeIn()
-            self.hint.disableButton()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.countDownTimer.fadeIn()
+            self?.hint.disableButton()
             
             //create size and location for hintView
-            let hintImageView = UIImageView(image: self.gamePlayViewModel.photo)
-            hintImageView.frame.size = CGSize(width: self.puzzleGrid.frame.width, height: self.puzzleGrid.frame.height)
-            hintImageView.center = self.puzzleGrid.center
-            self.completePuzzle = hintImageView
-            self.completePuzzle.alpha = 0
-            self.view.addSubview(self.completePuzzle)
-            self.completePuzzle.fadeIn()
+            let hintImageView = UIImageView(image: self?.gamePlayViewModel.photo)
+            hintImageView.frame.size = CGSize(width: self!.puzzleGrid.frame.width, height: self!.puzzleGrid.frame.height)
+            hintImageView.center = self!.puzzleGrid.center
+            self?.completePuzzle = hintImageView
+            self?.completePuzzle.alpha = 0
+            self?.view.addSubview(self!.completePuzzle)
+            self?.completePuzzle.fadeIn()
             
             //wait 2 seconds from code run to run fadeout
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.completePuzzle.fadeOut()
+                self?.completePuzzle.fadeOut()
             }
         }
         scoreCount += 1
@@ -137,15 +135,15 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         sender.view?.center = location
         if sender.state == .ended {
             if puzzleGrid.frame.contains(location) {
-                UIView.animate(withDuration: 0.3) {
+                UIView.animate(withDuration: 0.3) { [weak self] in
                     //check if the cell already contains a puzzlepiece
-                    if (self.view.subviews.filter{ $0.center == (self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse)) }).count == 0 {
+                    if (self!.view.subviews.filter{ $0.center == (self!.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self!.halfCellHypotenuse)) }).count == 0 {
                         //loop to see where puzzle piece is and snap to closest cell
-                        sender.view?.center = self.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self.halfCellHypotenuse) } else {
+                        sender.view?.center = self!.cellCoordinatesArray.closestCell(nonFixedLocation: location, hyp: self!.halfCellHypotenuse) } else {
                         //add image from puzzlePiece back to array
-                        self.gamePlayCollectionView.puzzleImages.append(puzzlePiece.image!)
+                        self?.gamePlayCollectionView.puzzleImages.append(puzzlePiece.image!)
                         //reload UICollectionView to show added cell
-                        self.gamePlayCollectionView.reloadData()
+                        self?.gamePlayCollectionView.reloadData()
                         //delete dragView
                         puzzlePiece.removeFromSuperview()
                     }
