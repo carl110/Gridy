@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c2X-7m-zaB">
-    <device id="retina4_0" orientation="portrait">
+    <device id="ipad12_9rounded" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="ImageEditor" id="c2X-7m-zaB" customClass="ImageEditorViewController" customModule="Gridy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MSg-W3-ItH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVZ-Fc-cyN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1004"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="lgM-jx-ZZD" appends="YES" id="okK-CW-6ei"/>
@@ -29,19 +29,23 @@
                                 </connections>
                             </imageView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDE-fz-pYf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1004"/>
                                 <gestureRecognizers/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="iEg-kG-JrL" customClass="Grid" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="30" y="154" width="260" height="260"/>
+                                <rect key="frame" x="393" y="222" width="580" height="580"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iEg-kG-JrL" secondAttribute="height" multiplier="1:1" id="B5b-av-BZe"/>
                                     <constraint firstAttribute="width" secondItem="iEg-kG-JrL" secondAttribute="height" multiplier="1:1" id="Pfg-5b-yim"/>
-                                    <constraint firstAttribute="height" constant="540" id="URt-vF-hc9"/>
+                                    <constraint firstAttribute="height" constant="540" id="URt-vF-hc9">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="580"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" secondItem="iEg-kG-JrL" secondAttribute="height" multiplier="1:1" id="jBk-xF-n6p"/>
-                                    <constraint firstAttribute="width" constant="540" id="zFW-Zu-DLU"/>
+                                    <constraint firstAttribute="width" constant="540" id="zFW-Zu-DLU">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="580"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -67,19 +71,19 @@
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use the + and - to change the grid size" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkO-yr-NZi">
-                                <rect key="frame" x="20" y="40" width="280" height="41"/>
+                                <rect key="frame" x="534" y="44" width="298.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="5P0-Ah-PQX">
-                                <rect key="frame" x="20" y="81" width="94" height="29"/>
+                                <rect key="frame" x="636" y="64.5" width="94" height="29"/>
                                 <connections>
                                     <action selector="gridStepper:" destination="c2X-7m-zaB" eventType="valueChanged" id="dGu-Hp-w3C"/>
                                 </connections>
                             </stepper>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-V2-dqi">
-                                <rect key="frame" x="92.5" y="518" width="135" height="30"/>
+                                <rect key="frame" x="633" y="934" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="B1w-V2-dqi" secondAttribute="height" multiplier="9:2" id="60e-c1-guu"/>
@@ -189,6 +193,9 @@
                                 <exclude reference="Z0B-xo-2PF"/>
                                 <exclude reference="l7b-eK-TVj"/>
                                 <exclude reference="qW7-AX-cSZ"/>
+                                <exclude reference="Ixe-ee-Xru"/>
+                                <exclude reference="JCL-lI-zo4"/>
+                                <exclude reference="ub9-Ie-3Z5"/>
                                 <exclude reference="1ge-TE-h0e"/>
                                 <exclude reference="9gl-ZE-QXA"/>
                                 <exclude reference="BzX-Vm-5Ow"/>
@@ -197,9 +204,6 @@
                                 <exclude reference="dck-0e-QYw"/>
                                 <exclude reference="sWg-Qy-6Yj"/>
                                 <exclude reference="xvQ-8I-0Oo"/>
-                                <exclude reference="Ixe-ee-Xru"/>
-                                <exclude reference="JCL-lI-zo4"/>
-                                <exclude reference="ub9-Ie-3Z5"/>
                                 <exclude reference="0CC-v9-Kw9"/>
                                 <exclude reference="KHu-g0-dff"/>
                                 <exclude reference="VRI-Lw-xoC"/>
@@ -229,6 +233,10 @@
                                 <exclude reference="dum-8b-vYM"/>
                                 <exclude reference="eXk-9M-h4g"/>
                                 <exclude reference="pfY-E1-GU0"/>
+                                <exclude reference="IwR-lU-04H"/>
+                                <exclude reference="JCL-lI-zo4"/>
+                                <exclude reference="rGX-le-dId"/>
+                                <include reference="ub9-Ie-3Z5"/>
                                 <exclude reference="AOf-qy-zhw"/>
                                 <include reference="HxS-3y-PZC"/>
                                 <exclude reference="L90-Rn-Qx0"/>
@@ -237,10 +245,6 @@
                                 <exclude reference="loS-HF-LGg"/>
                                 <include reference="sWg-Qy-6Yj"/>
                                 <include reference="xvQ-8I-0Oo"/>
-                                <exclude reference="IwR-lU-04H"/>
-                                <exclude reference="JCL-lI-zo4"/>
-                                <exclude reference="rGX-le-dId"/>
-                                <include reference="ub9-Ie-3Z5"/>
                                 <include reference="0CC-v9-Kw9"/>
                                 <include reference="VRI-Lw-xoC"/>
                                 <exclude reference="Zse-P4-S3V"/>
@@ -273,6 +277,9 @@
                                 <include reference="l7b-eK-TVj"/>
                                 <exclude reference="pfY-E1-GU0"/>
                                 <include reference="qW7-AX-cSZ"/>
+                                <exclude reference="IwR-lU-04H"/>
+                                <include reference="Ixe-ee-Xru"/>
+                                <exclude reference="rGX-le-dId"/>
                                 <include reference="1ge-TE-h0e"/>
                                 <include reference="9gl-ZE-QXA"/>
                                 <exclude reference="AOf-qy-zhw"/>
@@ -281,9 +288,6 @@
                                 <exclude reference="Nzt-eo-M0O"/>
                                 <include reference="dck-0e-QYw"/>
                                 <exclude reference="loS-HF-LGg"/>
-                                <exclude reference="IwR-lU-04H"/>
-                                <include reference="Ixe-ee-Xru"/>
-                                <exclude reference="rGX-le-dId"/>
                                 <include reference="KHu-g0-dff"/>
                                 <exclude reference="Zse-P4-S3V"/>
                                 <include reference="gGi-bG-wdA"/>
