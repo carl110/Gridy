@@ -55,6 +55,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         gamePlayCollectionView.puzzleImages = gamePlayViewModel.images
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
+
         
         if UIDevice.current.orientation.isLandscape {
             let layout = UICollectionViewFlowLayout()

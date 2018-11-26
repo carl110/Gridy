@@ -25,10 +25,17 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var gridView: Grid!
     @IBOutlet weak var selectImage: UIButton!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
-        selectImage.centerTextHorizontally(spacing: 2)
+        DispatchQueue.main.async {
+            self.selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
+            self.selectImage.centerTextHorizontally(spacing: 2)
+        }
+        
+//        selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
+//        selectImage.centerTextHorizontally(spacing: 2)
         //set image as image selected from previouse screen
         imageView.image = imageEditorViewModel.photo
         //Add blur to entire view
