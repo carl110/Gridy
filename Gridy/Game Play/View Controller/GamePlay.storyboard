@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X2x-93-sSM">
-    <device id="retina6_1" orientation="landscape">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,18 +15,18 @@
             <objects>
                 <viewController id="X2x-93-sSM" customClass="GamePlayViewController" customModule="Gridy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GMU-XL-wQ0">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHB-Oh-cdx">
-                                <rect key="frame" x="683" y="30" width="119" height="53.5"/>
+                                <rect key="frame" x="520" y="20" width="142" height="69"/>
                                 <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJg-IR-7pN">
-                                <rect key="frame" x="683" y="216.5" width="119" height="53.5"/>
+                                <rect key="frame" x="520" y="286.5" width="142" height="68.5"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" identifier="SBW" id="kqS-o9-Blg"/>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqY-df-g1u">
-                                <rect key="frame" x="683" y="123.5" width="119" height="53"/>
+                                <rect key="frame" x="520" y="109" width="142" height="68.5"/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" identifier="HW" id="ntf-NZ-cVu"/>
@@ -82,7 +82,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Oa0-2N-KT8" customClass="GamePlayCollectionView" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="59" y="20" width="150" height="393"/>
+                                <rect key="frame" x="20" y="20" width="150" height="335"/>
                                 <color key="backgroundColor" red="0.61568627450000002" green="0.59215686270000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="7iO-el-oMj"/>
@@ -246,7 +246,7 @@
                                 </variation>
                             </collectionView>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-RC-8i0" customClass="Grid" customModule="Gridy" customModuleProvider="target">
-                                <rect key="frame" x="259" y="20" width="374" height="374"/>
+                                <rect key="frame" x="180" y="20" width="335" height="335"/>
                                 <color key="backgroundColor" red="0.61568627450000002" green="0.59215686270000001" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ooq-RC-8i0" secondAttribute="height" multiplier="1:1" id="6WU-zd-ntv"/>
@@ -291,7 +291,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bCL-Gb-Tun">
-                                <rect key="frame" x="683" y="310" width="119" height="53"/>
+                                <rect key="frame" x="520" y="197.5" width="142" height="69"/>
                                 <color key="backgroundColor" red="0.78823529410000004" green="0.87450980389999999" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -301,7 +301,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3c-8p-H42">
-                                <rect key="frame" x="683" y="123.5" width="119" height="53"/>
+                                <rect key="frame" x="520" y="109" width="142" height="68.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
