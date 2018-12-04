@@ -20,21 +20,15 @@ extension UIView {
     }
     //puts see through hole on a blur view
     func holeInBlur(xPosition: CGFloat, yPosition:CGFloat, width: CGFloat, height: CGFloat) {
-        let xPosition = xPosition
-        let yPosition = yPosition
-        let width = width
-        let height = height
         //Add hole to blur view
         let scanLayer = CAShapeLayer()
         //Size of hole
         let scanRect = CGRect.init(x: xPosition, y: yPosition, width: width, height: height)
         let outerPath = UIBezierPath(rect: scanRect)
         let superlayerPath = UIBezierPath.init(rect: self.frame)
-        //        outerPath.usesEvenOddFillRule = true
         outerPath.append(superlayerPath)
         scanLayer.path = outerPath.cgPath
         scanLayer.fillRule = CAShapeLayerFillRule.evenOdd
-        //        scanLayer.fillColor = UIColor.black.cgColor
         self.layer.mask = scanLayer
     }
     //captures picture of part of the screen

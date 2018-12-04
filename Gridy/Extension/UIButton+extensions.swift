@@ -11,7 +11,9 @@ import UIKit
 
 extension UIButton {
     func centerTextHorizontally(spacing: CGFloat) {
+        //adds spacing/padding to thew left and right
         titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        //centers text
         self.titleLabel?.textAlignment = NSTextAlignment.center
     }
     

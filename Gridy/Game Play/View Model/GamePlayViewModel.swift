@@ -14,7 +14,6 @@ class GamePlayViewModel {
     let photo: UIImage
     var puzzleDictionary: [Int:UIImage]
     var images: [UIImage]
-    
     let gridSize: Int
     init(photo: UIImage, gridSize: Int, puzzleDictionary: [Int:UIImage]) {
         self.photo = photo

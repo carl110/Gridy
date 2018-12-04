@@ -13,7 +13,7 @@ class GamePlayUICollectionViewCell: UICollectionViewCell {
     
 
     @IBOutlet weak var userImageView: UIImageView!
-    
+    //add array of images as cells
     func config (puzzleImages: UIImage) {
         userImageView.image = puzzleImages
     }

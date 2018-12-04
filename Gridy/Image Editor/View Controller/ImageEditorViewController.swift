@@ -26,6 +26,7 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Use Dispatch to ensure buttons are rounded when viewloads
         DispatchQueue.main.async { [weak self] in
             self?.selectImage.roundCorners(for: .allCorners, cornerRadius: 8)
             self?.selectImage.centerTextHorizontally(spacing: 2)
@@ -152,10 +153,10 @@ class ImageEditorViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func endGesture() {
+        //turns image to original rotation to apply change and turns back to rotation so image does not skew
         if imageView.frame.size.width < gridView.frame.size.width || imageView.frame.size.height < gridView.frame.size.height {
             //get current rotation value
             let rotation = atan2(imageView.transform.b, imageView.transform.a)
-            print (rotation * CGFloat((180 / Double.pi)))
             //rotate back to origin
             imageView.transform = CGAffineTransform(rotationAngle: CGFloat(2*Double.pi))
             //scale in origin

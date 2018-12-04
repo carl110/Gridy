@@ -22,7 +22,6 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        PickButton.setImage(UIImage(named:"Gridy-name-small-grey"), for: .normal)
         gridyPick.gridyLabelView.text = "Pick"
         gridyPick.gridyImageView.image = UIImage(named: "Gridy-name-small-grey")
         photoLibrarySelect.gridyLabelView.text = "Photo Library"
@@ -101,7 +100,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         processPicked(image: randomImage())
     }
     func randomImage() -> UIImage? {
-        //random number from count or local images
+        //random number from count of local images
         let randomIndex = Int(arc4random_uniform(UInt32(localImages.count)))
         //gets random local image
         let newImage = localImages[randomIndex]

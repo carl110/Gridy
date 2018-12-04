@@ -18,7 +18,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     
     private var completePuzzle = UIImageView()
     private var additionalTime = 11.0
-    //set econds for timer
+    //set seconds for timer
     private var seconds = 11
     //declare NSObject Timer
     private var timer = Timer()
@@ -27,7 +27,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
     //create empty array for cell locations
     var cellCoordinatesArray = [CGPoint]()
     var halfCellHypotenuse = CGFloat()
-    //var player:AVAudioPlayer = AVAudioPlayer()
     var scoreCount = 0
     
     @IBOutlet weak var newGame: UIButton!
@@ -55,7 +54,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
         gamePlayCollectionView.puzzleImages = gamePlayViewModel.images
         gamePlayCollectionView.gamePlayViewController = self
         gamePlayCollectionView.gamePlayDelegate = self
-
+        //Change scroll direction of collection view depending on orientation of device
         if UIDevice.current.orientation.isLandscape {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
@@ -91,24 +90,17 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             gamePlayCollectionView.soundVolume = 1
             soundButton.setTitle("Sound On", for: .normal)
         }
-        
     }
-    
     @IBAction func newGame(_ sender: UIButton) {
-        
-        
-        
         gamePlayFlowController.showMain()
-        
     }
     @IBAction func hint(_ sender: UIButton) {
-        //        hint.disableButton()
         //Start Timer
         runTimer()
+        //start next piece of code after 1 second
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.countDownTimer.fadeIn()
             self?.hint.disableButton()
-            
             //create size and location for hintView
             let hintImageView = UIImageView(image: self?.gamePlayViewModel.photo)
             hintImageView.frame.size = CGSize(width: self!.puzzleGrid.frame.width, height: self!.puzzleGrid.frame.height)
@@ -117,7 +109,6 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             self?.completePuzzle.alpha = 0
             self?.view.addSubview(self!.completePuzzle)
             self?.completePuzzle.fadeIn()
-            
             //wait 2 seconds from code run to run fadeout
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self?.completePuzzle.fadeOut()

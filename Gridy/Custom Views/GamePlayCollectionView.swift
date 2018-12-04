@@ -36,11 +36,11 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         super.touchesBegan(touches, with: event)
         initialTouchLocation = touches.first!.location(in: gamePlayViewController.gamePlayCollectionView)
     }
-    
+    //number of cells for collectionview
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return puzzleImages.count
     }
-    
+    //Declare what is in cells and add gesture
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! GamePlayUICollectionViewCell
         cell.config(puzzleImages: puzzleImages[indexPath.row])
@@ -48,21 +48,19 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         cell.userImageView.addGestureRecognizer(longPressGesture)
         return cell
     }
-    
+    //Declare handler
     @objc func longPressGestureHandler(sender:UILongPressGestureRecognizer) {
-        
         //capture image of the cell
         if let cellView = sender.view {
             let cellImageView = cellView as? UIImageView
             //create new Image of the image chosen
             let newImageView = UIImageView(image: cellImageView?.image)
-            
             //look at state of gesture
             switch sender.state {
             case .began:
                 //Hide the cell in collectionView
                 cellView.isHidden = true
-                //Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value
+                //set size for newImage and place on top of hidden cellView to allow drag
                 newImageView.frame.size = CGSize(width: gamePlayViewController.puzzleGrid.frame.width / CGFloat(gamePlayViewController.gridSize), height: gamePlayViewController.puzzleGrid.frame.height / CGFloat(gamePlayViewController.gridSize))
                 newImageView.center = sender.location(in: gamePlayViewController.view)
                 gamePlayViewController.dragView = newImageView
@@ -81,7 +79,6 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                         //check if cell is empty
                         if (self.gamePlayViewController.view.subviews.filter{ $0.center == (self.gamePlayViewController.cellCoordinatesArray.closestCell(nonFixedLocation: puzzleCellLocation, hyp: self.gamePlayViewController.halfCellHypotenuse)) }).count == 0 {
                             self.gamePlayViewController.dragView.center = self.gamePlayViewController.cellCoordinatesArray.closestCell(nonFixedLocation: puzzleCellLocation, hyp: self.gamePlayViewController.halfCellHypotenuse)
-                            
                             //locate sound file
                             let path = Bundle.main.path(forResource: "magicWand", ofType: nil)!
                             //create path for sound file
@@ -96,15 +93,13 @@ class GamePlayCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
                             }
                             //use initialTouchLocation coordinates to work out which cell was pressed and remove from the puzzleImages array
                             if let indexPath = self.gamePlayViewController.gamePlayCollectionView.indexPathForItem(at: self.initialTouchLocation) {
-                                //works fine when all cells are visable
                                 self.puzzleImages.remove(at: indexPath.item)
                                 self.gamePlayViewController.gamePlayCollectionView.deleteItems(at: [indexPath])
                                 self.gamePlayDelegate?.didEnd()
-                                
                             }
                         } else {
+                            //if cell not empty remove piece that has been draged
                             self.gamePlayViewController.dragView.removeFromSuperview()
-                            
                         }
                     }
                 }
