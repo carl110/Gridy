@@ -1,0 +1,22 @@
+This is project 5 for the OpenClassrooms iOS Developer course.
+
+On a rainy evening, your good friend Joe shows up at your place with your favorite pizza and starts talking as soon as you open the door. Joe tells you that he's come up with an app idea, has thought through all the details, and has even completed full mockups for the project. He is hoping that you may be interested in partnering-up to bring this idea to life!
+
+It’s a photo puzzle called "Gridy." It's a light visual brain exercise that would interest anyone looking for a short break from whatever they are doing.
+
+You appreciate the pizza, of course, and you happen to have some spare time. So, why not hear the details?
+App requirements
+
+The app will allow the user to randomly choose one of the photos within the app, use a custom photo from their phone’s photo library, or take one on the spot. The app must contain at least 5 default images.
+
+The selected photo is displayed on the app screen and becomes available for adjustments. The user can rotate and zoom in a photo. Once the user is happy with the modification, they can start the game. The image is then cropped to fit a square, which is sliced into 16 smaller squares. The squares are then shuffled and positioned at the top of the puzzle container.
+
+The user can drag a square from the top container into the bottom puzzle grid.
+
+In case of incorrect positioning, the user can swipe a square out of the puzzle grid.
+
+The user will have a ‘hint’ option available at any time, which will allow them to briefly glance at the original photo for 2 seconds (not including in-and-out animations) via a pop-up.
+
+Once the puzzle is completed, a user may choose to challenge their friends by sharing their image as well as their scores.
+
+The score will reflect the number of moves performed into and out of the puzzle grid. The fewer the moves, the better.
