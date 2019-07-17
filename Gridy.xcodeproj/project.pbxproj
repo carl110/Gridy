@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8902E05D22DF59B1008EC7FD /* Gridy.docx in Resources */ = {isa = PBXBuildFile; fileRef = 8902E05B22DF59B1008EC7FD /* Gridy.docx */; };
+		8902E05E22DF59B1008EC7FD /* Gridy.graphml in Resources */ = {isa = PBXBuildFile; fileRef = 8902E05C22DF59B1008EC7FD /* Gridy.graphml */; };
 		8908AC1521A41E4C003EADA2 /* UIAlertController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908AC1421A41E4C003EADA2 /* UIAlertController+extensions.swift */; };
 		890B0C082193B8CF0018FA15 /* UINavigationController+extensons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890B0C072193B8CF0018FA15 /* UINavigationController+extensons.swift */; };
 		8922E5C52141662900420A71 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8922E5C42141662900420A71 /* UIImage+extension.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8902E05B22DF59B1008EC7FD /* Gridy.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = Gridy.docx; sourceTree = "<group>"; };
+		8902E05C22DF59B1008EC7FD /* Gridy.graphml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Gridy.graphml; sourceTree = "<group>"; };
 		8908AC1421A41E4C003EADA2 /* UIAlertController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+extensions.swift"; sourceTree = "<group>"; };
 		890B0C072193B8CF0018FA15 /* UINavigationController+extensons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+extensons.swift"; sourceTree = "<group>"; };
 		8922E5C42141662900420A71 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
@@ -87,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8902E05A22DF5968008EC7FD /* App Documents */ = {
+			isa = PBXGroup;
+			children = (
+				8902E05B22DF59B1008EC7FD /* Gridy.docx */,
+				8902E05C22DF59B1008EC7FD /* Gridy.graphml */,
+			);
+			path = "App Documents";
+			sourceTree = "<group>";
+		};
 		89296B6C2133EB9E00B6D1F3 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +185,7 @@
 		894516B521300D6600E472B2 /* Gridy */ = {
 			isa = PBXGroup;
 			children = (
+				8902E05A22DF5968008EC7FD /* App Documents */,
 				89F4162F21809E7800C5CBDB /* Audio Files */,
 				89296B6C2133EB9E00B6D1F3 /* Main Screen */,
 				89296B712133F22A00B6D1F3 /* Image Editor */,
@@ -310,7 +324,7 @@
 				TargetAttributes = {
 					894516B221300D6600E472B2 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -340,9 +354,11 @@
 				892F7F8B213947830003BE35 /* GridyIconButton.xib in Resources */,
 				894516C121300D6A00E472B2 /* LaunchScreen.storyboard in Resources */,
 				894516BE21300D6A00E472B2 /* Assets.xcassets in Resources */,
+				8902E05D22DF59B1008EC7FD /* Gridy.docx in Resources */,
 				89F4162E21809AD200C5CBDB /* magicWand in Resources */,
 				894516C921300EA000E472B2 /* timeburnernormal.ttf in Resources */,
 				894516BC21300D6600E472B2 /* Main.storyboard in Resources */,
+				8902E05E22DF59B1008EC7FD /* Gridy.graphml in Resources */,
 				89DC615F213D407700DB5937 /* GamePlay.storyboard in Resources */,
 				89DC6151213D313200DB5937 /* ImageEditor.storyboard in Resources */,
 			);
@@ -534,7 +550,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlwainwright.Gridy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -552,7 +568,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carlwainwright.Gridy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -169,7 +169,7 @@ class GamePlayViewController: UIViewController, GamePlayDelegate {
             view.subviews.forEach { (puzzleFieldView) in
                 guard let image = (puzzleFieldView as? UIImageView)?.image else {return}
                 guard let fieldIndex = indexOfPuzzles(with: image) else {return}
-                guard let fieldCenterIndex = cellCoordinatesArray.index(of: puzzleFieldView.center) else {return}
+                guard let fieldCenterIndex = cellCoordinatesArray.firstIndex(of: puzzleFieldView.center) else {return}
                 if fieldCenterIndex == fieldIndex {
                     correctPuzzlePiecePlacement += 1
                 }
